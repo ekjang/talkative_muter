@@ -8,8 +8,14 @@ class MenuLink extends Component {
         // Any number of links can be added here
     }
     render() {
+        let icon = this.props.isMember ? "logout" : "login";
         return (
             <div className={this.props.menuStatus} id="menu">
+                <div className="menulink-style">
+                    <span>
+                        <Link to={"/"+icon}>{icon}</Link>
+                    </span>
+                </div>
                 <ul>
                     <li><Link to="/" >Home</Link></li>
                     <li><Link to="/today" >오늘 벙어리</Link></li>

@@ -6,8 +6,8 @@ body {
     box-sizing: border-box;
 }
 
-.main-title {
-    color: white;
+.login-title {
+    color: black;
     font-family: 궁서체;
     position: relative;
 }

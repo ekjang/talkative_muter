@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MenuStyle.css'
 import MenuLink from "./MenuLink";
+import {Link} from "react-router-dom";
 class MenuComponent extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +30,11 @@ class MenuComponent extends Component {
         this.setState({isOpen: !this.state.isOpen});
     }
 
+    titleOnClick = () => {
+        //메인 화면으로
+        console.log("메인화면으로")
+    }
+
     render() {
         let menuStatus = this.state.isOpen ? "isopen" : "";
 
@@ -42,12 +48,13 @@ class MenuComponent extends Component {
                         <span></span>
                         <span></span>
                     </div>
-                    <div className="title">
-                        <span>{this.props.title}</span>
+                    <div className="main-title">
+                        <span onClick={this.titleOnClick}>{this.props.title}</span>
                     </div>
                 </div>
                 <MenuLink
                     menuStatus={menuStatus}
+                    isMember={this.props.isMember}
                 />
             </div>
         );

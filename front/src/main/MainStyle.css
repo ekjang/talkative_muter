@@ -1,5 +1,18 @@
-.site {
+.site-style {
+    width: 767px;
 }
 .content-style {
     color: black;
 }
+
+/*@media (min-width: 768px) {*/
+/*    .site {*/
+/*        width: 1023px;*/
+/*    }*/
+/*}*/
+
+/*@media (min-width: 1024px) {*/
+/*    .site {*/
+/*        width: 2048px;*/
+/*    }*/
+/*}*/
