@@ -13,9 +13,7 @@ class LoginComponent extends Component {
 
     //로그인 없이 인기 벙어리 화면으로 (상위 10줄만 보임)
     btnViewOnClick = () => {
-        console.log("그냥볼래 클릭!")
         this.props.history.push("/popular")
-        //인기 벙어리 화면으로
     }
 
     //로그인 인증 요청

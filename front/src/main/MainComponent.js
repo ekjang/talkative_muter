@@ -7,7 +7,7 @@ import "./MainStyle.css"
 
 class MainComponent extends Component {
     state = {
-        isMember: false,
+        isMember: true, //로그인 여부
         token: ''
     }
     render() {
@@ -16,7 +16,7 @@ class MainComponent extends Component {
                 <Router>
                 <div>
                     <MenuComponent
-                        title="말 많은 벙어리"
+                        title="말.많.벙"
                         isMember={this.state.isMember}
                     />
                 </div>

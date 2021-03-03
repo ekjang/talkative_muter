@@ -14,7 +14,6 @@ class MenuLink extends Component {
     }
 
     menuList = () => {
-        console.log("menuList:"+this.props.isMember)
         if(this.props.isMember) {
             return (
                 <ul>
