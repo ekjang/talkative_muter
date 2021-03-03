@@ -1,29 +1,55 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import "./MenuStyle.css"
 
 class MenuLink extends Component {
-    constructor(props) {
-        super(props);
-        // Any number of links can be added here
+
+    state = {
+        icon: "login"
     }
-    render() {
+
+    componentDidMount() {
         let icon = this.props.isMember ? "logout" : "login";
-        return (
-            <div className={this.props.menuStatus} id="menu">
-                <div className="menulink-style">
-                    <span>
-                        <Link to={"/"+icon}>{icon}</Link>
-                    </span>
-                </div>
+        this.setState({icon: icon})
+    }
+
+    menuList = () => {
+        console.log("menuList:"+this.props.isMember)
+        if(this.props.isMember) {
+            return (
                 <ul>
                     <li><Link to="/" >Home</Link></li>
                     <li><Link to="/today" >오늘 벙어리</Link></li>
                     <li><Link to="/popular" >인기 벙어리</Link></li>
                 </ul>
+            )
+        } else {
+            return (
+                <ul>
+                    <li><Link to="/" >Home</Link></li>
+                    <li><Link to="/popular" >인기 벙어리</Link></li>
+                </ul>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <div className={this.props.menuStatus} id="menu">
+                <div className={this.state.icon + "-icon-style"}>
+                    <span onClick={() => {this.props.history.push("/" + this.state.icon)}}>
+                        {this.state.icon}
+                    </span>
+                </div>
+                {this.menuList()}
+                {/*<ul>*/}
+                {/*    <li><Link to="/" >Home</Link></li>*/}
+                {/*    <li><Link to="/today" >오늘 벙어리</Link></li>*/}
+                {/*    <li><Link to="/popular" >인기 벙어리</Link></li>*/}
+                {/*</ul>*/}
             </div>
         );
     }
 }
 
-export default MenuLink;
+export default withRouter(MenuLink);

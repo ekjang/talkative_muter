@@ -8,15 +8,30 @@ body {
 
 .login-title {
     color: black;
-    font-family: 궁서체;
+    font-family: HY울릉도B;
+    font-size: 20px;
     position: relative;
+    margin-top: 50px;
 }
 
-.menulink-style {
-    color: black;
-    font-size: 8px;
+.input-area-style {
+    margin: 10px;
 }
 
+.input-box-style {
+    margin: 5px
+}
+
+.top-button-style {
+    margin-top: 100px;
+}
+
+.bottom-button-style {
+    margin-top: 30px;
+}
+
+.button-wide-style {
+}
 .menubar {
     display: block;
     height: 60px;

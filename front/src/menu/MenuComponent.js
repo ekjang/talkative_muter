@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './MenuStyle.css'
 import MenuLink from "./MenuLink";
-import {Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import './MenuStyle.css'
+
 class MenuComponent extends Component {
     constructor(props) {
         super(props);
@@ -25,14 +26,16 @@ class MenuComponent extends Component {
             this.setState({isOpen: false})
         }
     }
+
+    //슬라이드 메뉴
     menuToggle = (e) => {
         e.stopPropagation();
         this.setState({isOpen: !this.state.isOpen});
     }
 
+    //메인화면으로
     titleOnClick = () => {
-        //메인 화면으로
-        console.log("메인화면으로")
+        this.props.history.push("/")
     }
 
     render() {
@@ -60,4 +63,4 @@ class MenuComponent extends Component {
         );
     }
 }
-export default MenuComponent;
+export default withRouter(MenuComponent);

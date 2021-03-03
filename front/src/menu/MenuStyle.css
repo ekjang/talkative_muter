@@ -12,9 +12,20 @@ body {
     position: relative;
 }
 
-.menulink-style {
+.login-icon-style {
+    color: deeppink;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.logout-icon-style {
     color: black;
-    font-size: 8px;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 10px;
 }
 
 .menubar {
