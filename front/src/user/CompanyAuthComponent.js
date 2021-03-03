@@ -3,6 +3,11 @@ import {withRouter} from "react-router-dom";
 
 class CompanyAuthComponent extends Component {
 
+    btnNoOnClick = () => {
+        console.log("취소 버튼")
+        this.props.history.push("/")
+    }
+
     transfer = () => {
         //입력한 메일 주소로 인증코드 요청
         //axios.get
@@ -29,6 +34,9 @@ class CompanyAuthComponent extends Component {
                 <div>
                     <input type="text" />
                     <button onClick={this.accessCodeCheck} >확인</button>
+                </div>
+                <div className="bottom-button-style">
+                    <button className="button-wide-style" onClick={this.btnNoOnClick}>취소</button>
                 </div>
             </div>
         );
