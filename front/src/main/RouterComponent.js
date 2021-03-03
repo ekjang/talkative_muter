@@ -22,12 +22,14 @@ class RouterComponent extends Component {
                     <Route exact path="/login"
                            render={() => <LoginComponent
                                isMember={this.props.isMember}
+                               authCheck={this.props.authCheck}
                            />
                            }
                     />
                     <Route exact path="/logout"
                            render={() => <LogoutComponent
                                isMember={this.props.isMember}
+                               authCheck={this.props.authCheck}
                            />
                            }
                     />

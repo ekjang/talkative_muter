@@ -18,7 +18,10 @@ class LoginComponent extends Component {
 
     //로그인 인증 요청
     btnEnterOnClick = () => {
-        this.props.history.push("/access")
+        //axios.post
+        //로그인 성공 시
+        this.props.authCheck(true)
+        this.props.history.push("/")
     }
 
     render() {

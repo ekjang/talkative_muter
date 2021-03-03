@@ -6,12 +6,17 @@ class TodayComponent extends Component {
         schContent: ''
     }
 
+    componentDidMount() {
+        this.searchOnClick()
+    }
+
     inputHandler = (e) => {
         this.setState({schContent: e.target.value})
     }
 
     searchOnClick = () => {
         console.log("검색 버튼 클릭: " + this.state.schContent)
+        //axios.get
     }
 
     render() {
