@@ -1,5 +1,7 @@
 package my.app.server.entity;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 @Setter
 @ToString(of = {"id", "username"})
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
