@@ -6,7 +6,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-title {
+.user-package-title {
     color: black;
     font-family: HY울릉도B;
     font-size: 20px;
@@ -16,10 +16,26 @@ body {
 
 .input-area-style {
     margin: 10px;
+    position: relative;
 }
 
 .input-box-style {
-    margin: 5px
+    margin-top: 5px;
+    margin-left: 250px;
+    text-align: left;
+    align-content: center;
+}
+
+.input-box-style span {
+    margin-top: 5px;
+    position: relative;
+}
+
+.input-box {
+    border: solid 1px;
+    margin-left: 15px;
+    width: 160px;
+    border-radius: 10%;
 }
 
 .top-button-style {
@@ -27,8 +43,41 @@ body {
 }
 
 .bottom-button-style {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
-.button-wide-style {
+.button-small1 {
+    color: black;
+    background-color: lightpink;
+    margin-left: 8px;
+    width: 130px;
+    font-size: 15px;
+    font-family: HY목판L;
+    cursor: pointer;
+    border: 2px solid deeppink;
+    border-radius: 10%;
+}
+
+.button-small2 {
+    color: black;
+    background-color: lightgray;
+    margin-left: 8px;
+    width: 130px;
+    font-size: 15px;
+    font-family: HY목판L;
+    cursor: pointer;
+    border: 2px solid darkgray;
+    border-radius: 10%;
+}
+
+.button-wide1 {
+    color: white;
+    background-color: darkslategrey;
+    margin-left: 8px;
+    width: 260px;
+    font-size: 15px;
+    font-family: HY목판L;
+    cursor: pointer;
+    border: 2px solid darkcyan;
+    border-radius: 10%;
 }

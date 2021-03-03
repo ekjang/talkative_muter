@@ -8,7 +8,7 @@ class LoginComponent extends Component {
 
     //회원가입 화면으로
     btnFirstOnClick = () => {
-        this.props.history.push("/join")
+        this.props.history.push("/companyAuth")
     }
 
     //로그인 없이 인기 벙어리 화면으로 (상위 10줄만 보임)
@@ -27,25 +27,25 @@ class LoginComponent extends Component {
     render() {
         return (
             <div>
-                <div className="login-title">
+                <div className="user-package-title">
                     로그인
                 </div>
                 <div className="top-button-style">
-                    <button onClick={this.btnFirstOnClick}>처음이야</button>
-                    <button onClick={this.btnViewOnClick}>그냥볼래</button>
+                    <button className="button-small1" onClick={this.btnFirstOnClick}>처음이야</button>
+                    <button className="button-small2" onClick={this.btnViewOnClick}>그냥볼래</button>
                 </div>
                 <div className="input-area-style">
                     <div className="input-box-style">
-                        <span>ID</span>
-                        <input type="text"/>
+                        <span>회원아이디</span>
+                        <input className="input-box" type="text"/>
                     </div>
                     <div className="input-box-style">
-                        <span>PW</span>
-                        <input type="text"/>
+                        <span>비 밀 번 호</span>
+                        <input className="input-box" type="text"/>
                     </div>
                 </div>
                 <div className="bottom-button-style">
-                    <button className="button-wide-style" onClick={this.btnEnterOnClick}>들어갈래</button>
+                    <button className="button-wide1" onClick={this.btnEnterOnClick}>들어갈래</button>
                 </div>
             </div>
         );

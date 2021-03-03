@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import "./PopularStyle.css"
+
 class PopularComponent extends Component {
     state = {
         sizeByPage: '',
@@ -24,7 +26,9 @@ class PopularComponent extends Component {
     render() {
         return (
             <div>
-                <div>인기 벙어리</div>
+                <div className="popular-title">
+                    인기 벙어리
+                </div>
                 <div>
                     {this.props.isMember &&
                     <div>

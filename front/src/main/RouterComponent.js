@@ -3,9 +3,10 @@ import {Route, Switch} from "react-router-dom";
 import SummaryComponent from "./SummaryComponent";
 import LoginComponent from "../user/LoginComponent";
 import LogoutComponent from "../user/LogoutComponent";
-import JoinComponent from "../user/JoinComponent";
+import CompanyAuthComponent from "../user/CompanyAuthComponent";
 import PopularComponent from "../popular/PopularComponent";
 import TodayComponent from "../today/TodayComponent";
+import JoinComponent from "../user/JoinComponent";
 
 class RouterComponent extends Component {
 
@@ -30,6 +31,12 @@ class RouterComponent extends Component {
                            render={() => <LogoutComponent
                                isMember={this.props.isMember}
                                authCheck={this.props.authCheck}
+                           />
+                           }
+                    />
+                    <Route exact path="/companyAuth"
+                           render={() => <CompanyAuthComponent
+                               isMember={this.props.isMember}
                            />
                            }
                     />
