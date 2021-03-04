@@ -60,7 +60,7 @@ class TodayComponent extends Component {
                 </div>
                 <div>
                     <input type="text" value={this.state.schContent} onChange={this.inputHandler} />
-                    <button onClick={this.searchOnClick} >검색</button>
+                    <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                 </div>
                 <div>
                     <div>

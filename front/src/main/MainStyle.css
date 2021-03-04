@@ -5,14 +5,30 @@
     color: black;
 }
 
-/*@media (min-width: 768px) {*/
-/*    .site {*/
-/*        width: 1023px;*/
-/*    }*/
-/*}*/
+.summary-count {
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+    border: 2px solid darkgray;
+}
 
-/*@media (min-width: 1024px) {*/
-/*    .site {*/
-/*        width: 2048px;*/
-/*    }*/
-/*}*/
+.today-summary-title {
+    color: black;
+    font-family: HY울릉도B;
+    font-size: 20px;
+    position: relative;
+    margin-top: 25px;
+}
+
+@media (min-width: 768px) {
+    .site-style {
+        width: 1023px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-style {
+        width: 2048px;
+    }
+}

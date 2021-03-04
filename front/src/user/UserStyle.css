@@ -35,7 +35,7 @@ body {
     border: solid 1px;
     margin-left: 15px;
     width: 160px;
-    border-radius: 10%;
+    border-radius: 8%;
 }
 
 .top-button-style {
@@ -55,7 +55,7 @@ body {
     font-family: HY목판L;
     cursor: pointer;
     border: 2px solid deeppink;
-    border-radius: 10%;
+    border-radius: 8%;
 }
 
 .just-button {
@@ -67,7 +67,7 @@ body {
     font-family: HY목판L;
     cursor: pointer;
     border: 2px solid darkgray;
-    border-radius: 10%;
+    border-radius: 8%;
 }
 
 .enter-button {
@@ -79,5 +79,5 @@ body {
     font-family: HY목판L;
     cursor: pointer;
     border: 2px solid darkcyan;
-    border-radius: 10%;
+    border-radius: 8%;
 }

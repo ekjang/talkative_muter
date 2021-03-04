@@ -46,17 +46,18 @@
     font-family: HY목판L;
     cursor: pointer;
     border: 2px solid darkcyan;
-    border-radius: 10%;
+    border-radius: 8%;
 }
 
 .button-wide1 {
     color: white;
     background-color: deeppink;
+    margin-top: 20px;
     margin-left: 8px;
-    width: 260px;
+    width: 230px;
     font-size: 15px;
     font-family: HY목판L;
     cursor: pointer;
     border: 2px solid lightpink;
-    border-radius: 5%;
+    border-radius: 8%;
 }
