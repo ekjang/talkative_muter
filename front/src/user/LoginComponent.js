@@ -45,7 +45,7 @@ class LoginComponent extends Component {
                     </div>
                 </div>
                 <div className="bottom-button-style">
-                    <button className="button-wide1" onClick={this.btnEnterOnClick}>들어갈래</button>
+                    <button className="enter-button" onClick={this.btnEnterOnClick}>들어갈래</button>
                 </div>
             </div>
         );
