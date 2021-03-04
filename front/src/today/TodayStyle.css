@@ -5,3 +5,58 @@
     position: relative;
     margin-top: 20px;
 }
+
+.do-you-know-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.do-you-know-popup-inner {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 30%;
+    bottom: 40%;
+    margin: auto;
+    background: white;
+}
+
+.do-you-know-popup-content {
+    position: relative;
+    margin-top: 50px
+}
+
+.bottom-button-style {
+    margin-top: 10px;
+}
+
+.button-small1 {
+    color: white;
+    background-color: darkslategrey;
+    margin-left: 8px;
+    width: 50px;
+    font-size: 15px;
+    font-family: HY목판L;
+    cursor: pointer;
+    border: 2px solid darkcyan;
+    border-radius: 10%;
+}
+
+.button-wide1 {
+    color: white;
+    background-color: deeppink;
+    margin-left: 8px;
+    width: 260px;
+    font-size: 15px;
+    font-family: HY목판L;
+    cursor: pointer;
+    border: 2px solid lightpink;
+    border-radius: 5%;
+}
