@@ -25,7 +25,7 @@ class DoYouKnowPopup extends Component {
                         너 그거 아니?
                     </div>
                     <div className="do-you-know-popup-content">
-                        <textarea value={this.state.todayWrite} onChange={this.inputHandler}></textarea>
+                        <textarea rows="4" value={this.state.todayWrite} onChange={this.inputHandler}></textarea>
                     </div>
                     <div className="bottom-button-style">
                         <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>
