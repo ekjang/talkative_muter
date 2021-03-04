@@ -21,8 +21,6 @@ body {
 
 .input-box-style {
     margin-top: 5px;
-    margin-left: 250px;
-    text-align: left;
     align-content: center;
 }
 
@@ -40,6 +38,7 @@ body {
 
 .top-button-style {
     margin-top: 100px;
+
 }
 
 .bottom-button-style {
