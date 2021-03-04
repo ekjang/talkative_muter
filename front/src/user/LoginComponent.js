@@ -31,8 +31,8 @@ class LoginComponent extends Component {
                     로그인
                 </div>
                 <div className="top-button-style">
-                    <button className="button-small1" onClick={this.btnFirstOnClick}>처음이야</button>
-                    <button className="button-small2" onClick={this.btnViewOnClick}>그냥볼래</button>
+                    <button className="first-button" onClick={this.btnFirstOnClick}>처음이야</button>
+                    <button className="just-button" onClick={this.btnViewOnClick}>그냥볼래</button>
                 </div>
                 <div className="input-area-style">
                     <div className="input-box-style">

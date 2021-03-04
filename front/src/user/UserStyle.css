@@ -46,7 +46,7 @@ body {
     margin-top: 10px;
 }
 
-.button-small1 {
+.first-button {
     color: black;
     background-color: lightpink;
     margin-left: 8px;
@@ -58,7 +58,7 @@ body {
     border-radius: 10%;
 }
 
-.button-small2 {
+.just-button {
     color: black;
     background-color: lightgray;
     margin-left: 8px;
