@@ -37,7 +37,19 @@ class TodayComponent extends Component {
                 });
             })
             .catch(res => console.log(res))
+        // this.listSort()
     }
+
+    // listSort = () => {
+    //     const data = this.state.list.map((item, idx) => {
+    //         console.log(item)
+    //         item.sort(function (a, b) {
+    //             console.log(b.item.id +"-"+a.item.id)
+    //             return b.item.id - a.item.id
+    //         })
+    //     })
+    //     console.log(data)
+    // }
 
     render() {
         return (

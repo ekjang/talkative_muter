@@ -12,45 +12,55 @@ class TodayContents extends Component {
     componentDidMount() {
     }
 
-    likeOnClick = () => {
+    likeOnClick = (e) => {
+        e.preventDefault()
         let plus = !this.state.likesFlag
-        this.setState({likesFlag: plus})
-        // axios.post(server_url + "/today/content/likes", {id: this.props.item.id, flag: plus})
-        //     .then(res => {
-        //         alert("좋아요")
-        //         this.setState({likesFlag: plus})
-        //         this.props.searchOnClick()
-        //     })
-        //     .catch(res => console.log(res))
+        const {likesFlag} = this.state
+        localStorage.setItem('likesFlag_'+this.props.item.id, JSON.stringify(likesFlag))
+        axios.put(server_url + "/today/content/like/"+this.props.item.id, {flag: plus})
+            .then(res => {
+                this.setState({likesFlag: plus})
+                this.props.searchOnClick()
+            })
+            .catch(res => console.log(res))
+        ///////////////////
+        console.log("storeage:"+localStorage.getItem('likesFlag_'+this.props.item.id))
     }
 
-    dislikeOnClick = () => {
+    dislikeOnClick = (e) => {
+        e.preventDefault()
         let plus = !this.state.dislikesFlag
         this.setState({dislikesFlag: plus})
-        // axios.post(server_url + "/today/content/dislikes", {id: this.props.item.id, flag: plus})
-        //     .then(res => {
-        //         alert("좋아요")
-        //         this.setState({dislikesFlag: plus})
-        //         this.props.searchOnClick()
-        //     })
-        //     .catch(res => console.log(res))
+        const {dislikesFlag} = this.state
+        localStorage.setItem('dislikesFlag_'+this.props.item.id, JSON.stringify(dislikesFlag))
+        axios.put(server_url + "/today/content/dislike/"+this.props.item.id, {flag: plus})
+            .then(res => {
+                this.setState({dislikesFlag: plus})
+                this.props.searchOnClick()
+            })
+            .catch(res => console.log(res))
     }
 
-    reportsOnClick = () => {
+    reportsOnClick = (e) => {
+        e.preventDefault()
         let plus = !this.state.reportsFlag
         this.setState({reportsFlag: plus})
-        // axios.post(server_url + "/today/content/reports", {id: this.props.item.id, flag: plus})
-        //     .then(res => {
-        //         alert("좋아요")
-        //         this.setState({reportsFlag: plus})
-        //         this.props.searchOnClick()
-        //     })
-        //     .catch(res => console.log(res))
+        const {reportsFlag} = this.state
+        localStorage.setItem('reportsFlag_'+this.props.item.id, JSON.stringify(reportsFlag))
+        axios.put(server_url + "/today/content/report/"+this.props.item.id, {flag: plus})
+            .then(res => {
+                this.setState({reportsFlag: plus})
+                this.props.searchOnClick()
+            })
+            .catch(res => console.log(res))
     }
 
     render() {
         return (
             <div>
+                <span className="content-item1">
+                    {this.props.item.id}
+                </span>
                 <span className="content-item1">
                     {this.props.item.content}
                 </span>
