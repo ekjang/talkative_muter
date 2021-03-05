@@ -1,14 +1,16 @@
 package my.app.server.today.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import my.app.server.entity.Content;
+import my.app.server.today.dto.TodayDto;
 import my.app.server.today.service.TodayService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,7 +20,40 @@ public class TodayController {
     private final TodayService todayService;
 
     @GetMapping("/contents")
-    public List<Content> contentsV1() {
-        return todayService.findContents();
+    public Result contentsList() {
+        List<Content> findContents = todayService.findContents();
+        List<TodayDto> collect = findContents.stream()
+                .map(c -> new TodayDto(c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
+                .collect(Collectors.toList());
+        return new Result(collect);
     }
+
+    @PostMapping("/content")
+    public CreateContentResponse saveContent(@RequestBody @Valid CreateContentRequest request) {
+        Content content = new Content(request.getContent());
+        Long id = todayService.createContent(content);
+        return new CreateContentResponse(id);
+    }
+
+    @Data
+    @AllArgsConstructor
+    static class Result<T> {
+        private T data;
+    }
+
+    @Data
+    static class CreateContentResponse {
+        private Long id;
+
+        public CreateContentResponse(Long id) {
+            this.id = id;
+        }
+    }
+
+    @Data
+    static class CreateContentRequest {
+        private String content;
+
+    }
+
 }

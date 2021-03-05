@@ -17,4 +17,10 @@ public class TodayService {
     public List<Content> findContents() {
         return contentRepository.findAll();
     }
+
+    @Transactional
+    public Long createContent(Content content) {
+        contentRepository.save(content);
+        return content.getId();
+    }
 }
