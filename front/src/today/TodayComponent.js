@@ -37,14 +37,6 @@ class TodayComponent extends Component {
                 });
             })
             .catch(res => console.log(res))
-        this.sortList()
-    }
-
-    sortList = () => {
-        this.state.list.map((item, idx) => {
-            console.log(idx)
-            return idx
-        })
     }
 
     render() {
@@ -78,6 +70,7 @@ class TodayComponent extends Component {
                     <TodayContents
                         item={item}
                         key={idx}
+                        searchOnClick={this.searchOnClick}
                     />
                     )}
                 </div>
