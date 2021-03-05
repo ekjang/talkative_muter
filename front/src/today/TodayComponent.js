@@ -62,10 +62,7 @@ class TodayComponent extends Component {
                     <input type="text" value={this.state.schContent} onChange={this.inputHandler} />
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                 </div>
-                <div>
-                    <div>
-                        Content list
-                    </div>
+                <div className="contents-list-style">
                     {this.state.list.map((item, idx) =>
                     <TodayContents
                         item={item}

@@ -62,8 +62,17 @@
     border-radius: 8%;
 }
 
-.content-item {
+.contents-list-style {
+    margin-top: 50px;
+}
+
+.content-item1 {
     margin-right: 15px;
+}
+
+.content-item2 {
+    margin-right: 15px;
+    font-size: 12px;
 }
 
 .content-icon-true {
