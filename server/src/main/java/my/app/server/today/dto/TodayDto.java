@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 public class TodayDto {
+    private Long id;
+
     private String content;
 
     private LocalDateTime registerDate;

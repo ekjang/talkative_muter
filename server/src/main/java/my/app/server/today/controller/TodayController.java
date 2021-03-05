@@ -24,7 +24,7 @@ public class TodayController {
     public Result contentsList() {
         List<Content> findContents = todayService.findContents();
         List<TodayDto> collect = findContents.stream()
-                .map(c -> new TodayDto(c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
+                .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
                 .collect(Collectors.toList());
         return new Result(collect);
     }
