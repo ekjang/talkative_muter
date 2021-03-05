@@ -23,4 +23,19 @@ public class TodayService {
         contentRepository.save(content);
         return content.getId();
     }
+
+    @Transactional
+    public void plusLike(Long id) {
+        Content content = contentRepository.findById(id).get();
+        content.setLikes(content.getLikes() + 1);
+
+    }
+    @Transactional
+    public void minusLike(Long id) {
+        Content content = contentRepository.findById(id).get();
+        if(content.getLikes() == 0)
+            return;
+        content.setLikes(content.getLikes() - 1);
+
+    }
 }

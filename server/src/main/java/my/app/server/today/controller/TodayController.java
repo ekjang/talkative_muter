@@ -20,6 +20,22 @@ public class TodayController {
 
     private final TodayService todayService;
 
+    @PutMapping("/content/like/{id}")
+    public boolean plusLikes(@PathVariable("id") Long id, UpdateReq request) {
+
+        if(request.flag)
+            todayService.plusLike(id);
+        else
+            todayService.minusLike(id);
+
+        return true;
+    }
+    @Data
+    static class UpdateReq{
+        boolean flag;
+
+    }
+
     @GetMapping("/contents")
     public Result contentsList() {
         List<Content> findContents = todayService.findContents();
