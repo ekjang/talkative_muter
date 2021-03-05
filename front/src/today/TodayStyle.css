@@ -62,6 +62,27 @@
     border-radius: 8%;
 }
 
-.content-item {
-    margin-right: 10px;
+.contents-list-style {
+    margin-top: 50px;
+}
+
+.content-item1 {
+    margin-right: 15px;
+}
+
+.content-item2 {
+    margin-right: 15px;
+    font-size: 12px;
+}
+
+.content-icon-true {
+    margin-right: 6px;
+    font-size: 13px;
+    color: red;
+}
+
+.content-icon-false {
+    margin-right: 6px;
+    font-size: 13px;
+    color: black;
 }

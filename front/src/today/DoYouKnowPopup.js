@@ -11,7 +11,6 @@ class DoYouKnowPopup extends Component {
     }
 
     componentDidMount() {
-        // document.addEventListener('click', this.btnOkOnClick, false);
         this.setState({isSuccess: false})
     }
 
