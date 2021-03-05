@@ -29,10 +29,13 @@ public class TodayController {
     }
 
     @PostMapping("/content")
-    public CreateContentResponse saveContent(@RequestBody @Valid CreateContentRequest request) {
+    public boolean saveContent(@RequestBody @Valid CreateContentRequest request) {
         Content content = new Content(request.getContent());
         Long id = todayService.createContent(content);
-        return new CreateContentResponse(id);
+        if(id > 0){
+            return true;
+        }
+        return false;
     }
 
     @Data
