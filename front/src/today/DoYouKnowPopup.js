@@ -1,8 +1,12 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import "./TodayStyle.css"
 import axios from "axios";
 import server_url from "../config/Url";
 
+/**
+ * 오늘 벙어리 글 등록
+ * 너 그거 아니? 팝업 컴퍼넌트
+ */
 class DoYouKnowPopup extends Component {
 
     state = {

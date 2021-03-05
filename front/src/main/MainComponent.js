@@ -4,7 +4,11 @@ import MenuComponent from "../menu/MenuComponent";
 import RouterComponent from "./RouterComponent";
 import "./MainStyle.css"
 
-
+/**
+ * 메인 컴퍼넌트
+ * - 슬라이드 메뉴
+ * - 컨텐츠 컴퍼넌트
+ */
 class MainComponent extends Component {
     state = {
         isMember: false, //로그인 여부

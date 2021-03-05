@@ -8,6 +8,9 @@ import PopularComponent from "../popular/PopularComponent";
 import TodayComponent from "../today/TodayComponent";
 import JoinComponent from "../user/JoinComponent";
 
+/**
+ * 라우터 정의
+ */
 class RouterComponent extends Component {
 
     render() {

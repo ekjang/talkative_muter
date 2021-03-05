@@ -3,6 +3,10 @@ import MenuLink from "./MenuLink";
 import {withRouter} from "react-router-dom";
 import './MenuStyle.css'
 
+/**
+ * 메뉴 컴퍼넌트
+ * - 슬라이드 액션 정의
+ */
 class MenuComponent extends Component {
     constructor(props) {
         super(props);

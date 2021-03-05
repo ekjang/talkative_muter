@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "./MenuStyle.css"
 
+/**
+ * 메뉴 링크 정의
+ */
 class MenuLink extends Component {
     render() {
         let icon = this.props.isMember ? "logout" : "login";

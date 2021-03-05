@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import "./MainStyle.css"
+
+/**
+ * 디폴트 컴퍼넌트
+ */
 class SummaryComponent extends Component {
     render() {
         return (

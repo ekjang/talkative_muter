@@ -3,6 +3,9 @@ import "./TodayStyle.css"
 import axios from "axios";
 import server_url from "../config/Url";
 
+/**
+ * 오늘 벙어리 한 줄 컴퍼넌트
+ */
 class TodayContents extends Component {
     state = {
         likesFlag: false,
@@ -10,49 +13,72 @@ class TodayContents extends Component {
         reportsFlag: false
     }
     componentDidMount() {
+        this.localStorageGetData()
+    }
+
+    localStorageGetData = () => {
+        let like = localStorage.getItem('likesFlag_'+this.props.item.id)
+        let dislike = localStorage.getItem('dislikesFlag_'+this.props.item.id)
+        let report = localStorage.getItem('reportsFlag_'+this.props.item.id)
+
+        this.setState({likesFlag: (like === null ? false : like)
+            , dislikesFlag: (dislike === null ? false : dislike)
+            , reportsFlag: (report === null ? false : report)
+        })
     }
 
     likeOnClick = (e) => {
         e.preventDefault()
         let plus = !this.state.likesFlag
-        const {likesFlag} = this.state
-        localStorage.setItem('likesFlag_'+this.props.item.id, JSON.stringify(likesFlag))
+        this.setState({likesFlag: plus})
+        if(plus) {
+            localStorage.setItem('likesFlag_' + this.props.item.id, JSON.stringify(plus))
+        } else {
+            localStorage.removeItem('likesFlag_'+this.props.item.id)
+        }
         axios.put(server_url + "/today/content/like/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({likesFlag: plus})
                 this.props.searchOnClick()
             })
             .catch(res => console.log(res))
-        ///////////////////
-        console.log("storeage:"+localStorage.getItem('likesFlag_'+this.props.item.id))
+        this.props.searchOnClick()
     }
 
     dislikeOnClick = (e) => {
         e.preventDefault()
         let plus = !this.state.dislikesFlag
         this.setState({dislikesFlag: plus})
-        const {dislikesFlag} = this.state
-        localStorage.setItem('dislikesFlag_'+this.props.item.id, JSON.stringify(dislikesFlag))
+        if(plus) {
+            localStorage.setItem('dislikesFlag_' + this.props.item.id, JSON.stringify(plus))
+        } else {
+            localStorage.removeItem('dislikesFlag_'+this.props.item.id)
+        }
         axios.put(server_url + "/today/content/dislike/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({dislikesFlag: plus})
                 this.props.searchOnClick()
             })
             .catch(res => console.log(res))
+        this.props.searchOnClick()
     }
 
     reportsOnClick = (e) => {
         e.preventDefault()
         let plus = !this.state.reportsFlag
         this.setState({reportsFlag: plus})
-        const {reportsFlag} = this.state
-        localStorage.setItem('reportsFlag_'+this.props.item.id, JSON.stringify(reportsFlag))
+        if(plus) {
+            localStorage.setItem('reportsFlag_' + this.props.item.id, JSON.stringify(plus))
+        } else {
+            localStorage.removeItem('reportsFlag_'+this.props.item.id)
+        }
         axios.put(server_url + "/today/content/report/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({reportsFlag: plus})
                 this.props.searchOnClick()
             })
             .catch(res => console.log(res))
+        this.props.searchOnClick()
     }
 
     render() {

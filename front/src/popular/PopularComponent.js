@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import "./PopularStyle.css"
 
+/**
+ * 인기 벙어리 컴퍼넌트
+ */
 class PopularComponent extends Component {
     state = {
         sizeByPage: '',
