@@ -61,3 +61,7 @@
     border: 2px solid lightpink;
     border-radius: 8%;
 }
+
+.content-item {
+    margin-right: 10px;
+}

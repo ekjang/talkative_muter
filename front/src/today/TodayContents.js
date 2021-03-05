@@ -5,7 +5,21 @@ class TodayContents extends Component {
     render() {
         return (
             <div>
-                {this.props.item}
+                <span className="content-item">
+                    {this.props.item.content}
+                </span>
+                <span className="content-item">
+                    {this.props.item.registerDate}
+                </span>
+                <span className="content-item">
+                    {this.props.item.likes}
+                </span>
+                <span className="content-item">
+                    {this.props.item.dislikes}
+                </span>
+                <span className="content-item">
+                    {this.props.item.reports}
+                </span>
             </div>
         );
     }

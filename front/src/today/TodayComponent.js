@@ -9,9 +9,10 @@ class TodayComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schContent: '',
+            // schContent: '', //필터 입력변수
+            list: [],
             doYouKnow: false, //popup 여부
-            contents: '',
+            isSuccess: false //response 성공 여부
         }
     }
 
@@ -28,17 +29,23 @@ class TodayComponent extends Component {
     }
 
     searchOnClick = () => {
-        axios.get(server_url + "/today/list", /*{params: {schContent: this.state.schContent}}*/)
+        axios.get(server_url + "/today/contents", /*{params: {schContent: this.state.schContent}}*/)
             .then(res => {
-                console.log(res.data)
                 this.setState({
-                    contents: res.data,
+                    list: res.data.data,
                     isSuccess:true
                 });
             })
             .catch(res => console.log(res))
+        this.sortList()
     }
 
+    sortList = () => {
+        this.state.list.map((item, idx) => {
+            console.log(idx)
+            return idx
+        })
+    }
 
     render() {
         return (
@@ -54,6 +61,7 @@ class TodayComponent extends Component {
                     <div>
                         <DoYouKnowPopup
                             doYouKnowPopup={this.doYouKnowPopup}
+                            searchOnClick={this.searchOnClick}
                         />
                     </div>
                     }
@@ -64,12 +72,12 @@ class TodayComponent extends Component {
                 </div>
                 <div>
                     <div>
-                        Content
+                        Content list
                     </div>
-                    {Object.keys(this.state.contents).map((item, key) =>
+                    {this.state.list.map((item, idx) =>
                     <TodayContents
                         item={item}
-                        key={key}
+                        key={idx}
                     />
                     )}
                 </div>
