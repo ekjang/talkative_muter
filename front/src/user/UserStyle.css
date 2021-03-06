@@ -80,3 +80,13 @@ body {
     border: 2px solid darkcyan;
     border-radius: 8%;
 }
+
+.auth-true {
+    color: blue;
+    font-size: 12px;
+}
+
+.auth-false {
+    color: red;
+    font-size: 12px;
+}
