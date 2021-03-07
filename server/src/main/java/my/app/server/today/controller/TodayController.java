@@ -21,7 +21,7 @@ public class TodayController {
     private final TodayService todayService;
 
     @PutMapping("/content/like/{id}")
-    public boolean plusLikes(@PathVariable("id") Long id, UpdateReq request) {
+    public boolean clickLikes(@PathVariable("id") Long id, UpdateReq request) {
 
         if(request.flag)
             todayService.plusLike(id);
@@ -30,6 +30,27 @@ public class TodayController {
 
         return true;
     }
+
+    @PutMapping("/content/dislike/{id}")
+    public boolean clickDislikes(@PathVariable("id") Long id, UpdateReq request) {
+
+        if(request.flag)
+            todayService.plusDislike(id);
+        else
+            todayService.minusDislike(id);
+        return true;
+    }
+
+    @PutMapping("/content/report/{id}")
+    public boolean clickReports(@PathVariable("id") Long id, UpdateReq request) {
+
+        if(request.flag)
+            todayService.plusReport(id);
+        else
+            todayService.minusReport(id);
+        return true;
+    }
+
     @Data
     static class UpdateReq{
         boolean flag;
@@ -38,7 +59,7 @@ public class TodayController {
 
     @GetMapping("/contents")
     public Result contentsList() {
-        List<Content> findContents = todayService.findContents();
+        List<Content> findContents = todayService.findContentsOrderByRegDate();
         List<TodayDto> collect = findContents.stream()
                 .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
                 .collect(Collectors.toList());

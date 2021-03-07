@@ -4,6 +4,7 @@ import my.app.server.entity.Content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@Rollback(value = false)
 class ContentRepositoryTest {
 
     @Autowired
@@ -46,5 +48,19 @@ class ContentRepositoryTest {
         long deletedCount = contentRepository.count();
         assertEquals(0,deletedCount);
 
+    }
+
+    @Test
+    public void orderByTest() {
+        Content content1 = new Content("contents test1");
+        Content content2 = new Content("contents test2");
+        contentRepository.saveAndFlush(content1);
+        contentRepository.saveAndFlush(content2);
+
+        List<Content> result = contentRepository.findAllByOrderByRegisterDateDesc();
+
+        for (Content content : result) {
+            System.out.println("content = " + content.getRegisterDate());
+        }
     }
 }
