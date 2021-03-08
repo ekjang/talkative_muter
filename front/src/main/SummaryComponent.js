@@ -56,7 +56,7 @@ class SummaryComponent extends Component {
     }
 
     todayGetApi = () => {
-        axios.get(server_url + "/today/contents", /*{params: {schContent: this.state.schContent}}*/)
+        axios.get(server_url + "/today/contentsTop5", /*{params: {schContent: this.state.schContent}}*/)
             .then(res => {
                 this.setState({
                     today: res.data.data,
@@ -67,7 +67,7 @@ class SummaryComponent extends Component {
     }
 
     popularGetApi = () => {
-        axios.get(server_url + "/popular/contents", /*{params: {schContent: this.state.schContent}}*/)
+        axios.get(server_url + "/popular/contentsTop5", /*{params: {schContent: this.state.schContent}}*/)
             .then(res => {
                 this.setState({
                     popular: res.data.data,
