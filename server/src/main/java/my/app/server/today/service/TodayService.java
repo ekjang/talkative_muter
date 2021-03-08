@@ -22,6 +22,9 @@ public class TodayService {
     @Transactional(readOnly = true)
     public List<Content> findContentsOrderByRegDate() { return contentRepository.findAllByOrderByRegisterDateDesc(); }
 
+    @Transactional(readOnly = true)
+    public List<Content> findContentsTop5OrderByRegDate() { return contentRepository.findTop5ByOrderByRegisterDateDesc(); }
+
     public Long createContent(Content content) {
         contentRepository.save(content);
         return content.getId();

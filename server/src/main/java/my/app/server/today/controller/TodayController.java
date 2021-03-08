@@ -66,6 +66,15 @@ public class TodayController {
         return new Result(collect);
     }
 
+    @GetMapping("/contentsTop5")
+    public Result contentsListTop5() {
+        List<Content> findContents = todayService.findContentsTop5OrderByRegDate();
+        List<TodayDto> collect = findContents.stream()
+                .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
+                .collect(Collectors.toList());
+        return new Result(collect);
+    }
+
     @PostMapping("/content")
     public boolean saveContent(@RequestBody @Valid CreateContentRequest request) {
         Content content = new Content(request.getContent());
