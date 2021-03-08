@@ -15,6 +15,7 @@ class TodayComponent extends Component {
         this.state = {
             // schContent: '', //필터 입력변수
             // list: [],
+            today: '',
             list: [
                 {
                     id: 3,
@@ -47,6 +48,8 @@ class TodayComponent extends Component {
     }
 
     componentDidMount() {
+        let today = new Date().toISOString().substr(0, 10);
+        this.state.today = today
         this.searchOnClick()
     }
 
@@ -54,12 +57,21 @@ class TodayComponent extends Component {
         this.setState({doYouKnow: !this.state.doYouKnow})
     }
 
-    inputHandler = (e) => {
+    inputDateHandler = (e) => {
+        this.setState({today: e.target.value})
+    }
+
+    inputContentHandler = (e) => {
         this.setState({schContent: e.target.value})
     }
 
     searchOnClick = () => {
-        axios.get(server_url + "/today/contents", /*{params: {schContent: this.state.schContent}}*/)
+        alert("필터 검색 지금 안되요 😅")
+        axios.get(server_url + "/today/contents",
+            {params:
+                    {schContent: this.state.schContent,
+                    today: this.state.today
+                    }})
             .then(res => {
                 this.setState({
                     list: res.data.data,
@@ -100,7 +112,8 @@ class TodayComponent extends Component {
                     }
                 </div>
                 <div>
-                    <input type="text" value={this.state.schContent} onChange={this.inputHandler} />
+                    <input type="date" value={this.state.today} onChange={this.inputDateHandler}></input>
+                    <input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                 </div>
                 <div className="contents-list-style">
