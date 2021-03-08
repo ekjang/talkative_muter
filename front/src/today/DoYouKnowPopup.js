@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./TodayStyle.css"
 import axios from "axios";
-import server_url from "../config/Url";
+import server_url from "../define/Url";
 
 /**
  * 오늘 벙어리 글 등록

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {withRouter} from "react-router-dom";
-import server_url from "../config/Url"
+import server_url from "../define/Url"
 import "./UserStyle.css"
 
 /**
@@ -22,10 +22,12 @@ class CompanyAuthComponent extends Component {
         this.setState({companyId: e.target.value})
     }
 
+    //취소 버튼 클릭
     btnNoOnClick = () => {
         this.props.history.push("/")
     }
 
+    //메일 인증코드 전송
     transfer = () => {
         if(this.state.companyId === '') {
             alert("아이디를 입력하세요.")
@@ -42,6 +44,7 @@ class CompanyAuthComponent extends Component {
         }
     }
 
+    //인증코드 체크
     authCodeCheck = (e) => {
         this.setState({inputAuthCode: e.target.value})
         if(this.state.authCode === e.target.value) {
@@ -51,6 +54,7 @@ class CompanyAuthComponent extends Component {
         }
     }
 
+    //회원가입 화면으로
     goToJoin = () => {
         if(!this.state.isAuthentication) {
             alert("인증되지 않았습니다.")

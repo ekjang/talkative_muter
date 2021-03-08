@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import "./TodayStyle.css"
 import DoYouKnowPopup from "./DoYouKnowPopup";
-import server_url from "../config/Url"
+import server_url from "../define/Url"
 import TodayContents from "./TodayContents";
 
 /**
@@ -59,14 +59,14 @@ class TodayComponent extends Component {
     }
 
     searchOnClick = () => {
-        // axios.get(server_url + "/today/contents", /*{params: {schContent: this.state.schContent}}*/)
-        //     .then(res => {
-        //         this.setState({
-        //             list: res.data.data,
-        //             isSuccess:true
-        //         });
-        //     })
-        //     .catch(res => console.log(res))
+        axios.get(server_url + "/today/contents", /*{params: {schContent: this.state.schContent}}*/)
+            .then(res => {
+                this.setState({
+                    list: res.data.data,
+                    isSuccess:true
+                });
+            })
+            .catch(res => console.log(res))
         this.listSort()
     }
 
