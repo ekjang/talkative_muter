@@ -39,7 +39,6 @@ class TodayContents extends Component {
         axios.put(server_url + "/today/content/like/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({likesFlag: plus})
-                this.props.searchOnClick()
             })
             .catch(res => console.log(res))
         this.props.searchOnClick()
@@ -57,7 +56,6 @@ class TodayContents extends Component {
         axios.put(server_url + "/today/content/dislike/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({dislikesFlag: plus})
-                this.props.searchOnClick()
             })
             .catch(res => console.log(res))
         this.props.searchOnClick()
@@ -75,7 +73,6 @@ class TodayContents extends Component {
         axios.put(server_url + "/today/content/report/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({reportsFlag: plus})
-                this.props.searchOnClick()
             })
             .catch(res => console.log(res))
         this.props.searchOnClick()
