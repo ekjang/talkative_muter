@@ -11,7 +11,7 @@ import "./MainStyle.css"
  */
 class MainComponent extends Component {
     state = {
-        isMember: false, //로그인 여부
+        isMember: true, //로그인 여부
         token: ''
     }
 
