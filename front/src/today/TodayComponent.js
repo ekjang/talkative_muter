@@ -66,7 +66,7 @@ class TodayComponent extends Component {
     }
 
     searchOnClick = () => {
-        alert("필터 검색 지금 안되요 😅")
+        // alert("필터 검색 지금 안되요 😅")
         axios.get(server_url + "/today/contents",
             {params:
                     {schContent: this.state.schContent,
