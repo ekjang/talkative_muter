@@ -90,7 +90,7 @@ public class TodayController {
         return new Result(collect);
     }
 
-    @GetMapping("/contents")
+    @GetMapping("/list")
     public Result contentsTodayList(String today) {
         List<Content> findContents = todayService.findOneDayContents(today);
 
@@ -98,6 +98,18 @@ public class TodayController {
                 .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
                 .collect(Collectors.toList());
         return new Result(collect);
+    }
+
+    @GetMapping("/newCount")
+    public String countNew() {
+        List<Content> findContents = todayService.find10MinsContents();
+        return  String.valueOf(findContents.size());
+    }
+
+    @GetMapping("/todayCount")
+    public String countToday(String today) {
+        List<Content> findContents = todayService.findOneDayContents(today);
+        return  String.valueOf(findContents.size());
     }
 
     @PostMapping("/content")
