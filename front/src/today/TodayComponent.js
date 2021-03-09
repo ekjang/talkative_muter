@@ -14,7 +14,6 @@ class TodayComponent extends Component {
         super(props);
         let today = new Date().toISOString().substr(0, 10);
         this.state = {
-            // schContent: '', //필터 입력변수
             today: today,
             list: [],
             doYouKnow: false, //popup 여부
@@ -42,7 +41,7 @@ class TodayComponent extends Component {
 
     searchOnClick = (date) => {
         let searchDate = ''
-        let {schContent, today} = this.state
+        let {today} = this.state
         if(date === undefined) {
             searchDate = today
         } else {
@@ -51,7 +50,7 @@ class TodayComponent extends Component {
         axios.get(server_url + "/today/list",
             {params:
                     {schContent: this.state.schContent,
-                    today: searchDate /*this.state.today*/
+                    today: searchDate
                     }})
             .then(res => {
                 this.setState({
