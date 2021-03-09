@@ -8,15 +8,10 @@ import my.app.server.today.dto.TodayDto;
 import my.app.server.today.service.TodayService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +24,7 @@ public class TodayController {
     private final TodayService todayService;
 
     @PutMapping("/content/like/{id}")
-    public boolean clickLikes(@PathVariable("id") Long id, UpdateReq request) {
+    public boolean clickLikes(@PathVariable("id") Long id, @RequestBody UpdateReq request) {
 
         if(request.flag)
             todayService.plusLike(id);
@@ -40,7 +35,7 @@ public class TodayController {
     }
 
     @PutMapping("/content/dislike/{id}")
-    public boolean clickDislikes(@PathVariable("id") Long id, UpdateReq request) {
+    public boolean clickDislikes(@PathVariable("id") Long id, @RequestBody UpdateReq request) {
 
         if(request.flag)
             todayService.plusDislike(id);
@@ -50,7 +45,7 @@ public class TodayController {
     }
 
     @PutMapping("/content/report/{id}")
-    public boolean clickReports(@PathVariable("id") Long id, UpdateReq request) {
+    public boolean clickReports(@PathVariable("id") Long id, @RequestBody UpdateReq request) {
 
         if(request.flag)
             todayService.plusReport(id);
@@ -84,7 +79,7 @@ public class TodayController {
     }
 
     @GetMapping("/contentsLimit")
-    public Result contentsListTop(String today, String contents, String limit) {
+    public Result contentsListTop(String today, String limit) {
         //registerDate 로 sort 후 limit 조회
         PageRequest pageRequest = PageRequest.of(0, Integer.parseInt(limit) , Sort.by("registerDate").descending());
         Page<Content> findContents = todayService.findAll(pageRequest);

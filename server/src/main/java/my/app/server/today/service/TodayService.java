@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import my.app.server.entity.Content;
 import my.app.server.repository.ContentRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,6 +41,21 @@ public class TodayService {
         LocalDate todayDate = LocalDate.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         LocalDateTime startDatetime = LocalDateTime.of(todayDate.minusDays(1L), LocalTime.of(0,0,0)); //어제 00:00:00
         LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59)); //오늘 23:59:59
+        return contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime,endDatetime);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Content> findOneWeekContents(String today) {
+        LocalDate todayDate = LocalDate.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDateTime startDatetime = LocalDateTime.of(todayDate.minusDays(7L), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59)); //오늘 23:59:59
+        return contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime,endDatetime);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Content> find10MinsContents() {
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.now().minusMinutes(10L)); //10분 전
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.now()); //오늘 23:59:59
         return contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime,endDatetime);
     }
 

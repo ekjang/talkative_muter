@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
@@ -56,5 +57,13 @@ class TodayServiceTest {
         //assertThat(content.getLikes()).isEqualTo(beforeLikes + 1);
 
 
+    }
+
+    @Test
+    public void before10minsTest() {
+        List<Content> result = todayService.find10MinsContents();
+        for (Content content : result) {
+            System.out.println("content.getRegisterDate() = " + content.getRegisterDate());
+        }
     }
 }

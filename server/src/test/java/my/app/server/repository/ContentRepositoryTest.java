@@ -94,4 +94,6 @@ class ContentRepositoryTest {
             System.out.println("content.getRegisterDate() = " + content.getRegisterDate());
         }
     }
+
+
 }
