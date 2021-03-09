@@ -33,7 +33,6 @@ class MainComponent extends Component {
     }
 
     render() {
-        console.log(this.state.isMember+","+this.state.isAuthentication)
         return (
             <div className="site-style">
                 <Router>
