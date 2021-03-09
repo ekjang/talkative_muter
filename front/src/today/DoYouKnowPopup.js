@@ -27,11 +27,13 @@ class DoYouKnowPopup extends Component {
     }
 
     btnOkOnClick = () => {
+        console.log("?????")
         this.postApi()
         this.props.doYouKnowPopup()
     }
 
     postApi = () => {
+        alert("?????")
         axios.post(server_url + "/today/content", {content: this.state.content})
             .then(res => {
                 alert("입력 완료!")
@@ -41,6 +43,7 @@ class DoYouKnowPopup extends Component {
     }
 
     render() {
+        console.log("render")
         return (
             <div className="do-you-know-popup">
                 <div className="do-you-know-popup-inner">
