@@ -43,7 +43,8 @@ class TodayComponent extends Component {
                 }
             ],
             doYouKnow: false, //popup 여부
-            isSuccess: false //response 성공 여부
+            isSuccess: false, //response 성공 여부
+            viewFlag: 1
         }
     }
 
@@ -122,6 +123,7 @@ class TodayComponent extends Component {
                         item={item}
                         key={idx}
                         searchOnClick={this.searchOnClick}
+                        viewFlag={this.state.viewFlag}
                     />
                     )}
                 </div>

@@ -90,9 +90,16 @@ class TodayContents extends Component {
                 <span className="content-item2">
                     {this.props.item.registerDate}
                 </span>
-                <span className={"content-icon-"+this.state.likesFlag}>좋아</span><span className="content-item1" onClick={this.likeOnClick}>{this.props.item.likes}</span>
-                <span className={"content-icon-"+this.state.dislikesFlag}>싫어</span><span className="content-item1" onClick={this.dislikeOnClick}>{this.props.item.dislikes}</span>
-                <span className={"content-icon-"+this.state.reportsFlag}>신고</span><span className="content-item1" onClick={this.reportsOnClick}>{this.props.item.reports}</span>
+                {this.props.viewFlag &&
+                <span>
+                    <span className={"content-icon-" + this.state.likesFlag}>좋아</span>
+                    <span className="content-item1" onClick={this.likeOnClick}>{this.props.item.likes}</span>
+                    <span className={"content-icon-" + this.state.dislikesFlag}>싫어</span>
+                    <span className="content-item1" onClick={this.dislikeOnClick}>{this.props.item.dislikes}</span>
+                    <span className={"content-icon-" + this.state.reportsFlag}>신고</span>
+                    <span className="content-item1" onClick={this.reportsOnClick}>{this.props.item.reports}</span>
+                </span>
+                }
             </div>
         );
     }

@@ -36,8 +36,9 @@ class SummaryComponent extends Component {
                 reports: 0,
             }
         ],
+        popular: [],
         isSuccess: false,
-        popular: []
+        viewFlag: 0
     }
 
     componentDidMount() {
@@ -131,6 +132,7 @@ class SummaryComponent extends Component {
                                 item={item}
                                 key={idx}
                                 searchOnClick={this.searchOnClick}
+                                viewFlag={this.state.viewFlag}
                             />
                         )}
                     </div>
