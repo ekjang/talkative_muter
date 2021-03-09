@@ -33,14 +33,18 @@ class CompanyAuthComponent extends Component {
             alert("아이디를 입력하세요.")
         } else {
             let mail = this.state.companyId + this.state.mailPath
-            axios.post(server_url + "/mail/check", {mail: mail})
-                .then(res => {
-                    console.log(res.data.authCode)
-                    //서버에서 생성한 인증코드 받기
-                    this.setState({authCode: res.data.authCode})
-                })
-                .catch(res => console.log(res))
-            alert("인증번호가 전송되었습니다.")
+
+            window.confirm("[ " + this.state.companyId + this.state.mailPath + " ] 로 인증코드를 전송합니다.!") ?
+                axios.post(server_url + "/mail/check", {mail: mail})
+                    .then(res => {
+                        alert("인증번호가 전송되었습니다.")
+                        console.log(res.data.authCode)
+                        //서버에서 생성한 인증코드 받기
+                        this.setState({authCode: res.data.authCode})
+                    })
+                .catch(res => console.log(res)) &&
+                this.refAuthCode.focus()
+                : this.refCompanyId.focus();
         }
     }
 
@@ -64,6 +68,8 @@ class CompanyAuthComponent extends Component {
         }
     }
 
+
+
     render() {
         return (
             <div>
@@ -71,14 +77,14 @@ class CompanyAuthComponent extends Component {
                     회사메일 인증
                 </div>
                 <div>
-                    <input type="text" value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
+                    <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
                     <button onClick={this.transfer} >전송</button>
                 </div>
                 <div className="user-package-title">
                     인증코드 입력
                 </div>
                 <div>
-                    <input type="text" value={this.state.inputAuthCode} onChange={this.authCodeCheck}/>
+                    <input type="text" ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode} onChange={this.authCodeCheck}/>
                     {this.state.inputAuthCode !== '' && this.state.isAuthentication &&
                     <div className="auth-true">
                         인증 되었습니다.
