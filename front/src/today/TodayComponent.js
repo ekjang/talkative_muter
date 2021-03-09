@@ -94,7 +94,7 @@ class TodayComponent extends Component {
                 </div>
                 <div>
                     <input type="date" value={this.state.today} onChange={this.inputDateHandler}></input>
-                    <input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />
+                    {/*<input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />*/}
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                 </div>
                 <div className="contents-list-style">
