@@ -6,9 +6,17 @@ import lombok.RequiredArgsConstructor;
 import my.app.server.entity.Content;
 import my.app.server.today.dto.TodayDto;
 import my.app.server.today.service.TodayService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,18 +65,40 @@ public class TodayController {
 
     }
 
-    @GetMapping("/contents")
+/*    @GetMapping("/contents")
     public Result contentsList() {
         List<Content> findContents = todayService.findContentsOrderByRegDate();
         List<TodayDto> collect = findContents.stream()
                 .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
                 .collect(Collectors.toList());
         return new Result(collect);
-    }
+    }*/
 
     @GetMapping("/contentsTop5")
     public Result contentsListTop5() {
         List<Content> findContents = todayService.findContentsTop5OrderByRegDate();
+        List<TodayDto> collect = findContents.stream()
+                .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
+                .collect(Collectors.toList());
+        return new Result(collect);
+    }
+
+    @GetMapping("/contentsLimit")
+    public Result contentsListTop(String today, String contents, String limit) {
+        //registerDate 로 sort 후 limit 조회
+        PageRequest pageRequest = PageRequest.of(0, Integer.parseInt(limit) , Sort.by("registerDate").descending());
+        Page<Content> findContents = todayService.findAll(pageRequest);
+
+        List<TodayDto> collect = findContents.getContent().stream()
+                .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
+                .collect(Collectors.toList());
+        return new Result(collect);
+    }
+
+    @GetMapping("/contents")
+    public Result contentsTodayList(String today) {
+        List<Content> findContents = todayService.findOneDayContents(today);
+
         List<TodayDto> collect = findContents.stream()
                 .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
                 .collect(Collectors.toList());

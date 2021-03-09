@@ -7,6 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,6 +65,33 @@ class ContentRepositoryTest {
 
         for (Content content : result) {
             System.out.println("content = " + content.getRegisterDate());
+        }
+    }
+
+    @Test
+    public void betweenDateTest() {
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59)); //오늘 23:59:59
+
+        List<Content> result = contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime, endDatetime);
+
+        for (Content content : result) {
+            System.out.println("content.getRegisterDate() = " + content.getRegisterDate());
+        }
+    }
+
+    @Test
+    public void betweenSpecificDateTest() {
+        String date = "2021-03-05";
+        LocalDate testDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        LocalDateTime startDatetime = LocalDateTime.of(testDate.minusDays(1L), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(testDate, LocalTime.of(23,59,59)); //오늘 23:59:59
+
+        List<Content> result = contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime, endDatetime);
+
+        for (Content content : result) {
+            System.out.println("content.getRegisterDate() = " + content.getRegisterDate());
         }
     }
 }

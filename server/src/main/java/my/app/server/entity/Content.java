@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,7 +23,7 @@ public class Content {
     @Column(nullable = false, length = 255)
     private String content;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
+    @CreatedDate
     private LocalDateTime registerDate;
 
     //@Column(nullable = false)

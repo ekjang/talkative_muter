@@ -3,9 +3,17 @@ package my.app.server.today.service;
 import lombok.RequiredArgsConstructor;
 import my.app.server.entity.Content;
 import my.app.server.repository.ContentRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -24,6 +32,19 @@ public class TodayService {
 
     @Transactional(readOnly = true)
     public List<Content> findContentsTop5OrderByRegDate() { return contentRepository.findTop5ByOrderByRegisterDateDesc(); }
+
+    @Transactional(readOnly = true)
+    public Page<Content> findAll(Pageable pageable) {
+        return contentRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Content> findOneDayContents(String today) {
+        LocalDate todayDate = LocalDate.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDateTime startDatetime = LocalDateTime.of(todayDate.minusDays(1L), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59)); //오늘 23:59:59
+        return contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime,endDatetime);
+    }
 
     public Long createContent(Content content) {
         contentRepository.save(content);
