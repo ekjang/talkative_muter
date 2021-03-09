@@ -10,13 +10,11 @@ body {
     color: black;
     font-family: HY울릉도B;
     font-size: 20px;
-    position: relative;
     margin-top: 50px;
 }
 
 .input-area-style {
     margin: 10px;
-    position: relative;
 }
 
 .input-box-style {
@@ -26,7 +24,6 @@ body {
 
 .input-box-style span {
     margin-top: 5px;
-    position: relative;
 }
 
 .input-box {

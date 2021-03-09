@@ -30,13 +30,12 @@ class MainComponent extends Component {
                         authCheck={this.authCheck}
                     />
 
-
-                <div className="content-style">
-                    <RouterComponent
-                        isMember={this.state.isMember}
-                        authCheck={this.authCheck}
-                    />
-                </div>
+                    <div className="content-style">
+                        <RouterComponent
+                            isMember={this.state.isMember}
+                            authCheck={this.authCheck}
+                        />
+                    </div>
                 </div>
                 </Router>
             </div>
