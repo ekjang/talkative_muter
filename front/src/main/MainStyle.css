@@ -1,5 +1,5 @@
 .site-style {
-    width: 767px;
+    width: 430px;
 }
 .content-style {
     color: black;
@@ -19,6 +19,12 @@
     font-size: 20px;
     position: relative;
     margin-top: 25px;
+}
+
+@media (min-width: 431px) {
+    .site-style {
+        width: 767px;
+    }
 }
 
 @media (min-width: 768px) {
