@@ -11,15 +11,22 @@ import "./MainStyle.css"
  */
 class MainComponent extends Component {
     state = {
-        isMember: true, //로그인 여부
+        isMember: false, //로그인 여부
         token: ''
+    }
+
+    componentDidMount() {
+        this.setState({token: localStorage.getItem('token'), isMember: localStorage.getItem('isMember')})
     }
 
     authCheck = (isMember) => {
         this.setState({isMember: isMember})
+        localStorage.setItem('token', JSON.stringify(isMember))
+        localStorage.setItem('isMember', JSON.stringify(isMember))
     }
 
     render() {
+        console.log(this.state.isMember)
         return (
             <div className="site-style">
                 <Router>
