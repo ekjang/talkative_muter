@@ -3,6 +3,11 @@ import {withRouter} from "react-router-dom";
 import "./UserStyle.css"
 
 class JoinComponent extends Component {
+
+    state = {
+        isAuthentication: localStorage.getItem('isAuthentication')
+    }
+
     btnOkOnClick = () => {
         console.log("확인 버튼")
         //axios.post

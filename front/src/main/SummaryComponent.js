@@ -38,11 +38,7 @@ class SummaryComponent extends Component {
     }
 
     newCountGetApi = () => {
-        axios.get(server_url + "/today/newCount",
-            {params:
-                    {
-                        today: this.state.today
-                    }})
+        axios.get(server_url + "/today/newCount")
             .then(res => {
                 this.setState({
                     newCount: res.data.data,

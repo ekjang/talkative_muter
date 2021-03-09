@@ -53,6 +53,7 @@ class CompanyAuthComponent extends Component {
         this.setState({inputAuthCode: e.target.value})
         if(this.state.authCode === e.target.value) {
             this.setState({isAuthentication: true})
+            localStorage.setItem('isAuthentication', JSON.stringify(true))
         } else {
             this.setState({isAuthentication: false})
         }
@@ -64,6 +65,7 @@ class CompanyAuthComponent extends Component {
             alert("인증되지 않았습니다.")
         } else {
             //인증코드 체크 후 성공 시 회원가입 화면으로
+
             this.props.history.push("/join")
         }
     }
