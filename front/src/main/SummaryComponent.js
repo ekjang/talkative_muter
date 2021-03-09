@@ -10,38 +10,19 @@ import TodayContents from "../today/TodayContents";
 class SummaryComponent extends Component {
 
     state = {
-        today: [
-            {
-                id: 3,
-                content: 'content3',
-                registerDate: '2021-03-05',
-                likes: 0,
-                dislikes: 0,
-                reports: 0,
-            },
-            {
-                id: 4,
-                content: 'content4',
-                registerDate: '2021-03-05',
-                likes: 0,
-                dislikes: 0,
-                reports: 0,
-            },
-            {
-                id: 5,
-                content: 'content5',
-                registerDate: '2021-03-05',
-                likes: 0,
-                dislikes: 0,
-                reports: 0,
-            }
-        ],
-        popular: [],
+        today: new Date().toISOString().substr(0, 10),
+        todayList: [],
+        popularList: [],
         isSuccess: false,
-        viewFlag: 0
+        newCount: 0,
+        totalCount: 0,
+        viewFlag: 0,
+        limit: 5
     }
 
     componentDidMount() {
+        this.newCountGetApi()
+        this.todayCountGetApi()
         this.todaySearchOnClick()
         this.popularSearchOnClick()
     }
@@ -56,11 +37,45 @@ class SummaryComponent extends Component {
         this.listSort(2)
     }
 
-    todayGetApi = () => {
-        axios.get(server_url + "/today/contentsTop5", /*{params: {schContent: this.state.schContent}}*/)
+    newCountGetApi = () => {
+        axios.get(server_url + "/today/newCount",
+            {params:
+                    {
+                        today: this.state.today
+                    }})
             .then(res => {
                 this.setState({
-                    today: res.data.data,
+                    newCount: res.data.data,
+                    isSuccess:true
+                });
+            })
+            .catch(res => console.log(res))
+    }
+
+    todayCountGetApi = () => {
+        axios.get(server_url + "/today/totalCount",
+            {params:
+                    {
+                        today: this.state.today
+                    }})
+            .then(res => {
+                this.setState({
+                    totalCount: res.data.data,
+                    isSuccess:true
+                });
+            })
+            .catch(res => console.log(res))
+    }
+
+    todayGetApi = () => {
+        axios.get(server_url + "/today/contentsLimit",
+            {params:
+                    {limit: this.state.limit,
+                        today: this.state.today
+                    }})
+            .then(res => {
+                this.setState({
+                    todayList: res.data.data,
                     isSuccess:true
                 });
             })
@@ -68,10 +83,14 @@ class SummaryComponent extends Component {
     }
 
     popularGetApi = () => {
-        axios.get(server_url + "/popular/contentsTop5", /*{params: {schContent: this.state.schContent}}*/)
+        axios.get(server_url + "/popular/contentsLimit",
+            {params:
+                    {limit: this.state.limit,
+                        today: this.state.today
+                    }})
             .then(res => {
                 this.setState({
-                    popular: res.data.data,
+                    popularList: res.data.data,
                     isSuccess:true
                 });
             })
@@ -81,7 +100,7 @@ class SummaryComponent extends Component {
     listSort = (flag) => {
         if(flag === 1) {
             this.setState({
-                today: this.state.today.sort((a, b) => {
+                today: this.state.todayList.sort((a, b) => {
                     //id 내림차순으로 정렬
                     return b.id - a.id;
                     //id 오름차순으로 정렬
@@ -90,7 +109,7 @@ class SummaryComponent extends Component {
             })
         } else if(flag === 2) {
             this.setState({
-                popular: this.state.popular.sort((a, b) => {
+                popular: this.state.popularList.sort((a, b) => {
                     //id 내림차순으로 정렬
                     return b.id - a.id;
                     //id 오름차순으로 정렬
@@ -104,19 +123,19 @@ class SummaryComponent extends Component {
         return (
             <div>
                 <div className="summary-count">
-                    New 몇개 Today 몇개
+                    New {this.state.newCount} Today {this.state.totalCount}
                 </div>
                 <div>
                     <div className="today-summary-title">
                         오늘 벙어리 최신글
                     </div>
                     <div>
-                        {this.state.today.map((item, idx) =>
-                            idx < 5 &&
+                        {this.state.todayList.map((item, idx) =>
                             <TodayContents
                                 item={item}
                                 key={idx}
                                 searchOnClick={this.searchOnClick}
+                                viewFlag={this.viewFlag}
                             />
                         )}
                     </div>
@@ -126,7 +145,7 @@ class SummaryComponent extends Component {
                         인기 벙어리 Top 5
                     </div>
                     <div>
-                        {this.state.popular.map((item, idx) =>
+                        {this.state.popularList.map((item, idx) =>
                             idx < 5 &&
                             <TodayContents
                                 item={item}

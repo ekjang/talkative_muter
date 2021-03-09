@@ -48,8 +48,7 @@ class TodayComponent extends Component {
         } else {
             searchDate = date
         }
-        console.log("searchOnClick!!"+schContent, today)
-        axios.get(server_url + "/today/contents",
+        axios.get(server_url + "/today/list",
             {params:
                     {schContent: this.state.schContent,
                     today: searchDate /*this.state.today*/
@@ -75,7 +74,6 @@ class TodayComponent extends Component {
     }
 
     render() {
-        console.log("render")
         return (
             <div>
                 <div className="today-title">
