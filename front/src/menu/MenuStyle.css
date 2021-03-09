@@ -45,6 +45,10 @@ body {
     line-height: 60px;
 }
 
+.text-style {
+    color: black;
+}
+
 #hambmenu {
     position: relative;
     width: 40px;

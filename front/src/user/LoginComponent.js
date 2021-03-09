@@ -20,7 +20,10 @@ class LoginComponent extends Component {
     btnEnterOnClick = () => {
         //axios.post
         //로그인 성공 시
-        this.props.authCheck(true)
+        //회원 정보 => token
+        this.props.isMemberCheck(true)
+
+        this.props.companyAuthCheck(true)
         this.props.history.push("/")
     }
 

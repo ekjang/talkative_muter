@@ -8,7 +8,8 @@ class LogoutComponent extends Component {
     }
 
     logoutHandler = () => {
-        this.props.authCheck(false)
+        this.props.isMemberCheck(false)
+        this.props.companyAuthCheck(false)
         localStorage.clear()
         this.props.history.push("/")
     }

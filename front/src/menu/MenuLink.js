@@ -6,11 +6,19 @@ import "./MenuStyle.css"
  * 메뉴 링크 정의
  */
 class MenuLink extends Component {
+    componentDidMount() {
+    }
+
     render() {
         let icon = this.props.isMember ? "logout" : "login";
 
         return (
             <div className={this.props.menuStatus} id="menu">
+                {this.props.isMember &&
+                <span className="text-style">회원</span>
+                }
+                {this.props.isAuthentication &&
+                <span className="text-style">인증</span>}
                 <div className={icon + "-icon-style"}>
                     <span onClick={() => {this.props.history.push("/" + icon)}}>
                         {icon}

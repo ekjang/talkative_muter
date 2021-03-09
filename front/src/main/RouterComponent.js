@@ -20,44 +20,70 @@ class RouterComponent extends Component {
                     <Route exact path="/"
                            render={() => <SummaryComponent
                                isMember={this.props.isMember}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />
                     <Route exact path="/login"
                            render={() => <LoginComponent
                                isMember={this.props.isMember}
-                               authCheck={this.props.authCheck}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />
                     <Route exact path="/logout"
                            render={() => <LogoutComponent
                                isMember={this.props.isMember}
-                               authCheck={this.props.authCheck}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />
                     <Route exact path="/companyAuth"
                            render={() => <CompanyAuthComponent
                                isMember={this.props.isMember}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />
                     <Route exact path="/join"
                            render={() => <JoinComponent
                                isMember={this.props.isMember}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />
                     <Route exact path="/popular"
                            render={() => <PopularComponent
                                isMember={this.props.isMember}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />
                     <Route exact path="/today"
                            render={() => <TodayComponent
                                isMember={this.props.isMember}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
                            />
                            }
                     />

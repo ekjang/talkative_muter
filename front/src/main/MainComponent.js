@@ -12,20 +12,28 @@ import "./MainStyle.css"
 class MainComponent extends Component {
     state = {
         isMember: false, //로그인 여부
-        token: ''
+        token: false, //유저 정보
+        isAuthentication: false //회사 인증 여부
     }
 
     componentDidMount() {
-        this.setState({token: localStorage.getItem('token'), isMember: localStorage.getItem('isMember')})
+        this.setState({isMember: localStorage.getItem('isMember')
+            , token: localStorage.getItem('token')
+            , isAuthentication: localStorage.getItem('isAuthentication')})
     }
 
-    authCheck = (isMember) => {
+    isMemberCheck = (isMember) => {
         this.setState({isMember: isMember})
-        localStorage.setItem('token', JSON.stringify(isMember))
         localStorage.setItem('isMember', JSON.stringify(isMember))
     }
 
+    companyAuthCheck = (isAuthentication) => {
+        this.setState({isAuthentication: isAuthentication})
+        localStorage.setItem('isAuthentication', JSON.stringify(isAuthentication))
+    }
+
     render() {
+        console.log(this.state.isMember+","+this.state.isAuthentication)
         return (
             <div className="site-style">
                 <Router>
@@ -33,13 +41,17 @@ class MainComponent extends Component {
                     <MenuComponent
                         title="말.많.벙"
                         isMember={this.state.isMember}
-                        authCheck={this.authCheck}
+                        token={this.state.token}
+                        isAuthentication={this.state.isAuthentication}
                     />
 
                     <div className="content-style">
                         <RouterComponent
                             isMember={this.state.isMember}
-                            authCheck={this.authCheck}
+                            token={this.state.token}
+                            isAuthentication={this.state.isAuthentication}
+                            isMemberCheck={this.isMemberCheck}
+                            companyAuthCheck={this.companyAuthCheck}
                         />
                     </div>
                 </div>
