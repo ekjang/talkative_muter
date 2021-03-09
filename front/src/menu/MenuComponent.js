@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import MenuLink from "./MenuLink";
 import {withRouter} from "react-router-dom";
 import './MenuStyle.css'
-import RouterComponent from "../main/RouterComponent";
 
 /**
  * 메뉴 컴퍼넌트
