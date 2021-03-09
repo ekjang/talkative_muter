@@ -26,7 +26,6 @@ class MainComponent extends Component {
     }
 
     render() {
-        console.log(this.state.isMember)
         return (
             <div className="site-style">
                 <Router>

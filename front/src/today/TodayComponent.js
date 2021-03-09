@@ -12,36 +12,11 @@ class TodayComponent extends Component {
 
     constructor(props) {
         super(props);
+        let today = new Date().toISOString().substr(0, 10);
         this.state = {
             // schContent: '', //필터 입력변수
-            // list: [],
-            today: '',
-            list: [
-                {
-                    id: 3,
-                    content: 'content3',
-                    registerDate: '2021-03-05',
-                    likes: 0,
-                    dislikes: 0,
-                    reports: 0,
-                },
-                {
-                    id: 4,
-                    content: 'content4',
-                    registerDate: '2021-03-05',
-                    likes: 0,
-                    dislikes: 0,
-                    reports: 0,
-                },
-                {
-                    id: 5,
-                    content: 'content5',
-                    registerDate: '2021-03-05',
-                    likes: 0,
-                    dislikes: 0,
-                    reports: 0,
-                }
-            ],
+            today: today,
+            list: [],
             doYouKnow: false, //popup 여부
             isSuccess: false, //response 성공 여부
             viewFlag: 1
@@ -49,8 +24,6 @@ class TodayComponent extends Component {
     }
 
     componentDidMount() {
-        let today = new Date().toISOString().substr(0, 10);
-        this.state.today = today
         this.searchOnClick()
     }
 
@@ -60,18 +33,26 @@ class TodayComponent extends Component {
 
     inputDateHandler = (e) => {
         this.setState({today: e.target.value})
+        this.searchOnClick(e.target.value)
     }
 
     inputContentHandler = (e) => {
         this.setState({schContent: e.target.value})
     }
 
-    searchOnClick = () => {
-        // alert("필터 검색 지금 안되요 😅")
+    searchOnClick = (date) => {
+        let searchDate = ''
+        let {schContent, today} = this.state
+        if(date === undefined) {
+            searchDate = today
+        } else {
+            searchDate = date
+        }
+        console.log("searchOnClick!!"+schContent, today)
         axios.get(server_url + "/today/contents",
             {params:
                     {schContent: this.state.schContent,
-                    today: this.state.today
+                    today: searchDate /*this.state.today*/
                     }})
             .then(res => {
                 this.setState({
@@ -94,6 +75,7 @@ class TodayComponent extends Component {
     }
 
     render() {
+        console.log("render")
         return (
             <div>
                 <div className="today-title">
