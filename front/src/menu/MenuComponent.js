@@ -56,8 +56,8 @@ class MenuComponent extends Component {
                         <span></span>
                         <span></span>
                     </div>
-                    <div className="main-title">
-                        <span onClick={this.titleOnClick}>{this.props.title}</span>
+                    <div className="main-title" onClick={this.titleOnClick}>
+                        {/*<span onClick={this.titleOnClick}>{this.props.title}</span>*/}
                     </div>
                 </div>
                 <MenuLink
