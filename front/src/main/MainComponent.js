@@ -33,6 +33,7 @@ class MainComponent extends Component {
     }
 
     render() {
+        console.log("render")
         return (
             <div className="site-style">
                 <Router>

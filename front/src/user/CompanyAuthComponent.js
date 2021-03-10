@@ -12,7 +12,7 @@ class CompanyAuthComponent extends Component {
     state = {
         companyId: '',
         mailPath: '@datastreams.co.kr',
-        authCode: 'A2cgw4!', /////test :A2cgw4!
+        authCode: 'Abc123!', /////test :Abc123!
         inputAuthCode: '',
         isAuthentication: false
 
@@ -65,8 +65,18 @@ class CompanyAuthComponent extends Component {
             alert("인증되지 않았습니다.")
         } else {
             //인증코드 체크 후 성공 시 회원가입 화면으로
-
+            this.props.companyAuthCheck(true)
             this.props.history.push("/join")
+        }
+    }
+    
+    //인증 후 홈 화면으로
+    goToMain = () => {
+        if(!this.state.isAuthentication) {
+            alert("인증되지 않았습니다.")
+        } else {
+            this.props.companyAuthCheck(true)
+            this.props.history.push("/")
         }
     }
 
@@ -99,7 +109,8 @@ class CompanyAuthComponent extends Component {
                     }
                 </div>
                 <div className="bottom-button-style">
-                    <button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>
+                    <button className="button-wide-style" onClick={this.goToMain}>확인</button>
+                    {/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
                     <button className="button-wide-style" onClick={this.btnNoOnClick}>취소</button>
                 </div>
             </div>

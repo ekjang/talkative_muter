@@ -27,6 +27,14 @@ body {
     margin-right: 10px;
 }
 
+.authentication-icon-style {
+    color: deeppink;
+    font-size: 20px;
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
 .menubar {
     display: block;
     height: 60px;

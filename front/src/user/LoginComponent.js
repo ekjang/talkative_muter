@@ -3,9 +3,6 @@ import {withRouter} from "react-router-dom";
 import "./UserStyle.css"
 
 class LoginComponent extends Component {
-    componentDidMount() {
-    }
-
     //회원가입 화면으로
     btnFirstOnClick = () => {
         this.props.history.push("/companyAuth")
@@ -22,7 +19,6 @@ class LoginComponent extends Component {
         //로그인 성공 시
         //회원 정보 => token
         this.props.isMemberCheck(true)
-
         this.props.companyAuthCheck(true)
         this.props.history.push("/")
     }

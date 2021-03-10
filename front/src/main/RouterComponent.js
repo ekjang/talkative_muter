@@ -50,7 +50,15 @@ class RouterComponent extends Component {
                     <Route exact path="/companyAuth"
                            render={() => <CompanyAuthComponent
                                isMember={this.props.isMember}
-                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
+                           />
+                           }
+                    />
+                    <Route exact path="/authentication"
+                           render={() => <CompanyAuthComponent
+                               isMember={this.props.isMember}
                                isAuthentication={this.props.isAuthentication}
                                isMemberCheck={this.props.isMemberCheck}
                                companyAuthCheck={this.props.companyAuthCheck}
