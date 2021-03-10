@@ -30,7 +30,7 @@ class MenuLink extends Component {
                 </div>
                 <ul>
                     <li><Link to="/" >Home</Link></li>
-                    {this.props.isMember || this.props.isAuthentication &&
+                    {(this.props.isMember || this.props.isAuthentication) &&
                     <li><Link to="/today">오늘 벙어리</Link></li>
                     }
                     <li><Link to="/popular" >인기 벙어리</Link></li>

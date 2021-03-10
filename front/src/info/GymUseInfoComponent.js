@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import server_url from "../define/Url";
-import TodayContents from "../today/TodayContents";
 import GymUseInfoContents from "./GymUseInfoContents";
+
 class GymUseInfoComponent extends Component {
     state = {
         list: [{
@@ -16,6 +16,10 @@ class GymUseInfoComponent extends Component {
         ],
         statue: false
     }
+
+    componentDidMount() {
+    }
+
     searchOnClick = () => {
         axios.get(server_url + "/gymInfo/list")
             .then(res => {
@@ -40,6 +44,7 @@ class GymUseInfoComponent extends Component {
     render() {
         return (
             <div>
+                <div>
                 {this.state.list.map((item, idx) =>
                     <GymUseInfoContents
                         item={item}
@@ -48,6 +53,7 @@ class GymUseInfoComponent extends Component {
                         isAuthentication={this.props.isAuthentication}
                     />
                 )}
+                </div>
             </div>
         );
     }

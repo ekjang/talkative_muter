@@ -30,6 +30,7 @@ class GymUseInfoContents extends Component {
         let statue = (this.props.item.status === 1) ? "사용중" : "사용안함"
         return (
             <div className="gym-item-style">
+                <div></div>
                 <span>{this.props.item.id}</span>
                 <span>{this.props.item.number}</span>
                 <span class={"gym-item-style-" + this.props.item.status} onClick={this.useOnClick}>
