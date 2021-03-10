@@ -6,7 +6,7 @@ import server_url from "../define/Url"
 import TodayContents from "./TodayContents";
 
 /**
- * 오늘 벙어리 컴퍼넌트
+ *  벙어리 컴퍼넌트
  */
 class TodayComponent extends Component {
 

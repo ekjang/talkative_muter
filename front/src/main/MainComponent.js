@@ -38,7 +38,7 @@ class MainComponent extends Component {
                 <Router>
                 <div>
                     <MenuComponent
-                        title="말.많.벙"
+                        /* title="말.많.벙" */
                         isMember={this.state.isMember}
                         token={this.state.token}
                         isAuthentication={this.state.isAuthentication}

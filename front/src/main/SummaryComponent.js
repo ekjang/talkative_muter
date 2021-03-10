@@ -119,13 +119,13 @@ class SummaryComponent extends Component {
         return (
             <div>
                 <div className="summary-count">
-                    New {this.state.newCount} Today {this.state.totalCount}
+                    New {this.state.newCount} &nbsp; &nbsp; Today {this.state.totalCount}
                 </div>
-                <div>
+                <div className="mainbox1">
                     <div className="today-summary-title">
-                        오늘 벙어리 최신글
+                    오늘 벙어리 최신글
                     </div>
-                    <div>
+                    <div className="newlist">
                         {this.state.todayList.map((item, idx) =>
                             <TodayContents
                                 item={item}
@@ -136,12 +136,12 @@ class SummaryComponent extends Component {
                         )}
                     </div>
                 </div>
-                <div>
+                <div className="mainbox1">
                     <div className="today-summary-title">
                         인기 벙어리 Top 5
                     </div>
-                    <div>
-                        {this.state.popularList.map((item, idx) =>
+                    <div className="newlist">
+                        {this.state.todayList.map((item, idx) =>
                             idx < 5 &&
                             <TodayContents
                                 item={item}
@@ -151,6 +151,13 @@ class SummaryComponent extends Component {
                             />
                         )}
                     </div>
+                </div>
+                <div className="bottom">
+                    <div className="bottomtxt">
+                    Design & Publishing by IRIS | with DS Devs (은경, 형간, 남희, 현병)
+                    </div> 
+
+
                 </div>
             </div>
         );
