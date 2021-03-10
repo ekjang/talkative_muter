@@ -79,7 +79,7 @@ public class TodayController {
     }
 
     @GetMapping("/contentsLimit")
-    public Result contentsListTop(String today, String limit) {
+    public Result contentsListTop(String limit, String today) {
         //registerDate 로 sort 후 limit 조회
         PageRequest pageRequest = PageRequest.of(0, Integer.parseInt(limit) , Sort.by("registerDate").descending());
         Page<Content> findContents = todayService.findAll(pageRequest);

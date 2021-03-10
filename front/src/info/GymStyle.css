@@ -1,0 +1,18 @@
+.gym-item-style {
+    margin: 5px;
+    font-size: 12px;
+}
+
+.gym-item-style span {
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.gym-item-style-0 {
+    font-size: 12px;
+}
+
+.gym-item-style-1 {
+    font-size: 12px;
+    color: red;
+}

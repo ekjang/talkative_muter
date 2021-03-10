@@ -6,11 +6,10 @@ import "./MenuStyle.css"
  * 메뉴 링크 정의
  */
 class MenuLink extends Component {
-    componentDidMount() {
-    }
 
     render() {
-        let icon = this.props.isMember ? "logout" : "login";
+        // let memberIcon = this.props.isMember ? "logout" : "login";
+        let authIcon = this.props.isAuthentication ? "logout" : "authentication";
 
         return (
             <div className={this.props.menuStatus} id="menu">
@@ -19,17 +18,23 @@ class MenuLink extends Component {
                 }
                 {this.props.isAuthentication &&
                 <span className="text-style">인증</span>}
-                <div className={icon + "-icon-style"}>
-                    <span onClick={() => {this.props.history.push("/" + icon)}}>
-                        {icon}
+                {/*<div className={memberIcon + "-icon-style"}>*/}
+                {/*    <span onClick={() => {this.props.history.push("/" + memberIcon)}}>*/}
+                {/*        {memberIcon}*/}
+                {/*    </span>*/}
+                {/*</div>*/}
+                <div className={authIcon + "-icon-style"}>
+                    <span onClick={() => {this.props.history.push("/" + authIcon)}}>
+                        {authIcon}
                     </span>
                 </div>
                 <ul>
                     <li><Link to="/" >Home</Link></li>
-                    {this.props.isMember &&
+                    {(this.props.isMember || this.props.isAuthentication) &&
                     <li><Link to="/today">오늘 벙어리</Link></li>
                     }
                     <li><Link to="/popular" >인기 벙어리</Link></li>
+                    <li><Link to="/gymInfo" >헬스장 이용 정보</Link></li>
                 </ul>
             </div>
         );

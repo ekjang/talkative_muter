@@ -23,7 +23,8 @@ public class Content {
     @Column(nullable = false, length = 255)
     private String content;
 
-    @CreatedDate
+    //@CreatedDate
+    @ColumnDefault("CURRENT_TIMESTAMP")
     private LocalDateTime registerDate;
 
     //@Column(nullable = false)
