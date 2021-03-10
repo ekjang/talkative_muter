@@ -8,7 +8,7 @@ import "./MenuStyle.css"
 class MenuLink extends Component {
 
     render() {
-        let memberIcon = this.props.isMember ? "logout" : "login";
+        // let memberIcon = this.props.isMember ? "logout" : "login";
         let authIcon = this.props.isAuthentication ? "logout" : "authentication";
 
         return (
@@ -34,6 +34,7 @@ class MenuLink extends Component {
                     <li><Link to="/today">오늘 벙어리</Link></li>
                     }
                     <li><Link to="/popular" >인기 벙어리</Link></li>
+                    <li><Link to="/gymInfo" >헬스장 이용 정보</Link></li>
                 </ul>
             </div>
         );

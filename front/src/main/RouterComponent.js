@@ -7,6 +7,7 @@ import CompanyAuthComponent from "../user/CompanyAuthComponent";
 import PopularComponent from "../popular/PopularComponent";
 import TodayComponent from "../today/TodayComponent";
 import JoinComponent from "../user/JoinComponent";
+import GymUseInfoComponent from "../info/GymUseInfoComponent";
 
 /**
  * 라우터 정의
@@ -87,6 +88,16 @@ class RouterComponent extends Component {
                     />
                     <Route exact path="/today"
                            render={() => <TodayComponent
+                               isMember={this.props.isMember}
+                               // token={this.props.token}
+                               isAuthentication={this.props.isAuthentication}
+                               isMemberCheck={this.props.isMemberCheck}
+                               companyAuthCheck={this.props.companyAuthCheck}
+                           />
+                           }
+                    />
+                    <Route exact path="/gymInfo"
+                           render={() => <GymUseInfoComponent
                                isMember={this.props.isMember}
                                // token={this.props.token}
                                isAuthentication={this.props.isAuthentication}
