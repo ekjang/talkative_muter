@@ -13,16 +13,16 @@ class GymUseInfoContents extends Component {
         } else {
             let use = 0
             let useMessage = '사용'
-            if (parseInt(this.props.item.status) == 1) {
+            if (parseInt(this.props.item.usingStatus) == 1) {
                 use = 0
                 useMessage = '반납'
-            } else if (parseInt(this.props.item.status) == 0) {
+            } else if (parseInt(this.props.item.usingStatus) == 0) {
                 use = 1
                 useMessage = '사용'
             }
 
             if(window.confirm(useMessage + " 하시겠습니까?")) {
-                axios.put(server_url + "/gymInfo/statue/" + this.props.item.id, {statue: use})
+                axios.put(server_url + "/gym-info/statue/" + this.props.item.id, {statue: use})
                     .then(res => {
                         // this.setState({statue: use})
                         this.props.searchOnClick()
@@ -35,16 +35,20 @@ class GymUseInfoContents extends Component {
     }
 
     render() {
-        let statue = (this.props.item.status === 1) ? "사용중" : "사용안함"
+        let status = (parseInt(this.props.item.usingStatus) === 1) ? "사용중" : "사용안함"
         return (
-            <div className="gymbox1">
-                <div className="gym-item-style">
-                    
-                    <span>{this.props.item.id}</span>
-                    <span>{this.props.item.number}</span>
-                    <span class={"gym-item-style-" + this.props.item.status} onClick={this.useOnClick}>
-                        {statue}
-                    </span>
+            <div>
+                <div className="gymbox1">
+                    <div className="gym-item-style">
+
+                        <span>{this.props.item.id}</span>
+                        <span>{this.props.item.gender}</span>
+                        <span>{this.props.item.membershipNumber}</span>
+
+                        <span class={"gym-item-style-" + this.props.item.usingStatus} onClick={this.useOnClick}>
+                            {status}
+                        </span>
+                    </div>
                 </div>
             </div>
         );

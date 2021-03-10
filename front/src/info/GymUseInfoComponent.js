@@ -5,21 +5,18 @@ import GymUseInfoContents from "./GymUseInfoContents";
 
 class GymUseInfoComponent extends Component {
     state = {
-        list: [{
-            id: 1,
-            number: "010-3473-9077",
-            status: 1},
-            {
-                id: 2,
-                number: "010-3473-9078",
-                status: 0}
-        ],
+        list: [],
         statue: false
+    }
+
+    componentDidMount() {
+        this.searchOnClick()
     }
 
     searchOnClick = () => {
         axios.get(server_url + "/gym-info/list")
             .then(res => {
+                console.log(res.data.data)
                 this.setState({
                     list: res.data.data,
                 });
