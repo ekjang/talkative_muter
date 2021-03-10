@@ -18,7 +18,7 @@ class GymUseInfoComponent extends Component {
     }
 
     searchOnClick = () => {
-        axios.get(server_url + "/gymInfo/list")
+        axios.get(server_url + "/gym-info/list")
             .then(res => {
                 this.setState({
                     list: res.data.data,

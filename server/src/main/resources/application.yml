@@ -19,17 +19,22 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: Asia/Seoul
-  mail:
-    host: smtp.gmail.com
-    port: 567
-    username: bangseek87
-    password: Muter12#$
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+mail:
+  domain: naver.com
+  host: smtp.naver.com
+  port: 465
+  username: talkative-muter
+  password: Muter!23
+  transport:
+    protocol: smtp
+  smtp:
+    auth: true
+    starttls:
+      enable: true
+    ssl:
+      enable: true
+  debug:
+    true
 
 logging.level:
   org.hibernate.SQL: debug
