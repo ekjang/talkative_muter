@@ -1,5 +1,6 @@
 package my.app.server.auth.controller;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -18,13 +19,13 @@ import java.util.Random;
 public class AuthController {
 
     @PostMapping("/CheckMail")
-    public Map<String, Object> SendMail(@RequestBody @Valid String mail) {
+    public Map<String, Object> SendMail(@RequestBody @Valid MailAuthRequest mail) {
         Map<String, Object> map = new HashMap<>();
         Random random = new Random();  //난수 생성을 위한 랜덤 클래스
         String key = "";  //인증번호
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(mail); //스크립트에서 보낸 메일을 받을 사용자 이메일 주소
+        message.setTo(mail.getMail()); //스크립트에서 보낸 메일을 받을 사용자 이메일 주소
         //입력 키를 위한 코드
         for(int i =0; i<3;i++) {
             int index=random.nextInt(25)+65; //A~Z까지 랜덤 알파벳 생성
@@ -40,5 +41,10 @@ public class AuthController {
         map.put("key", key);
 
         return map;
+    }
+
+    @Data
+    static class MailAuthRequest {
+        private String mail;
     }
 }

@@ -140,7 +140,6 @@ public class TodayController {
     @Data
     static class CreateContentRequest {
         private String content;
-
     }
 
 }
