@@ -34,7 +34,7 @@ class MenuLink extends Component {
                     {(this.props.isMember || this.props.isAuthentication) &&
                     <li><Link to="/today">오늘 벙어리</Link></li>
                     }
-                    <li><Link to="/popular" >인기 벙어리</Link></li>
+                    {/*<li><Link to="/popular" >인기 벙어리</Link></li>*/}
                     <li><Link to="/gymInfo" >헬스장 이용 정보</Link></li>
                 </ul>
             </div>
