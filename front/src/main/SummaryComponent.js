@@ -3,6 +3,7 @@ import "./MainStyle.css"
 import axios from "axios";
 import server_url from "../define/Url";
 import TodayContents from "../today/TodayContents";
+import BottomTextComponent from "./BottomTextComponent";
 
 /**
  * 디폴트 컴퍼넌트
@@ -107,7 +108,7 @@ class SummaryComponent extends Component {
             this.setState({
                 popular: this.state.popularList.sort((a, b) => {
                     //id 내림차순으로 정렬
-                    return b.id - a.id;
+                    return b.likesFlag - a.likesFlag;
                     //id 오름차순으로 정렬
                     // return a.id - b.id;
                 })
@@ -141,7 +142,7 @@ class SummaryComponent extends Component {
                         인기 벙어리 Top 5
                     </div>
                     <div className="newlist">
-                        {this.state.todayList.map((item, idx) =>
+                        {this.state.popularList.map((item, idx) =>
                             idx < 5 &&
                             <TodayContents
                                 item={item}
@@ -152,13 +153,7 @@ class SummaryComponent extends Component {
                         )}
                     </div>
                 </div>
-                <div className="bottom">
-                    <div className="bottomtxt">
-                    Design & Publishing by IRIS | Dev by Jerry | Server by Healthboy)
-                    </div> 
-
-
-                </div>
+                <BottomTextComponent />
             </div>
         );
     }
