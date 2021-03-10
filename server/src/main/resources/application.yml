@@ -5,7 +5,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://192.168.2.64:5432/muter
+#    url: jdbc:postgresql://192.168.2.64:5432/muter #pc local
+    url: jdbc:postgresql://localhost:5432/muter #aws local
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
