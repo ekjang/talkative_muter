@@ -50,7 +50,7 @@ class DoYouKnowPopup extends Component {
                     <div className="do-you-know-popup-content">
                         <textarea rows="4" value={this.state.content} onChange={this.inputHandler}></textarea>
                     </div>
-                    <div className="bottom-button-style">
+                    <div className="do-you-know-popup-button-style">
                         <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>
                         <button className="button-small1" onClick={this.props.doYouKnowPopup}>취소</button>
                     </div>

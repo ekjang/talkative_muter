@@ -17,9 +17,6 @@ class GymUseInfoComponent extends Component {
         statue: false
     }
 
-    componentDidMount() {
-    }
-
     searchOnClick = () => {
         axios.get(server_url + "/gymInfo/list")
             .then(res => {

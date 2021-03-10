@@ -12,18 +12,25 @@ class GymUseInfoContents extends Component {
             this.props.history.push("/companyAuth")
         } else {
             let use = 0
-            if (this.props.item.status == 1) {
+            let useMessage = '사용'
+            if (parseInt(this.props.item.status) == 1) {
                 use = 0
-            } else if (this.props.item.status == 0) {
+                useMessage = '반납'
+            } else if (parseInt(this.props.item.status) == 0) {
                 use = 1
+                useMessage = '사용'
             }
-            console.log(!this.props.item.status)
-            axios.put(server_url + "/gymInfo/statue/" + this.props.item.id, {statue: use})
-                .then(res => {
-                    // this.setState({statue: use})
-                    this.props.searchOnClick()
-                })
-                .catch(res => console.log(res))
+
+            if(window.confirm(useMessage + " 하시겠습니까?")) {
+                axios.put(server_url + "/gymInfo/statue/" + this.props.item.id, {statue: use})
+                    .then(res => {
+                        // this.setState({statue: use})
+                        this.props.searchOnClick()
+                    })
+                    .catch(res => console.log(res))
+            } else {
+                return
+            }
         }
     }
 
