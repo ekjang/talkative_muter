@@ -35,12 +35,12 @@ class CompanyAuthComponent extends Component {
             let mail = this.state.companyId + this.state.mailPath
 
             window.confirm("[ " + this.state.companyId + this.state.mailPath + " ] 로 인증코드를 전송합니다.!") ?
-                axios.post(server_url + "/mail/check", {mail: mail})
+                axios.post(server_url + "/auth/CheckMail", {mail: mail})
                     .then(res => {
                         alert("인증번호가 전송되었습니다.")
-                        console.log(res.data.authCode)
+                        console.log(res.data.key)
                         //서버에서 생성한 인증코드 받기
-                        this.setState({authCode: res.data.authCode})
+                        this.setState({authCode: res.data.key})
                     })
                 .catch(res => console.log(res)) &&
                 this.refAuthCode.focus()

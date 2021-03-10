@@ -23,10 +23,11 @@ class MenuLink extends Component {
                 {/*        {memberIcon}*/}
                 {/*    </span>*/}
                 {/*</div>*/}
-                <div className={authIcon + "-icon-style"}>
-                    <span onClick={() => {this.props.history.push("/" + authIcon)}}>
-                        {authIcon}
-                    </span>
+                {/*<div className={authIcon + "-icon-style"}>*/}
+                <div id="auth-icon-style">
+                    <p id="auth-icon-style-p"><span id="auth-icon-style-span" onClick={() => {this.props.history.push("/" + authIcon)}}>
+                        {this.props.isAuthentication ? "나가기" : "인증하기"}
+                    </span></p>
                 </div>
                 <ul>
                     <li><Link to="/" >Home</Link></li>

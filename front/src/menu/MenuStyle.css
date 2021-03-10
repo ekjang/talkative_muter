@@ -10,12 +10,12 @@ body {
 }
 
 .main-title {
-    
+
     background-image: url('../images/logotxt.svg');
     height: 85%; padding-top: 20px; box-sizing: border-box;
     background-repeat: no-repeat;
     background-position: center;
-    
+
 
 }
 
@@ -36,13 +36,24 @@ body {
     margin-right: 10px;
 }
 
-.authentication-icon-style {
+#auth-icon-style {
     color: rgb(33, 133, 208);
     font-size: 20px;
     text-align: left;
     margin-top: 31px;
     margin-left: 40px;
     font-size: 17px;
+}
+
+#auth-icon-style:hover {
+    color: rgb(33, 133, 208);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 31px;
+    margin-left: 40px;
+    font-size: 17px;
+    cursor: pointer;
 }
 
 .menubar {
