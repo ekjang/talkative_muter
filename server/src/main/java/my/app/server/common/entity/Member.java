@@ -1,4 +1,4 @@
-package my.app.server.entity;
+package my.app.server.common.entity;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

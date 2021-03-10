@@ -3,7 +3,7 @@ package my.app.server.today.controller;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import my.app.server.entity.Content;
+import my.app.server.common.entity.Content;
 import my.app.server.today.dto.TodayDto;
 import my.app.server.today.service.TodayService;
 import org.springframework.data.domain.Page;

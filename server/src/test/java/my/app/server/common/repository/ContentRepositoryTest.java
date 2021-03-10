@@ -1,6 +1,6 @@
-package my.app.server.repository;
+package my.app.server.common.repository;
 
-import my.app.server.entity.Content;
+import my.app.server.common.entity.Content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

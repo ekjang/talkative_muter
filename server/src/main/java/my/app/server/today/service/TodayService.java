@@ -1,8 +1,8 @@
 package my.app.server.today.service;
 
 import lombok.RequiredArgsConstructor;
-import my.app.server.entity.Content;
-import my.app.server.repository.ContentRepository;
+import my.app.server.common.entity.Content;
+import my.app.server.common.repository.ContentRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

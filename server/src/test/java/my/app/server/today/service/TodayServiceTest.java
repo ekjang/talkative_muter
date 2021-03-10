@@ -1,7 +1,7 @@
 package my.app.server.today.service;
 
-import my.app.server.entity.Content;
-import my.app.server.repository.ContentRepository;
+import my.app.server.common.entity.Content;
+import my.app.server.common.repository.ContentRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
