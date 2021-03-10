@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import server_url from "../define/Url";
+import {withRouter} from "react-router-dom";
 import "./GymStyle.css";
 
 class GymUseInfoContents extends Component {
     //사용 / 미사용 동작
     useOnClick = () => {
         if(!this.props.isAuthentication) {
-            alert("회사메일 인증 후 사용할 수 있습니다.")
-            return
+            alert("회사메일 인증 후 사용해주세요.")
+            this.props.history.push("/companyAuth")
         } else {
             let use = 0
             if (this.props.item.status == 1) {
@@ -40,4 +41,4 @@ class GymUseInfoContents extends Component {
         );
     }
 }
-export default GymUseInfoContents;
+export default withRouter(GymUseInfoContents);

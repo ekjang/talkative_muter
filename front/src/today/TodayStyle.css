@@ -28,12 +28,18 @@
 }
 
 .do-you-know-popup-content {
-    position: relative;
-    margin-top: 50px
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 30%;
+    bottom: 40%;
 }
 
 .bottom-button-style {
-    margin-top: 10px;
+    position: absolute;
+    top: 75%;
+    left: 25%;
+    right: 25%;
 }
 
 .button-small1 {
