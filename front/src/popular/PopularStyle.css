@@ -1,6 +1,30 @@
 .popular-title {
-    color: black;
-    font-family: HY울릉도B;
+    color: rgb(33, 133, 208);
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    text-align: left;
+    padding-left: 45px;
+    padding-top: 20px;
+}
+
+.popbox {
+    position: inherit;
+    width: 95%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* width: calc(100% - 20px); */
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #bbbbbb;
+}
+
+.poplist{
+    text-align: left;
+    padding-left: 45px;
+    padding-top: 10px;
+    line-height: 31px;
+    font-size: 15px;
+    padding-bottom: 24px;
 }

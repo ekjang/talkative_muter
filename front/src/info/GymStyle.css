@@ -1,18 +1,45 @@
 .gym-item-style {
     margin: 5px;
-    font-size: 12px;
+    font-size: 58px;
+    height: 120px;
 }
 
 .gym-item-style span {
     margin-right: 10px;
-    font-size: 12px;
+    font-size: 17px;
+    margin: 23px;
 }
 
 .gym-item-style-0 {
     font-size: 12px;
+    color: #3284fb;
 }
 
 .gym-item-style-1 {
     font-size: 12px;
     color: red;
+}
+
+.gymbox1 {
+    position: inherit;
+    width: 87%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* width: calc(100% - 20px); */
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px #dddddd;
+    border: 1px solid gainsboro;
+}
+.gymbox2 {
+    position: inherit;
+    width: 95%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* width: calc(100% - 20px); */
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #bbbbbb;
 }

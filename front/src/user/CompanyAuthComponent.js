@@ -84,18 +84,18 @@ class CompanyAuthComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className="authbox">
                 <div className="user-package-title">
                     회사메일 인증
                 </div>
-                <div>
+                <div className="authenmail">
                     <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
-                    <button onClick={this.transfer} >전송</button>
+                    <button onClick={this.transfer} style={{marginLeft:"15px", width: "100px", height:"31px"}}>전송</button>
                 </div>
-                <div className="user-package-title">
+                <div className="user-package-title2">
                     인증코드 입력
                 </div>
-                <div>
+                <div className="authenmail">
                     <input type="text" ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode} onChange={this.authCodeCheck}/>
                     {this.state.inputAuthCode !== '' && this.state.isAuthentication &&
                     <div className="auth-true">
@@ -109,7 +109,7 @@ class CompanyAuthComponent extends Component {
                     }
                 </div>
                 <div className="bottom-button-style">
-                    <button className="button-wide-style" onClick={this.goToMain}>확인</button>
+                    <button className="button-wide-style" onClick={this.goToMain}>확인</button> &nbsp; &nbsp;
                     {/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
                     <button className="button-wide-style" onClick={this.btnNoOnClick}>취소</button>
                 </div>

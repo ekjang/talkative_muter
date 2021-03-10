@@ -154,7 +154,7 @@ class SummaryComponent extends Component {
                 </div>
                 <div className="bottom">
                     <div className="bottomtxt">
-                    Design & Publishing by IRIS | with DS Devs (은경, 형간, 남희, 현병)
+                    Design & Publishing by IRIS | Dev by Jerry | Server by Healthboy)
                     </div> 
 
 

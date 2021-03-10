@@ -28,7 +28,7 @@ class PopularComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className="popbox">
                 <div className="popular-title">
                     인기 벙어리
                 </div>
@@ -40,7 +40,7 @@ class PopularComponent extends Component {
                     </div>
                     }
                 </div>
-                <div>여기는 리스트 위치</div>
+                <div className="poplist">여기는 리스트 위치</div>
             </div>
         );
     }
