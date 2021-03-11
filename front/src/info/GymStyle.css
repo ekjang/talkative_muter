@@ -24,7 +24,7 @@
     color: red;
 }
 
-.gym-gender-0 {
+.gym-gender-M {
     background-image: url(../images/man.svg);
     width: 27px;
     height: 30px;
@@ -32,7 +32,7 @@
     
 }
 
-.gym-gender-1 {
+.gym-gender-F {
     background-image: url(../images/woman.svg);
     width: 27px;
     height: 30px;
