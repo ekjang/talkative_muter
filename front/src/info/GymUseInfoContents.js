@@ -42,7 +42,10 @@ class GymUseInfoContents extends Component {
                     <div className="gym-item-style">
 
                         <span>{this.props.item.id}</span>
-                        <span>{this.props.item.gender}</span>
+                        <span class={"gym-gender-" + this.props.item.usingStatus} onClick={this.useOnClick}>
+                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        </span>                       
+{/*                         <span className="gym-gender-">{this.props.item.gender}</span> */}
                         <span>{this.props.item.membershipNumber}</span>
 
                         <span class={"gym-item-style-" + this.props.item.usingStatus} onClick={this.useOnClick}>

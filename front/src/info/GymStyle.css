@@ -7,7 +7,11 @@
 .gym-item-style span {
     margin-right: 10px;
     font-size: 17px;
-    margin: 10px;
+    margin: 7px;
+}
+.gym-item-style span:nth-of-type(2) {
+    margin-right: 10px;
+    font-size: 23px;
 }
 
 .gym-item-style-0 {
@@ -19,6 +23,24 @@
     font-size: 12px;
     color: red;
 }
+
+.gym-gender-0 {
+    background-image: url(../images/man.svg);
+    width: 27px;
+    height: 30px;
+    background-repeat: no-repeat;
+    
+}
+
+.gym-gender-1 {
+    background-image: url(../images/woman.svg);
+    width: 27px;
+    height: 30px;
+    background-repeat: no-repeat;
+}
+
+
+
 
 .gymbox1 {
     position: inherit;
