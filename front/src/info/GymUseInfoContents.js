@@ -38,14 +38,12 @@ class GymUseInfoContents extends Component {
         let status = (parseInt(this.props.item.usingStatus) === 1) ? "사용불가" : "사용가능"
         return (
             <div>
-                <div className="gymbox1">
+                <div className="gymbox1 gym-item-style">
                     <div className="gym-item-style">
-
                         <span>{this.props.item.id}</span>
                         <span>{this.props.item.gender}</span>
                         <span>{this.props.item.membershipNumber}</span>
-
-                        <span class={"gym-item-style-" + this.props.item.usingStatus} onClick={this.useOnClick}>
+                        <span className={"gym-item-style-" + this.props.item.usingStatus} onClick={this.useOnClick}>
                             {status}
                         </span>
                     </div>

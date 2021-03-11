@@ -16,7 +16,6 @@ class GymUseInfoComponent extends Component {
     searchOnClick = () => {
         axios.get(server_url + "/gym-info/list")
             .then(res => {
-                console.log(res.data.data)
                 this.setState({
                     list: res.data.data,
                 });
@@ -28,7 +27,10 @@ class GymUseInfoComponent extends Component {
     listSort = () => {
         this.setState({list: this.state.list.sort((a, b) => {
                 //id 내림차순으로 정렬
-                // return b.id - a.id;
+                return b.usingStatus - a.usingStatus;
+            })
+        })
+        this.setState({list: this.state.list.sort((a, b) => {
                 //id 오름차순으로 정렬
                 return a.id - b.id;
             })
