@@ -22,9 +22,9 @@ class GymUseInfoContents extends Component {
             }
 
             if(window.confirm(useMessage + " 하시겠습니까?")) {
-                axios.put(server_url + "/gym-info/use/" + this.props.item.id, {statue: use})
+                axios.put(server_url + "/gym-info/use/" + this.props.item.id, {use: use})
                     .then(res => {
-                        // this.setState({statue: use})
+                        console.log(res.data)
                         this.props.searchOnClick()
                     })
                     .catch(res => console.log(res))

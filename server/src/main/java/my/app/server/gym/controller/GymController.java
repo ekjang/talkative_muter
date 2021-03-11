@@ -31,11 +31,11 @@ public class GymController {
     @PutMapping("/use/{id}")
     public boolean clickUse(@PathVariable("id") Long id, @RequestBody GymController.UpdateReq request) {
         if(request.use == 0){
-            gymService.enterGym(id);
+            gymService.exitGym(id);
             return true;
         }
         else if (request.use == 1) {
-            gymService.exitGym(id);
+            gymService.enterGym(id);
             return true;
         }
         else
