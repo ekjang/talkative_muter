@@ -1,5 +1,6 @@
 package my.app.server.gym.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
@@ -14,6 +15,7 @@ public class GymDto {
 
     private String membershipNumber;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime entranceTime;
 
     private String gender;

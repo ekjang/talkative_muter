@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @DynamicUpdate
 public class Content {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "content_id")
     private Long id;
 

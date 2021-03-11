@@ -19,7 +19,7 @@ public class GymService {
 
     @Transactional(readOnly = true)
     public List<GymMembership> findAll() {
-        return gymMembershipRepository.findAll();
+        return gymMembershipRepository.findAllByOrderByIdAsc();
     }
 
     public void enterGym(Long id) {
