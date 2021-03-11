@@ -25,8 +25,8 @@ class GymUseInfoComponent extends Component {
 
     listSort = (data) => {
         return (data.sort((a, b) => {
-            //status 내림차순으로 정렬
-            return b.usingStatus - a.usingStatus;
+            //status 오름차순으로 정렬
+            return a.usingStatus - b.usingStatus;
         }))
     }
 
