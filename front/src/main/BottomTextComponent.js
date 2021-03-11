@@ -5,7 +5,7 @@ class BottomTextComponent extends Component {
         return (
             <div className="bottom">
                 <div className="bottomtxt">
-                    Design & Publishing by IRIS | Dev by Jennie | Server by Healthboy)
+                        Dev by Jennie & Cutie Pepper  &nbsp;| &nbsp;  Design, Publishing by IRIS
                 </div>
             </div>
         );
