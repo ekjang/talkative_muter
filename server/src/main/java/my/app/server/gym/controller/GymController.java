@@ -30,30 +30,22 @@ public class GymController {
 
     @PutMapping("/use/{id}")
     public boolean clickUse(@PathVariable("id") Long id, @RequestBody GymController.UpdateReq request) {
-        if(request.flag)
+        if(request.use == 0){
             gymService.enterGym(id);
-        else
-            return false;
-
-        return true;
-    }
-
-    @PutMapping("/return/{id}")
-    public boolean clickReturn(@PathVariable("id") Long id, @RequestBody GymController.UpdateReq request) {
-        if(request.flag)
+            return true;
+        }
+        else if (request.use == 1) {
             gymService.exitGym(id);
+            return true;
+        }
         else
             return false;
-
-        return true;
     }
 
     @Data
     static class UpdateReq{
-        boolean flag;
-
+        int use;
     }
-
 
     @Data
     @AllArgsConstructor
