@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import "./TodayStyle.css"
+import {withRouter} from "react-router-dom";
 import DoYouKnowPopup from "./DoYouKnowPopup";
 import server_url from "../define/Url"
 import TodayContents from "./TodayContents";
@@ -22,6 +23,10 @@ class TodayComponent extends Component {
     }
 
     componentDidMount() {
+        if(!this.props.isAuthentication) {
+            alert("회사메일 인증 후 사용해주세요.")
+            this.props.history.push("/companyAuth")
+        }
         this.setState({today: this.props.today})
         this.searchOnClick()
     }
@@ -111,4 +116,4 @@ class TodayComponent extends Component {
         );
     }
 }
-export default TodayComponent;
+export default withRouter(TodayComponent);
