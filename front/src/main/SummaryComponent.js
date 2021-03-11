@@ -126,6 +126,7 @@ class SummaryComponent extends Component {
                      <div className="today-summary">
                          <span className="mutter-icon"></span>
                          <span className="today-summary-title"> 오늘 벙어리 최신글 </span>
+
                          {this.state.todayList.length > 0 &&
                          <span className="more-text"><Link to="/today">더보기</Link></span>
                          }

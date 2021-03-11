@@ -8,9 +8,8 @@ import server_url from "../define/Url";
  * 너 그거 아니? 팝업 컴퍼넌트
  */
 class DoYouKnowPopup extends Component {
-
     state = {
-        // content: '',
+        content: '',
         isSuccess: false
     }
 

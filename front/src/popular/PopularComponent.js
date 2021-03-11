@@ -36,7 +36,7 @@ class PopularComponent extends Component {
         } else {
             searchDate = date
         }
-        axios.get(server_url + "/today/list",
+        axios.get(server_url + "/today/list", /////서버 구현되면 popular 로 바꿔야함.
             {params:
                     {schContent: this.state.schContent,
                         today: searchDate
@@ -64,8 +64,10 @@ class PopularComponent extends Component {
     render() {
         return (
             <div className="popbox">
-                <div className="popular-title">
-                    인기 벙어리
+
+                <div className="popular">
+                         <span className="mutter-icon"></span>
+                         <span className="popular-title"> 인기 벙어리 </span>
                 </div>
                 <div>
                     {this.props.isAuthentication &&
@@ -76,6 +78,7 @@ class PopularComponent extends Component {
                     }
                 </div>
                 <div className="contents-list-style">
+                  <div className="newlist">
                     {this.state.list.map((item, idx) =>
                         <TodayContents
                             item={item}
@@ -85,7 +88,9 @@ class PopularComponent extends Component {
                             viewFlag={this.state.viewFlag}
                         />
                     )}
+                  </div>
                 </div>
+                
             </div>
         );
     }
