@@ -3,6 +3,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import MenuComponent from "../menu/MenuComponent";
 import RouterComponent from "./RouterComponent";
 import "./MainStyle.css"
+import BottomTextComponent from "./BottomTextComponent";
 
 /**
  * 메인 컴퍼넌트
@@ -51,6 +52,7 @@ class MainComponent extends Component {
                     </div>
                 </div>
                 </Router>
+                <BottomTextComponent />
             </div>
         );
     }
