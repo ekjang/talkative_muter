@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class NickNameComponent extends Component {
 
     state = {
-        nickName: this.props.nickName
+        nickName: this.props.nickName,
+        isAuthentication: this.props.isAuthentication
     }
 
     inputHandler = (e) => {
@@ -14,7 +15,10 @@ class NickNameComponent extends Component {
     btnOkOnClick = () => {
         if(this.state.nickName.length > 0) {
             if (window.confirm("[ " + this.state.nickName + " ] 로 설정하시겠습니까?")) {
-                this.props.nickNameSetting(this.state.nickName)
+                //중복 닉네임 있는지 서버 요청 체크
+                //axios.get => return data : nickName, isAuthentication
+                let response = false
+                this.props.nickNameSetting(this.state.nickName, this.props.isAuthentication || response)
             } else {
                 return
             }

@@ -28,6 +28,8 @@ class CompanyAuthComponent extends Component {
     //취소 버튼 클릭
     btnNoOnClick = () => {
         localStorage.clear()
+        //닉네임 삭제 서버 요청
+        //axios.delete
         this.props.history.push("/")
     }
 
@@ -35,10 +37,12 @@ class CompanyAuthComponent extends Component {
         this.setState({nickNamePopup: !this.state.nickNamePopup})
     }
 
-    nickNameSetting = (nickName) => {
-        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup})
+    nickNameSetting = (nickName, isAuthentication) => {
+        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup, isAuthentication: isAuthentication})
         if(nickName !== undefined) {
             localStorage.setItem('nickName', JSON.stringify(nickName))
+            //닉네임 서버 저장 요청
+            //axios.post
         }
     }
 
@@ -144,6 +148,7 @@ class CompanyAuthComponent extends Component {
                     {this.state.nickNamePopup &&
                     <div>
                         <NickNameComponent
+                            isAuthentication={this.state.isAuthentication}
                             nickName={this.state.nickName}
                             nickNamePopup={this.nickNamePopup}
                             nickNameSetting={this.nickNameSetting}

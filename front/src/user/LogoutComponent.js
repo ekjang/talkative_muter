@@ -10,6 +10,8 @@ class LogoutComponent extends Component {
     logoutHandler = () => {
         this.props.companyAuthCheck(false)
         localStorage.clear()
+        //닉네임 삭제 서버 요청
+        //axios.delete
         this.props.history.push("/")
     }
 
