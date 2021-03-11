@@ -24,7 +24,7 @@ body {
     margin-top: 37px;
     text-align: left;
     margin-left: 45px;
-    padding-top: 20px;
+    padding-top: 4px;
 }
 
 .input-area-style {
@@ -132,7 +132,6 @@ body {
 
 .authenmail2{
     text-align: left;
-    margin-top: 11px;
     margin-left: 43px;
     font-size: 13px;
 

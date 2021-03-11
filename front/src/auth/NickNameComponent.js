@@ -32,7 +32,7 @@ class NickNameComponent extends Component {
             <div>
                 <div className="do-you-know-popup-inner">
                     <div className="today-title">
-                        별명 설정하기
+                         별명 설정하기 
                     </div>
                     <div className="do-you-know-popup-content">
                         <textarea rows="4" value={this.state.nickName} onChange={this.inputHandler}></textarea>

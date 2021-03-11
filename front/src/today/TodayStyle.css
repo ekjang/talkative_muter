@@ -1,6 +1,5 @@
 .today-title {
     color: black;
-    font-family: HY울릉도B;
     font-size: 20px;
     margin-top: 20px;
 }
@@ -25,6 +24,8 @@
     bottom: 40%;
     margin: auto;
     background: white;
+    box-shadow: 0 2px 5px #bbbbbb;
+    border-radius: 7px;
 }
 
 .do-you-know-popup-content {
@@ -33,6 +34,7 @@
     right: 10%;
     top: 30%;
     bottom: 40%;
+    margin-top: 5px;
 }
 
 .do-you-know-popup-button-style {
@@ -43,14 +45,14 @@
 }
 
 .button-small1 {
-    color: white;
-    background-color: darkslategrey;
+    color: #fff;
+    background-color: #3284fb;
     margin-left: 8px;
-    width: 50px;
+    width: 95%;
+    height: 32px;
     font-size: 15px;
-    font-family: HY목판L;
     cursor: pointer;
-    border: 2px solid darkcyan;
+    border: 2px solid #3284fb;
     border-radius: 8%;
 }
 

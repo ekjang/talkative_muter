@@ -3,7 +3,6 @@
     margin-top: 34px;
     text-align: left;
     margin-left: 45px;
-    padding-top: 20px;
 }
 
 .nickname-title2 {
@@ -14,15 +13,26 @@
 }
 
 .nickname-tip {
-    font-size: 9px;
+    font-size: 12px;
     text-align: left;
-    margin-left: 45px;
-    color: crimson;
+    margin-top: 19px;
+    margin-right: 23px;
+    color: cornflowerblue;
 }
 
-.nickname-style {
-    font-size: 15px;
-    text-align: left;
-    margin-top: 20px;
-    margin-left: 45px;
+.nickbg{
+    width: 100px;
+    height: 20px;
+    background: #e5effc;
+    padding: 9px;
+    border-radius: 5px;
+    font-size: 17px;
+    letter-spacing: -1px;
 }
+
+.nickname-style{
+    text-align: center;
+    margin-top: 20px;
+    color: #3284fb ;
+}
+

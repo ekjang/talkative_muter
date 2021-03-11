@@ -109,7 +109,7 @@ class CompanyAuthComponent extends Component {
                 <div className="authenmail">
                     <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
                 </div>
-                <div><button onClick={this.transfer} style={{marginTop:"15px",width:"80%", height:"31px", marginTop:"20px"}}>전송</button>
+                <div><button onClick={this.transfer} style={{marginTop:"15px",width:"80%", height:"31px", marginTop:"20px",  background: "lightskyblue", color: "#fff", border: "1px solid lightskyblue", borderRadius: "6px", fontWeight:"600"}}>전송</button>
                 </div>
                 <div className="user-package-title2">
                     인증코드 입력
@@ -129,7 +129,7 @@ class CompanyAuthComponent extends Component {
                 </div>
                 <div>
                     <div className="nickname-title1">
-                        <span onClick={this.nickNamePopup}>
+                        <span className="nickbg" onClick={this.nickNamePopup}>
                             별명 &nbsp;
                             <span className="nickname-title2">
                                 {this.state.nickName.length > 0 && "변경"}
@@ -137,9 +137,9 @@ class CompanyAuthComponent extends Component {
                             </span>
                             &nbsp; 하기
                         </span>
-                        <span className="nickname-tip">
-                            인증 여부를 확인하기 위한 별명입니다. 매 인증 시 새로운 별명을 지정할 수 있습니다.
-                        </span>
+                        <div className="nickname-tip">
+                           인증 여부 확인을 위한 별명입니다. 매 인증 시 새로운 별명을 만들 수 있습니다.
+                        </div>
                     </div>
                     {this.state.nickName.length > 0 &&
                     <div className="nickname-style">
@@ -158,9 +158,9 @@ class CompanyAuthComponent extends Component {
                     }
                 </div>
 
-                <div><button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", marginTop:"20px"}}onClick={this.goToMain}>확인</button>{/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
+                <div><button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", marginTop:"20px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}onClick={this.goToMain}>확인</button>{/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
                 </div>
-                <div><button onClick={this.transfer} style={{marginTop:"12px", width:"80%", height:"31px", marginTop:"20px"}} onClick={this.btnNoOnClick}>취소</button>
+                <div><button onClick={this.transfer} style={{marginTop:"11px", width:"80%", height:"31px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}} onClick={this.btnNoOnClick}>취소</button>
                 </div>
 
             </div>
