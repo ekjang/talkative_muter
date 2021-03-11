@@ -92,8 +92,11 @@ class CompanyAuthComponent extends Component {
     goToMain = () => {
         if(!this.state.isAuthentication) {
             alert("인증되지 않았습니다.")
+        } else if(this.state.nickName.length == 0) {
+            alert("별명이 설정되지 않았습니다.")
         } else {
-            /////인증코드 체크를 위한 닉네임 서버 전송
+            alert("등록한 별명으로 하루동안 접속 가능합니다.")
+            /////인증코드 체크를 위한 닉네임 등록 요청 서버 전송
             this.props.companyAuthCheck(true)
             this.props.history.push("/")
         }
