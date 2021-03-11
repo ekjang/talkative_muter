@@ -11,7 +11,6 @@ import BottomTextComponent from "./BottomTextComponent";
 class SummaryComponent extends Component {
 
     state = {
-        today: new Date().toISOString().substr(0, 10),
         todayList: [],
         popularList: [],
         isSuccess: false,
@@ -53,7 +52,7 @@ class SummaryComponent extends Component {
         axios.get(server_url + "/today/todayCount",
             {params:
                     {
-                        today: this.state.today
+                        today: this.props.today
                     }})
             .then(res => {
                 this.setState({
@@ -68,7 +67,7 @@ class SummaryComponent extends Component {
         axios.get(server_url + "/today/contentsLimit",
             {params:
                     {limit: this.state.limit,
-                        today: this.state.today
+                        today: this.props.today
                     }})
             .then(res => {
                 this.setState({
@@ -83,7 +82,7 @@ class SummaryComponent extends Component {
         axios.get(server_url + "/popular/contentsLimit",
             {params:
                     {limit: this.state.limit,
-                        today: this.state.today
+                        today: this.props.today
                     }})
             .then(res => {
                 this.setState({

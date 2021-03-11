@@ -11,7 +11,7 @@ class PopularComponent extends Component {
     }
 
     componentDidMount() {
-        if(!this.props.isMember) {
+        if(!this.props.isAuthentication) {
             this.setState({sizeByPage: 10})
         }
         this.searchOnClick()
@@ -22,7 +22,7 @@ class PopularComponent extends Component {
     }
 
     searchOnClick = () => {
-        console.log("검색 버튼 클릭: " + this.state.schContent)
+        console.log("검색 버튼 클릭: " + this.props.today)
         //axios.get
     }
 
@@ -33,7 +33,7 @@ class PopularComponent extends Component {
                     인기 벙어리
                 </div>
                 <div>
-                    {this.props.isMember &&
+                    {this.props.isAuthentication &&
                     <div>
                         내용 <input type="text" value={this.state.schContent} onChange={this.inputHandler}/>
                         <button onClick={this.searchOnClick}>검색</button>

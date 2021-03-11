@@ -36,6 +36,7 @@ class TodayContents extends Component {
         } else {
             localStorage.removeItem('likesFlag_'+this.props.item.id)
         }
+        //date 추가해야될듯
         axios.put(server_url + "/today/content/like/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({likesFlag: plus})
@@ -53,6 +54,7 @@ class TodayContents extends Component {
         } else {
             localStorage.removeItem('dislikesFlag_'+this.props.item.id)
         }
+        //date 추가해야될듯
         axios.put(server_url + "/today/content/dislike/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({dislikesFlag: plus})
@@ -70,6 +72,7 @@ class TodayContents extends Component {
         } else {
             localStorage.removeItem('reportsFlag_'+this.props.item.id)
         }
+        //date 추가해야될듯
         axios.put(server_url + "/today/content/report/"+this.props.item.id, {flag: plus})
             .then(res => {
                 this.setState({reportsFlag: plus})
@@ -87,7 +90,7 @@ class TodayContents extends Component {
                 <span className="content-item1">
                     {this.props.item.content}
                 </span>
-                <span className="content-item2">
+                <span className="content-item2" dataformatas="YYYY-MM-DD HH:mm:ss">
                     {this.props.item.registerDate}
                 </span>
                 {this.props.viewFlag &&

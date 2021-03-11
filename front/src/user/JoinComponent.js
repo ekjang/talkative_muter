@@ -4,8 +4,15 @@ import "./UserStyle.css"
 
 class JoinComponent extends Component {
 
-    state = {
-        isAuthentication: localStorage.getItem('isAuthentication')
+    componentDidMount() {
+        this.authCheck()
+    }
+
+    authCheck = () => {
+        if(!this.props.isAuthentication) {
+            alert("회사메일 인증이 되지 않았습니다.")
+            this.props.history.push("/companyAuth")
+        }
     }
 
     btnOkOnClick = () => {

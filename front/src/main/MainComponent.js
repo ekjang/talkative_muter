@@ -11,20 +11,16 @@ import "./MainStyle.css"
  */
 class MainComponent extends Component {
     state = {
-        isMember: false, //로그인 여부
-        token: false, //유저 정보
+        today: new Date().toISOString().substr(0, 10),
+        // isMember: false, //로그인 여부
+        // token: false, //유저 정보
         isAuthentication: false //회사 인증 여부
     }
 
     componentDidMount() {
-        this.setState({isMember: localStorage.getItem('isMember')
-            , token: localStorage.getItem('token')
-            , isAuthentication: localStorage.getItem('isAuthentication')})
-    }
-
-    isMemberCheck = (isMember) => {
-        this.setState({isMember: isMember})
-        localStorage.setItem('isMember', JSON.stringify(isMember))
+        let date = new Date().toISOString().substr(0, 10)
+        this.setState({isAuthentication: localStorage.getItem('isAuthentication')
+            , today: date})
     }
 
     companyAuthCheck = (isAuthentication) => {
@@ -39,17 +35,14 @@ class MainComponent extends Component {
                 <div>
                     <MenuComponent
                         /* title="말.많.벙" */
-                        isMember={this.state.isMember}
-                        token={this.state.token}
+                        today={this.state.today}
                         isAuthentication={this.state.isAuthentication}
                     />
 
                     <div className="content-style">
                         <RouterComponent
-                            isMember={this.state.isMember}
-                            token={this.state.token}
+                            today={this.state.today}
                             isAuthentication={this.state.isAuthentication}
-                            isMemberCheck={this.isMemberCheck}
                             companyAuthCheck={this.companyAuthCheck}
                         />
                     </div>

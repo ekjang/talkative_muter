@@ -18,7 +18,6 @@ class LoginComponent extends Component {
         //axios.post
         //로그인 성공 시
         //회원 정보 => token
-        this.props.isMemberCheck(true)
         this.props.companyAuthCheck(true)
         this.props.history.push("/")
     }

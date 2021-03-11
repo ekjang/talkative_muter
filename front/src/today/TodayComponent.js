@@ -12,9 +12,8 @@ class TodayComponent extends Component {
 
     constructor(props) {
         super(props);
-        let today = new Date().toISOString().substr(0, 10);
         this.state = {
-            today: today,
+            today: this.props.today,
             list: [],
             doYouKnow: false, //popup 여부
             isSuccess: false, //response 성공 여부
@@ -23,6 +22,7 @@ class TodayComponent extends Component {
     }
 
     componentDidMount() {
+        this.setState({today: this.props.today})
         this.searchOnClick()
     }
 
@@ -102,6 +102,7 @@ class TodayComponent extends Component {
                         item={item}
                         key={idx}
                         searchOnClick={this.searchOnClick}
+                        today={this.state.today}
                         viewFlag={this.state.viewFlag}
                     />
                     )}

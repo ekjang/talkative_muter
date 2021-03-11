@@ -8,22 +8,12 @@ import "./MenuStyle.css"
 class MenuLink extends Component {
 
     render() {
-        // let memberIcon = this.props.isMember ? "logout" : "login";
         let authIcon = this.props.isAuthentication ? "logout" : "authentication";
 
         return (
             <div className={this.props.menuStatus} id="menu">
-                {this.props.isMember &&
-                <span className="text-style">회원</span>
-                }
                 {this.props.isAuthentication &&
                 <span className="text-style">인증</span>}
-                {/*<div className={memberIcon + "-icon-style"}>*/}
-                {/*    <span onClick={() => {this.props.history.push("/" + memberIcon)}}>*/}
-                {/*        {memberIcon}*/}
-                {/*    </span>*/}
-                {/*</div>*/}
-                {/*<div className={authIcon + "-icon-style"}>*/}
                 <div id="auth-icon-style">
                     <p id="auth-icon-style-p"><span id="auth-icon-style-span" onClick={() => {this.props.history.push("/" + authIcon)}}>
                         {this.props.isAuthentication ? "나가기" : "인증하기"}
@@ -31,9 +21,10 @@ class MenuLink extends Component {
                 </div>
                 <ul>
                     <li><Link to="/" >Home</Link></li>
-                    {(this.props.isMember || this.props.isAuthentication) &&
+                    {(this.props.isAuthentication) &&
                     <li><Link to="/today">오늘 벙어리</Link></li>
                     }
+                    {/*아직 구현 안되어 있음.*/}
                     {/*<li><Link to="/popular" >인기 벙어리</Link></li>*/}
                     <li><Link to="/gymInfo" >헬스장 이용 정보</Link></li>
                 </ul>
