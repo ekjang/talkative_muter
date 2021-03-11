@@ -109,7 +109,7 @@ class CompanyAuthComponent extends Component {
                 <div className="authenmail">
                     <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
                 </div>
-                <div><button onClick={this.transfer} style={{marginTop:"15px",width:"80%", height:"31px", marginTop:"20px",  background: "lightskyblue", color: "#fff", border: "1px solid lightskyblue", borderRadius: "6px", fontWeight:"600"}}>전송</button>
+                <div><button onClick={this.transfer} style={{marginTop:"15px",width:"80%", height:"31px", background: "lightskyblue", color: "#fff", border: "1px solid lightskyblue", borderRadius: "6px", fontWeight:"600"}}>전송</button>
                 </div>
                 <div className="user-package-title2">
                     인증코드 입력
@@ -158,7 +158,7 @@ class CompanyAuthComponent extends Component {
                     }
                 </div>
 
-                <div><button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", marginTop:"20px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}onClick={this.goToMain}>확인</button>{/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
+                <div><button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}onClick={this.goToMain}>확인</button>{/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
                 </div>
                 <div><button onClick={this.transfer} style={{marginTop:"11px", width:"80%", height:"31px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}} onClick={this.btnNoOnClick}>취소</button>
                 </div>
