@@ -4,6 +4,7 @@ import axios from "axios";
 import server_url from "../define/Url";
 import TodayContents from "../today/TodayContents";
 import BottomTextComponent from "./BottomTextComponent";
+import {Link} from "react-router-dom";
 
 /**
  * 디폴트 컴퍼넌트
@@ -124,6 +125,7 @@ class SummaryComponent extends Component {
                 <div className="mainbox1">
                     <div className="today-summary-title">
                     오늘 벙어리 최신글
+                        <span className="more-text"><Link to="/today">더보기</Link></span>
                     </div>
                     <div className="newlist">
                         {this.state.todayList.map((item, idx) =>

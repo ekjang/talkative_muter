@@ -51,6 +51,10 @@ class PopularComponent extends Component {
     }
 
     listSort = (data) => {
+        //사이즈만큼만 보이기
+        if(data.length > this.state.sizeByPage) {
+            console.log(data.length)
+        }
         return (data.sort((a, b) => {
             //status 내림차순으로 정렬
             return b.likes - a.likes;
