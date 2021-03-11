@@ -200,7 +200,7 @@ li a {
 /* 홈화면 게시글 박스들 */
 .mainbox1 {
     position: inherit;
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
     box-sizing: border-box; 
     /* width: calc(100% - 20px); */

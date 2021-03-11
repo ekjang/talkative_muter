@@ -122,8 +122,10 @@ class SummaryComponent extends Component {
                     New {this.state.newCount} &nbsp; &nbsp; Today {this.state.totalCount}
                 </div>
                 <div className="mainbox1">
-                    <div className="today-summary-title">
-                    오늘 벙어리 최신글
+                     <div className="today-summary">
+                         <span className="mutter-icon"></span>
+                         <span className="today-summary-title"> 오늘 벙어리 최신글 </span>
+                    
                     </div>
                     <div className="newlist">
                         {this.state.todayList.map((item, idx) =>
@@ -137,8 +139,10 @@ class SummaryComponent extends Component {
                     </div>
                 </div>
                 <div className="mainbox1">
-                    <div className="today-summary-title">
-                        인기 벙어리 Top 5
+                    <div className="today-summary">
+                            <span className="mutter-icon"></span>
+                            <span className="today-summary-title"> 인기 벙어리 Top 5 </span>
+                        
                     </div>
                     <div className="newlist">
                         {this.state.popularList.map((item, idx) =>
