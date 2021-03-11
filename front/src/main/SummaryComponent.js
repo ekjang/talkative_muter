@@ -123,16 +123,12 @@ class SummaryComponent extends Component {
                     New {this.state.newCount} &nbsp; &nbsp; Today {this.state.totalCount}
                 </div>
                 <div className="mainbox1">
-<<<<<<< HEAD
                      <div className="today-summary">
                          <span className="mutter-icon"></span>
                          <span className="today-summary-title"> 오늘 벙어리 최신글 </span>
-                    
-=======
-                    <div className="today-summary-title">
-                    오늘 벙어리 최신글
-                        <span className="more-text"><Link to="/today">더보기</Link></span>
->>>>>>> d0a76d02cb3c2afd132558fc48915d7a68da30cf
+                         {this.state.todayList.length > 0 &&
+                         <span className="more-text"><Link to="/today">더보기</Link></span>
+                         }
                     </div>
                     <div className="newlist">
                         {this.state.todayList.map((item, idx) =>
