@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -18,13 +19,20 @@ public class InitGymData {
 
     @PostConstruct
     public void init() {
-        initService.initData();
+        if(initService.findAllData().isEmpty()) {
+            initService.initData();
+            return;
+        }
     }
     @Component
     @Transactional
     @RequiredArgsConstructor
     static class InitService {
         private final EntityManager em;
+        public List<GymMembership> findAllData() {
+            return em.createQuery("select m from GymMembership m",GymMembership.class)
+                    .getResultList();
+        }
 
         public void initData() {
             GymMembership gm1 = new GymMembership("010-3473-9077","M");
