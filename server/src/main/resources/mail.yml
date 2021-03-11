@@ -1,0 +1,17 @@
+## SMTP 설정
+mail:
+  domain: naver.com
+  host: smtp.naver.com
+  port: 465
+  username: talkative-muter
+  password: Muter!23 #암호화 필요
+  transport:
+    protocol: smtp
+  smtp:
+    auth: true
+    starttls:
+      enable: true
+    ssl:
+      enable: true
+  debug:
+    true
