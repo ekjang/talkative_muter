@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import {withRouter} from "react-router-dom";
 import server_url from "../define/Url"
-import "./UserStyle.css"
+import "../user/UserStyle.css"
+import NickNameComponent from "./NickNameComponent";
 
 /**
  * 회사메일 인증코드 전송 화면
@@ -14,8 +15,9 @@ class CompanyAuthComponent extends Component {
         mailPath: '@datastreams.co.kr',
         authCode: 'Abc123!', /////test :Abc123!
         inputAuthCode: '',
-        isAuthentication: false
-
+        isAuthentication: false,
+        namePopup: false, //popup 여부
+        nickName: ''
     }
 
     inputHandler = (e) => {
@@ -24,7 +26,13 @@ class CompanyAuthComponent extends Component {
 
     //취소 버튼 클릭
     btnNoOnClick = () => {
+        localStorage.clear()
         this.props.history.push("/")
+    }
+
+    nickNamePopup = (nickName) => {
+        this.setState({nickName: nickName, namePopup: !this.state.namePopup})
+        localStorage.setItem('nickName', JSON.stringify(nickName))
     }
 
     //메일 인증코드 전송
@@ -51,7 +59,7 @@ class CompanyAuthComponent extends Component {
     authCodeCheck = (e) => {
         this.setState({inputAuthCode: e.target.value})
         if(this.state.authCode === e.target.value) {
-            this.setState({isAuthentication: true})
+            this.setState({isAuthentication: true, namePopup: true})
             localStorage.setItem('isAuthentication', JSON.stringify(true))
         } else {
             this.setState({isAuthentication: false})
@@ -104,6 +112,15 @@ class CompanyAuthComponent extends Component {
                     {this.state.inputAuthCode !== '' && !this.state.isAuthentication &&
                     <div className="auth-false">
                         인증코드가 일치하지 않습니다.
+                    </div>
+                    }
+                </div>
+                <div>
+                    {this.state.isAuthentication && this.state.namePopup &&
+                    <div>
+                        <NickNameComponent
+                            nickNamePopup={this.nickNamePopup}
+                        />
                     </div>
                     }
                 </div>

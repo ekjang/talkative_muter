@@ -36,7 +36,7 @@ class PopularComponent extends Component {
         } else {
             searchDate = date
         }
-        axios.get(server_url + "/today/list",
+        axios.get(server_url + "/today/list", /////서버 구현되면 popular 로 바꿔야함.
             {params:
                     {schContent: this.state.schContent,
                         today: searchDate
