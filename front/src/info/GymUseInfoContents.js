@@ -35,7 +35,7 @@ class GymUseInfoContents extends Component {
     }
 
     render() {
-        let status = (parseInt(this.props.item.usingStatus) === 1) ? "사용중" : "사용안함"
+        let status = (parseInt(this.props.item.usingStatus) === 1) ? "사용불가" : "사용가능"
         return (
             <div>
                 <div className="gymbox1">

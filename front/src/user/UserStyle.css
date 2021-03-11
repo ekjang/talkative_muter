@@ -13,7 +13,7 @@ body {
     color: black;
 /*     font-family: HY울릉도B; */
     font-size: 17px;
-    margin-top: 34px;    
+    margin-top: 34px;
     text-align: left;
     margin-left: 45px;
     padding-top: 46px;
@@ -23,10 +23,10 @@ body {
     color: black;
 /*     font-family: HY울릉도B; */
     font-size: 17px;
-    margin-top: 34px;    
+    margin-top: 34px;
     text-align: left;
     margin-left: 45px;
-    padding-top: 12px;
+    padding-top: 20px;
 }
 
 .input-area-style {
@@ -62,7 +62,7 @@ input[type="text"]{
 }
 
 .bottom-button-style {
-    margin-top: 200px;
+    margin-top: 76px;
 }
 
 .first-button {
@@ -116,18 +116,19 @@ input[type="text"]{
     text-align: left;
     margin-top: 11px;
     margin-left: 43px;
+    font-size: 13px;
 
 }
 .authbox {
     position: inherit;
     width: 95%;
     margin: 0 auto;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     /* width: calc(100% - 20px); */
-    height: 288px; 
+    height: 308px;
     margin-top: 25px;
-    background-color: #fff; 
-    border-radius: 5px; 
+    background-color: #fff;
+    border-radius: 5px;
     box-shadow: 0 2px 5px #bbbbbb;
 
 

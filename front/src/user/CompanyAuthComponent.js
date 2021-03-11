@@ -68,7 +68,7 @@ class CompanyAuthComponent extends Component {
             this.props.history.push("/join")
         }
     }
-    
+
     //인증 후 홈 화면으로
     goToMain = () => {
         if(!this.state.isAuthentication) {
@@ -89,7 +89,7 @@ class CompanyAuthComponent extends Component {
                 </div>
                 <div className="authenmail">
                     <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
-                    <button onClick={this.transfer} style={{marginLeft:"15px", width: "100px", height:"31px"}}>전송</button>
+                    <button onClick={this.transfer} style={{marginLeft:"15px", width: "100px", height:"31px", marginTop:"15px"}}>전송</button>
                 </div>
                 <div className="user-package-title2">
                     인증코드 입력
@@ -114,7 +114,7 @@ class CompanyAuthComponent extends Component {
                 </div>
             </div>
         );
-    }    
+    }
 }
 
 export default withRouter(CompanyAuthComponent);
