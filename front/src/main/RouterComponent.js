@@ -3,7 +3,7 @@ import {Route, Switch} from "react-router-dom";
 import SummaryComponent from "./SummaryComponent";
 import LoginComponent from "../user/LoginComponent";
 import LogoutComponent from "../user/LogoutComponent";
-import CompanyAuthComponent from "../user/CompanyAuthComponent";
+import CompanyAuthComponent from "../auth/CompanyAuthComponent";
 import PopularComponent from "../popular/PopularComponent";
 import TodayComponent from "../today/TodayComponent";
 import JoinComponent from "../user/JoinComponent";
