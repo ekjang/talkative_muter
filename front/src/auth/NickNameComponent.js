@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class NickNameComponent extends Component {
 
     state = {
-        nickName: ''
+        nickName: this.props.nickName,
+        isAuthentication: this.props.isAuthentication
     }
 
     inputHandler = (e) => {
@@ -14,9 +15,11 @@ class NickNameComponent extends Component {
     btnOkOnClick = () => {
         if(this.state.nickName.length > 0) {
             if (window.confirm("[ " + this.state.nickName + " ] 로 설정하시겠습니까?")) {
-                this.props.nickNamePopup(this.state.nickName)
+                //중복 닉네임 있는지 서버 요청 체크
+                //axios.get => return data : nickName, isAuthentication
+                let response = false
+                this.props.nickNameSetting(this.state.nickName, this.props.isAuthentication || response)
             } else {
-                console.log("?")
                 return
             }
         } else {
@@ -29,7 +32,7 @@ class NickNameComponent extends Component {
             <div>
                 <div className="do-you-know-popup-inner">
                     <div className="today-title">
-                        닉네임 설정하기
+                        별명 설정하기
                     </div>
                     <div className="do-you-know-popup-content">
                         <textarea rows="4" value={this.state.nickName} onChange={this.inputHandler}></textarea>

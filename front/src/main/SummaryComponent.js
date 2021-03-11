@@ -160,7 +160,6 @@ class SummaryComponent extends Component {
                         )}
                     </div>
                 </div>
-                <BottomTextComponent />
             </div>
         );
     }
