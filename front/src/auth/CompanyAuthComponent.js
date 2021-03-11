@@ -97,12 +97,13 @@ class CompanyAuthComponent extends Component {
                 </div>
                 <div className="authenmail">
                     <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
-                    <button onClick={this.transfer} style={{marginLeft:"15px", width: "100px", height:"31px", marginTop:"15px"}}>전송</button>
+                </div>
+                <div><button onClick={this.transfer} style={{marginTop:"15px",width:"80%", height:"31px", marginTop:"20px"}}>전송</button>
                 </div>
                 <div className="user-package-title2">
                     인증코드 입력
                 </div>
-                <div className="authenmail">
+                <div className="authenmail2">
                     <input type="text" ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode} onChange={this.authCodeCheck}/>
                     {this.state.inputAuthCode !== '' && this.state.isAuthentication &&
                     <div className="auth-true">
@@ -124,12 +125,15 @@ class CompanyAuthComponent extends Component {
                     </div>
                     }
                 </div>
-                <div className="bottom-button-style">
-                    <button className="button-wide-style" onClick={this.goToMain}>확인</button> &nbsp; &nbsp;
-                    {/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
-                    <button className="button-wide-style" onClick={this.btnNoOnClick}>취소</button>
+
+                <div><button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", marginTop:"20px"}}onClick={this.goToMain}>확인</button>{/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
                 </div>
+                <div><button onClick={this.transfer} style={{marginTop:"12px", width:"80%", height:"31px", marginTop:"20px"}} onClick={this.btnNoOnClick}>취소</button>
+                </div>
+
             </div>
+            
+           
         );
     }
 }

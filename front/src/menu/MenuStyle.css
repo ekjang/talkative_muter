@@ -190,6 +190,7 @@ li a {
     text-decoration: none;
     color: #666;
     padding-left: 18px;
+    font-size: 19px;
 }
 
 #menu.isopen {
@@ -222,6 +223,10 @@ li a {
     float: right;
     margin-right: 15px;
     text-decoration: none;
-    color: #3284fb;
+    
 }
-a {text-decoration: none;}
+a {
+    text-decoration: none;
+    color: #3284fb;
+    font-size: 14px;
+}

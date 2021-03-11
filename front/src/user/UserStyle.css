@@ -11,19 +11,17 @@ body {
 
 .user-package-title {
     color: black;
-/*     font-family: HY울릉도B; */
     font-size: 17px;
     margin-top: 34px;
     text-align: left;
     margin-left: 45px;
-    padding-top: 46px;
+    padding-top: 34px;
 }
 
 .user-package-title2 {
     color: black;
-/*     font-family: HY울릉도B; */
     font-size: 17px;
-    margin-top: 34px;
+    margin-top: 37px;
     text-align: left;
     margin-left: 45px;
     padding-top: 20px;
@@ -49,21 +47,32 @@ body {
     border-radius: 8%;
 }
 
-input[type="text"]{
+.authenmail input[type="text"]{
     border: none;
     border-bottom: 1px solid black;
     background: none;
+    width: 50%;
+    margin: 0 auto;
+    height: 30px;
+    margin-top: 10px;
+}
+
+
+.authenmail2 input[type="text"]{
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    width: 85%;
+    height: 30px;
+    margin-top: 10px;
 }
 
 
 .top-button-style {
-    margin-top: 100px;
+    margin: 0 auto;
 
 }
 
-.bottom-button-style {
-    margin-top: 76px;
-}
 
 .first-button {
     color: black;
@@ -113,23 +122,35 @@ input[type="text"]{
 
 
 .authenmail{
+    text-align: center;
+    margin-top: 11px;
+    font-size: 13px;
+    width: 80%;
+    margin: auto;
+
+}
+
+.authenmail2{
     text-align: left;
     margin-top: 11px;
     margin-left: 43px;
     font-size: 13px;
 
 }
+
+
 .authbox {
     position: inherit;
     width: 90%;
     margin: 0 auto;
     box-sizing: border-box;
     /* width: calc(100% - 20px); */
-    height: 308px;
+    
     margin-top: 25px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px #bbbbbb;
+    padding-bottom: 42px;
 
 
 }

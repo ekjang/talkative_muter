@@ -4,6 +4,7 @@ import axios from "axios";
 import server_url from "../define/Url";
 import TodayContents from "../today/TodayContents";
 
+
 /**
  * 인기 벙어리 컴퍼넌트
  */
@@ -91,7 +92,9 @@ class PopularComponent extends Component {
                   </div>
                 </div>
                 
+ 
             </div>
+                
         );
     }
 }
