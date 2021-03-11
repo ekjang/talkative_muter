@@ -62,6 +62,7 @@ class MenuComponent extends Component {
                 </div>
                 <MenuLink
                     menuStatus={menuStatus}
+                    nickName={this.props.nickName}
                     isAuthentication={this.props.isAuthentication}
                 />
             </div>

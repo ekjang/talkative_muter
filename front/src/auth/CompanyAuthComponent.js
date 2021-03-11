@@ -3,6 +3,7 @@ import axios from "axios";
 import {withRouter} from "react-router-dom";
 import server_url from "../define/Url"
 import "../user/UserStyle.css"
+import "./AuthStyle.css"
 import NickNameComponent from "./NickNameComponent";
 
 /**
@@ -16,7 +17,7 @@ class CompanyAuthComponent extends Component {
         authCode: 'Abc123!', /////test :Abc123!
         inputAuthCode: '',
         isAuthentication: false,
-        namePopup: false, //popup 여부
+        nickNamePopup: false, //popup 여부
         nickName: ''
     }
 
@@ -30,9 +31,15 @@ class CompanyAuthComponent extends Component {
         this.props.history.push("/")
     }
 
-    nickNamePopup = (nickName) => {
-        this.setState({nickName: nickName, namePopup: !this.state.namePopup})
-        localStorage.setItem('nickName', JSON.stringify(nickName))
+    nickNamePopup = () => {
+        this.setState({nickNamePopup: !this.state.nickNamePopup})
+    }
+
+    nickNameSetting = (nickName) => {
+        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup})
+        if(nickName !== undefined) {
+            localStorage.setItem('nickName', JSON.stringify(nickName))
+        }
     }
 
     //메일 인증코드 전송
@@ -59,7 +66,7 @@ class CompanyAuthComponent extends Component {
     authCodeCheck = (e) => {
         this.setState({inputAuthCode: e.target.value})
         if(this.state.authCode === e.target.value) {
-            this.setState({isAuthentication: true, namePopup: true})
+            this.setState({isAuthentication: true, nickNamePopup: true})
             localStorage.setItem('isAuthentication', JSON.stringify(true))
         } else {
             this.setState({isAuthentication: false})
@@ -82,11 +89,11 @@ class CompanyAuthComponent extends Component {
         if(!this.state.isAuthentication) {
             alert("인증되지 않았습니다.")
         } else {
+            /////인증코드 체크를 위한 닉네임 서버 전송
             this.props.companyAuthCheck(true)
             this.props.history.push("/")
         }
     }
-
 
 
     render() {
@@ -116,10 +123,30 @@ class CompanyAuthComponent extends Component {
                     }
                 </div>
                 <div>
-                    {this.state.isAuthentication && this.state.namePopup &&
+                    <div className="nickname-title1">
+                        <span onClick={this.nickNamePopup}>
+                            별명 &nbsp;
+                            <span className="nickname-title2">
+                                {this.state.nickName.length > 0 && "변경"}
+                                {this.state.nickName.length < 1 && "설정"}
+                            </span>
+                            &nbsp; 하기
+                        </span>
+                        <span className="nickname-tip">
+                            인증 여부를 확인하기 위한 별명입니다. 매 인증 시 새로운 별명을 지정할 수 있습니다.
+                        </span>
+                    </div>
+                    {this.state.nickName.length > 0 &&
+                    <div className="nickname-style">
+                        니 별명은 [ {this.state.nickName} ]
+                    </div>
+                    }
+                    {this.state.nickNamePopup &&
                     <div>
                         <NickNameComponent
+                            nickName={this.state.nickName}
                             nickNamePopup={this.nickNamePopup}
+                            nickNameSetting={this.nickNameSetting}
                         />
                     </div>
                     }

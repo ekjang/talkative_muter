@@ -14,17 +14,19 @@ class MainComponent extends Component {
         today: new Date().toISOString().substr(0, 10),
         // isMember: false, //로그인 여부
         // token: false, //유저 정보
-        isAuthentication: false //회사 인증 여부
+        isAuthentication: false, //회사 인증 여부
+        nickName: '' //메일인증 후 입력한 별명, 로그아웃 전까지 인증체크를 위한 키 값으로 사용
     }
 
     componentDidMount() {
         let date = new Date().toISOString().substr(0, 10)
         this.setState({isAuthentication: localStorage.getItem('isAuthentication')
+            , nickName: localStorage.getItem('nickName')
             , today: date})
     }
 
     companyAuthCheck = (isAuthentication) => {
-        this.setState({isAuthentication: isAuthentication})
+        this.setState({isAuthentication: isAuthentication, nickName: localStorage.getItem('nickName')})
         localStorage.setItem('isAuthentication', JSON.stringify(isAuthentication))
     }
 
@@ -36,6 +38,7 @@ class MainComponent extends Component {
                     <MenuComponent
                         /* title="말.많.벙" */
                         today={this.state.today}
+                        nickName={this.state.nickName}
                         isAuthentication={this.state.isAuthentication}
                     />
 
