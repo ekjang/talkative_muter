@@ -1,27 +1,35 @@
 package my.app.server.common.repository;
 
 import my.app.server.common.entity.Content;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@Rollback(value = false)
+@Rollback(value = true)
 class ContentRepositoryTest {
-
+    static {
+        System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/mail.yml");
+    }
     @Autowired
     ContentRepository contentRepository;
+    @PersistenceContext
+    EntityManager em;
 
     @Test
     public void basicCRUD() {
@@ -93,6 +101,29 @@ class ContentRepositoryTest {
         for (Content content : result) {
             System.out.println("content.getRegisterDate() = " + content.getRegisterDate());
         }
+    }
+
+    @Test
+    @Disabled("인기 벙어리 긁어오는 쿼리 만들어야함")
+    public void popularTop5inOneWeek() {
+
+        List<Content> contents = new ArrayList<>();
+        contents.add(new Content("popular test1", 10L));
+        contents.add(new Content("popular test2", 20L));
+        contents.add(new Content("popular test3", 220L));
+        contents.add(new Content("popular test4", 230L));
+        contents.add(new Content("popular test5", 240L));
+        contents.add(new Content("popular test6", 2880L));
+        contents.add(new Content("popular test7", 20000L));
+
+
+        contentRepository.saveAll(contents);
+
+
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1L), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59)); //오늘 23:59:59
+
+
     }
 
 

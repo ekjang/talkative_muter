@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -21,6 +23,8 @@ class TodayServiceTest {
     TodayService todayService;
     @Autowired
     ContentRepository contentRepository;
+    @PersistenceContext
+    EntityManager em;
 
     @Test
 
@@ -39,21 +43,31 @@ class TodayServiceTest {
     public Content findById(Long id){
         return contentRepository.findById(id).get();
     }
+
+    static {
+        System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/mail.yml");
+    }
     @Test
-    @Disabled("insert 후 db 에 있는 값을 다시 entity로 불러오는 법을 알아야함 ")
+    //@Disabled("insert 후 db 에 있는 값을 다시 entity로 불러오는 법을 알아야함 ")
     public void plusLikeTest() {
-        Content contentGlobal = new Content("create plus like test!!");
+        Content testContent = new Content("create plus like test!!");
 
-        Long contentId = createContent(contentGlobal);
+        Long contentId = createContent(testContent);// id 조회용
+
+        em.flush();
+        em.clear();//영속성 컨텍스트 초기화
         Content content = findById(contentId);
-
         Long beforeLikes = content.getLikes();
+
         System.out.println("beforeLikes = " + beforeLikes);
         todayService.plusLike(contentId);
+        em.flush();
+        em.clear();
 
-        System.out.println("findContent.getLikes = " + contentGlobal.getLikes());
+        Content contentAfter = findById(contentId);
+        System.out.println("findContent.getLikes = " + contentAfter.getLikes());
 
-        //assertThat(content.getLikes()).isEqualTo(beforeLikes + 1);
+        assertThat(content.getLikes()).isEqualTo(beforeLikes + 1);
 
 
     }

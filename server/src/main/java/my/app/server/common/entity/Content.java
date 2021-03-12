@@ -41,4 +41,9 @@ public class Content {
     public Content(String content) {
         this.content = content;
     }
+
+    public Content(String content, Long likes) {
+        this.content = content;
+        this.likes = likes;
+    }
 }
