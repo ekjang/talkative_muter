@@ -1,8 +1,46 @@
 .today-title {
-    color: black;
-    font-size: 20px;
+    color: rgb(33, 133, 208);
+    font-size: 17px;
+    margin-top: 5px;
+    padding: 4px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.today {
+
+    margin-top: 5px;
+    padding: 4px;
+    text-align: left;
+    padding-left: 23px;
+    padding-top: 20px;
+}
+.today span:nth-child(1){
+    background-image: url(../images/mutter_icon.svg);
+    width: 21px;
+    height: 25px;
+    background-repeat: no-repeat;
+    float: left;
+    margin-top: 1px;
+}
+
+.todaybox {
+    position: inherit;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* width: calc(100% - 20px); */
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #bbbbbb;
+}
+
+.todayclass{
     margin-top: 20px;
 }
+
 
 .do-you-know-popup {
     position: fixed;
@@ -45,32 +83,38 @@
 }
 
 .button-small1 {
-    color: #fff;
-    background-color: #3284fb;
+    color: #3284fb;
+    background-color: #fff;
     margin-left: 8px;
-    width: 95%;
-    height: 32px;
+    width: 100px;
+    height: 28px;
     font-size: 15px;
     cursor: pointer;
-    border: 2px solid #3284fb;
-    border-radius: 8%;
+    border: 1px solid #3284fb;
+    border-radius: 5px;
+    float: right;
+    padding-right: 4;
+    margin-right: 4%;
 }
 
 .button-wide1 {
     color: white;
-    background-color: deeppink;
+    background-color: #3284fb;
     margin-top: 20px;
     margin-left: 8px;
-    width: 230px;
+    width: 90%;
     font-size: 15px;
     font-family: HY목판L;
     cursor: pointer;
-    border: 2px solid lightpink;
-    border-radius: 8%;
+    border: 2px solid #3284fb;
+    border-radius: 14px;
+    height: 20;
+    height: 30px
 }
 
 .contents-list-style {
-    margin-top: 50px;
+    margin-top: 22px;
+    width: 95%;
 }
 
 .content-item1 {
@@ -93,4 +137,13 @@
     margin-right: 6px;
     font-size: 13px;
     color: black;
+}
+
+.newlist {
+    text-align: left;
+    padding-left: 29px;
+    padding-top: 10px;
+    line-height: 31px;
+    font-size: 16px;
+    padding-bottom: 24px;
 }

@@ -57,3 +57,22 @@
     padding-bottom: 24px;
 }
 
+.popbtn{
+    color: #fff;
+    background-color: #3284fb;
+    margin-left: 8px;
+    width: 71px;
+    height: 28px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #3284fb;
+    border-radius: 5px;
+    float: right;
+    padding-right: 4;
+    margin-right: 4%;
+
+}
+
+.popcontent{
+    margin-top: 20px;
+}

@@ -79,9 +79,10 @@ class TodayComponent extends Component {
 
     render() {
         return (
-            <div>
-                <div className="today-title">
-                    오늘 벙어리
+            <div className="todaybox"> 
+                <div className="today">
+                <span className="mutter-icon"></span>
+                <span className="today-title"> 오늘 벙어리 </span>
                 </div>
                 <div>
                     <button className="button-wide1" onClick={this.doYouKnowPopup}> 너 그거 아니?</button>
@@ -96,12 +97,13 @@ class TodayComponent extends Component {
                     </div>
                     }
                 </div>
-                <div>
+                <div className="todayclass">
                     <input type="date" value={this.state.today} onChange={this.inputDateHandler}></input>
                     {/*<input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />*/}
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                 </div>
                 <div className="contents-list-style">
+                    <div className="newlist">
                     {this.state.list.map((item, idx) =>
                     <TodayContents
                         item={item}
@@ -111,6 +113,7 @@ class TodayComponent extends Component {
                         viewFlag={this.state.viewFlag}
                     />
                     )}
+                    </div>
                 </div>
             </div>
         );
