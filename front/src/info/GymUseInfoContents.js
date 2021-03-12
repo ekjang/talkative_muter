@@ -49,6 +49,7 @@ class GymUseInfoContents extends Component {
                         <span className={"gym-item-style-" + this.props.item.usingStatus} onClick={this.useOnClick}>
                             {status}
                         </span>
+                        <span>{this.props.item.entranceTime}</span>
                     </div>
                 </div>
             </div>

@@ -18,6 +18,14 @@ class NickNameComponent extends Component {
                 //중복 닉네임 있는지 서버 요청 체크
                 //axios.get => return data : nickName, isAuthentication
                 let response = false
+                ////////////////////////test
+                if(localStorage.getItem('nickName') !== null) {
+                    response = true
+                    console.log("not null?")
+                } else {
+                    console.log("null?" + this.props.isAuthentication)
+                }
+
                 this.props.nickNameSetting(this.state.nickName, this.props.isAuthentication || response)
             } else {
                 return
@@ -25,6 +33,15 @@ class NickNameComponent extends Component {
         } else {
             alert("닉네임을 입력해주세요.")
         }
+    }
+
+    btnNoOnClick = () => {
+        if (this.state.nickName.length < 1) {
+            if (window.confirm("닉네임을 설정하지 않으면 인증처리가 되지 않습니다. 설정하시겠습니까?")) {
+                return
+            }
+        }
+        this.props.nickNameSetting(this.state.nickName, this.state.isAuthentication)
     }
 
     render() {
@@ -39,6 +56,7 @@ class NickNameComponent extends Component {
                     </div>
                     <div className="do-you-know-popup-button-style">
                         <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>
+                        <button className="button-small1" onClick={this.btnNoOnClick}>취소</button>
                     </div>
                 </div>
             </div>
