@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700&display=swap&subset=korean');
-@font-face {
-    font-family: "Hoon"; 
-    src: url("../font/HoonWhayangyunwha.ttf"); /* // 내가 저장한 경로! */
-  }
-  
 
+@font-face {
+    font-family: Hoon;
+    src: url(../fonts/Hoon.ttf);
+  }
 
 body {
     background-color: #F2F2F2;
     color: white;
-    font-family: 'Noto Sans KR', sans-serif, 'Hoon';
+    font-family: 'Noto Sans KR', sans-serif;
     margin: 0;
     box-sizing: border-box;
 }

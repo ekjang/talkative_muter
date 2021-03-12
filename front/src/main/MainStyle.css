@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Hoon;
+    src: url(../fonts/Hoon.ttf);
+  }
+
+
 .site-style {
     width: 100%;
 }
@@ -46,12 +52,13 @@
 
 .today-summary-title {
     color: rgb(33, 133, 208);
-    font-size: 17px;
+    font-size: 20px;
     margin-top: 5px;
     padding: 4px;
     text-align: left;
     padding-left: 10px;
     padding-top: 20px;
+    font-family:"Hoon"
 }
 
 

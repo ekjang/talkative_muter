@@ -42,7 +42,7 @@ class LoginComponent extends Component {
                         <input className="input-box" type="text"/>
                     </div>
                 </div>
-                <div className="bottom-button-style2">
+                <div className="bottom-button-style">
                     <button className="enter-button" onClick={this.btnEnterOnClick}>들어갈래</button>
                 </div>
             </div>
