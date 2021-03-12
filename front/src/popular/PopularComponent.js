@@ -73,7 +73,7 @@ class PopularComponent extends Component {
                 <div>
                     {this.props.isAuthentication &&
                     <div className="popcontent">
-                        내용 &nbsp; <input type="text" value={this.state.schContent} onChange={this.inputHandler}/>
+                        <span className="popsearch">내용 &nbsp; <input type="text" value={this.state.schContent} onChange={this.inputHandler}/></span>
                         <button className="popbtn" onClick={this.searchOnClick}>검색</button>
                     </div>
                     }

@@ -42,6 +42,12 @@
 }
 
 
+.todayclass input[type="date"] {
+    float: left;
+    margin-left: 5%;
+}
+
+
 .do-you-know-popup {
     position: fixed;
     width: 100%;
@@ -113,29 +119,45 @@
 }
 
 .contents-list-style {
-    margin-top: 22px;
+    margin-top: 60px;
     width: 95%;
+}
+
+.content-item0 {
+    margin-right: 13px;
+    line-height: 2;
+    color: #666;
+    font-size: 15px;
+    vertical-align: top;
 }
 
 .content-item1 {
     margin-right: 15px;
-    line-height: 2;
+    font-size: 17px;
 }
 
 .content-item2 {
     margin-right: 15px;
-    font-size: 15px;
+    font-size: 13px;
+    color: gray;
+    vertical-align: top;
+}
+
+.content-item3 {
+
+    margin-right: 15px;
+    font-size: 12px;
 }
 
 .content-icon-true {
     margin-right: 6px;
-    font-size: 13px;
+    font-size: 12px;
     color: red;
 }
 
 .content-icon-false {
     margin-right: 6px;
-    font-size: 13px;
+    font-size: 12px;
     color: black;
 }
 
@@ -146,4 +168,16 @@
     line-height: 31px;
     font-size: 16px;
     padding-bottom: 24px;
+}
+
+
+.tagclass {
+    background: #eaeaea;
+    box-sizing: border-box;
+    width: 200px;
+    text-align: center;
+    border-radius: 9px;
+    font-size: 11px;
+    margin-top: 5px;
+    
 }

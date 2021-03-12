@@ -84,7 +84,7 @@ class TodayContents extends Component {
     render() {
         return (
             <div>
-                <span className="content-item1">
+                <span className="content-item0">
                     {this.props.item.id}
                 </span>
                 <span className="content-item1">
@@ -94,14 +94,14 @@ class TodayContents extends Component {
                     {this.props.item.registerDate}
                 </span>
                 {this.props.viewFlag &&
-                <span>
+                <div className="tagclass">
                     <span className={"content-icon-" + this.state.likesFlag}>좋아</span>
-                    <span className="content-item1" onClick={this.likeOnClick}>{this.props.item.likes}</span>
+                    <span className="content-item3" onClick={this.likeOnClick}>{this.props.item.likes}</span>
                     <span className={"content-icon-" + this.state.dislikesFlag}>싫어</span>
-                    <span className="content-item1" onClick={this.dislikeOnClick}>{this.props.item.dislikes}</span>
+                    <span className="content-item3" onClick={this.dislikeOnClick}>{this.props.item.dislikes}</span>
                     <span className={"content-icon-" + this.state.reportsFlag}>신고</span>
-                    <span className="content-item1" onClick={this.reportsOnClick}>{this.props.item.reports}</span>
-                </span>
+                    <span className="content-item3" onClick={this.reportsOnClick}>{this.props.item.reports}</span>
+                </div>
                 }
             </div>
         );
