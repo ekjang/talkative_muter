@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import {Route, Switch} from "react-router-dom";
 import SummaryComponent from "./SummaryComponent";
-import LoginComponent from "../user/LoginComponent";
-import LogoutComponent from "../user/LogoutComponent";
+import LogoutComponent from "../login/LogoutComponent";
 import CompanyAuthComponent from "../auth/CompanyAuthComponent";
 import PopularComponent from "../popular/PopularComponent";
 import TodayComponent from "../today/TodayComponent";
-import JoinComponent from "../user/JoinComponent";
+import JoinComponent from "../login/JoinComponent";
 import GymUseInfoComponent from "../info/GymUseInfoComponent";
+import LoginComponent from "../login/LoginComponent";
 
 /**
  * 라우터 정의

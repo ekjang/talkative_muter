@@ -3,7 +3,6 @@ import "./MainStyle.css"
 import axios from "axios";
 import server_url from "../define/Url";
 import TodayContents from "../today/TodayContents";
-import BottomTextComponent from "./BottomTextComponent";
 import {Link} from "react-router-dom";
 
 /**

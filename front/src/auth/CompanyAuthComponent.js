@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import {withRouter} from "react-router-dom";
 import server_url from "../define/Url"
-import "../user/UserStyle.css"
+import "../login/UserStyle.css"
 import "./AuthStyle.css"
 import NickNameComponent from "./NickNameComponent";
 

@@ -21,9 +21,6 @@ class NickNameComponent extends Component {
                 ////////////////////////test
                 if(localStorage.getItem('nickName') !== null) {
                     response = true
-                    console.log("not null?")
-                } else {
-                    console.log("null?" + this.props.isAuthentication)
                 }
 
                 this.props.nickNameSetting(this.state.nickName, this.props.isAuthentication || response)
