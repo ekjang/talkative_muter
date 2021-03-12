@@ -31,7 +31,6 @@ class KakaoSignUp extends Component {
      * @param res
      */
     responseKakao = (res) => {
-        console.log(res)
         //has_age_range
         //has_gender
         this.setState({
@@ -60,7 +59,6 @@ class KakaoSignUp extends Component {
      * 카카오 로그인 성공 시 토큰 및 정보 서버 요청 API
      */
     userInfoPostApi = () => {
-        console.log(this.state.accessToken)
         axios.post(server_url + "/oauth/login",
             {id: this.state.id
                 , ageRange: this.state.ageRange
