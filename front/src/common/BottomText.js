@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class BottomTextComponent extends Component {
+class BottomText extends Component {
     render() {
         return (
             <div className="bottom">
@@ -11,4 +11,4 @@ class BottomTextComponent extends Component {
         );
     }
 }
-export default BottomTextComponent;
+export default BottomText;

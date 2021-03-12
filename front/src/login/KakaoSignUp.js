@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import KaKaoLogin from "react-kakao-login";
-import styled from 'styled-components';
 import KakaoLogin from "react-kakao-login";
 import axios from "axios";
 import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
 
+/**
+ * 카카오 로그인 컴퍼넌트
+ */
 class KakaoSignUp extends Component {
 
     constructor(props) {
@@ -20,12 +21,15 @@ class KakaoSignUp extends Component {
             expiresIn: '', //sec
             refreshToken: '',
             refreshTokenExpiresIn: '',
-            isCompanyAuth: '',
+            isAuth: false,
             authCheckDate: '',
         }
     }
 
-    // Kakao Login
+    /**
+     * 카카오 로그인 성공 시
+     * @param res
+     */
     responseKakao = (res) => {
         console.log(res)
         //has_age_range
@@ -44,11 +48,17 @@ class KakaoSignUp extends Component {
         this.userInfoPostApi()
     }
 
+    /**
+     * 카카오 로그인 실패 시
+     * @param err
+     */
     responseFail = (err) => {
         alert(err)
     }
 
-    /////////kakao user info
+    /**
+     * 카카오 로그인 성공 시 토큰 및 정보 서버 요청 API
+     */
     userInfoPostApi = () => {
         console.log(this.state.accessToken)
         axios.post(server_url + "/oauth/login",
@@ -60,16 +70,16 @@ class KakaoSignUp extends Component {
             }
             )
             .then(res => {
-                //서버에서 생성한 인증코드 받기
+                //회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
                 // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
 
                 //test data
-                let testAuth = false
+                let isAuth = false
                 let testData = "2021-04-10"
                 // let testAuth = true
                 // let testData = "2021-03-10"
-                this.setState({isCompanyAuth: testAuth, authCheckDate: testData})
-                this.props.companyAuthCheck(testAuth)
+                this.setState({isAuth: isAuth, authCheckDate: testData})
+                this.props.loginCheck(isAuth)
                 console.log(res)
             })
             .catch(res => console.log(res))
@@ -92,23 +102,4 @@ class KakaoSignUp extends Component {
         );
     }
 }
-
-const KaKaoBtn = styled(KaKaoLogin)`
-    padding: 0;
-    width: 190px;
-    height: 44px;
-    line-height: 44px;
-    color: #783c00;
-    background-color: #FFEB00;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    &:hover{
-        box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2)
-    }
-`
-
 export default withRouter(KakaoSignUp);

@@ -21,15 +21,25 @@ class DoYouKnowPopup extends Component {
         this.setState({isSuccess: false})
     }
 
+    /**
+     * 입력 동작
+     * @param e
+     */
     inputHandler = (e) => {
         this.setState({content: e.target.value})
     }
 
+    /**
+     * 확인 버튼 클릭
+     */
     btnOkOnClick = () => {
         this.postApi()
         this.props.doYouKnowPopup()
     }
 
+    /**
+     * 입력 글 등록 서버 요청 API
+     */
     postApi = () => {
         axios.post(server_url + "/today/content", {content: this.state.content})
             .then(res => {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class NickNameComponent extends Component {
+class NickName extends Component {
 
     state = {
         nickName: this.props.nickName,
@@ -63,4 +63,4 @@ class NickNameComponent extends Component {
         );
     }
 }
-export default NickNameComponent;
+export default NickName;

@@ -7,11 +7,11 @@ import './MenuStyle.css'
  * 메뉴 컴퍼넌트
  * - 슬라이드 액션 정의
  */
-class MenuComponent extends Component {
+class MenuMain extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false,
+            isOpen: false, //슬라이드 메뉴 열림 여부
         };
         this.menuToggle = this.menuToggle.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -32,13 +32,13 @@ class MenuComponent extends Component {
         }
     }
 
-    //슬라이드 메뉴
+    //슬라이드 메뉴 동작
     menuToggle = (e) => {
         e.stopPropagation();
         this.setState({isOpen: !this.state.isOpen});
     }
 
-    //메인화면으로
+    //타이틀 클릭 동작, 메인화면으로
     titleOnClick = () => {
         this.props.history.push("/")
     }
@@ -56,17 +56,15 @@ class MenuComponent extends Component {
                         <span></span>
                         <span></span>
                     </div>
-                    <div className="main-title" onClick={this.titleOnClick}>
-                        {/*<span onClick={this.titleOnClick}>{this.props.title}</span>*/}
-                    </div>
+                    <div className="main-title" onClick={this.titleOnClick} />
                 </div>
                 <MenuLink
                     menuStatus={menuStatus}
+                    isAuth={this.props.isAuth}
                     nickName={this.props.nickName}
-                    isAuthentication={this.props.isAuthentication}
                 />
             </div>
         );
     }
 }
-export default withRouter(MenuComponent);
+export default withRouter(MenuMain);

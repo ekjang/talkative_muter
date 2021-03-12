@@ -4,41 +4,45 @@ import {withRouter} from "react-router-dom";
 import server_url from "../define/Url"
 import "../login/UserStyle.css"
 import "./AuthStyle.css"
-import NickNameComponent from "./NickNameComponent";
+import NickName from "./NickName";
 
 /**
  * 회사메일 인증코드 전송 화면
  */
-class CompanyAuthComponent extends Component {
+class MailAuth extends Component {
 
     state = {
-        companyId: '',
-        mailPath: '@datastreams.co.kr',
-        authCode: 'Abc123!', /////test :Abc123!
-        inputAuthCode: '',
-        isAuthentication: false,
-        nickNamePopup: false, //popup 여부
-        nickName: ''
+        companyId: '', //회사 메일 계정
+        mailPath: '@datastreams.co.kr', //고정 값
+        authCode: 'Abc123!', //생성된 인증코드 (Abc123! 은 테스트 값)
+        inputAuthCode: '', //입력 인증코드
+        isAuth: false,
+        nickNamePopup: false, //별명 설정 팝업 여부
+        nickName: '' //별명
     }
 
+    /**
+     * 회사 메일 계정 입력 동작
+     * @param e
+     */
     inputHandler = (e) => {
         this.setState({companyId: e.target.value})
     }
 
-    //취소 버튼 클릭
-    btnNoOnClick = () => {
-        localStorage.clear()
-        //닉네임 삭제 서버 요청
-        //axios.delete
-        this.props.history.push("/")
-    }
-
+    /**
+     * 별명 설정 팝업 화면 동작
+     */
     nickNamePopup = () => {
         this.setState({nickNamePopup: !this.state.nickNamePopup})
     }
 
-    nickNameSetting = (nickName, isAuthentication) => {
-        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup, isAuthentication: isAuthentication})
+    /**
+     * 별명 설정
+     * @param nickName
+     * @param isAuth
+     */
+    nickNameSetting = (nickName, isAuth) => {
+        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup, isAuth: isAuth})
         if(nickName !== undefined) {
             localStorage.setItem('nickName', JSON.stringify(nickName))
             //닉네임 서버 저장 요청
@@ -46,7 +50,9 @@ class CompanyAuthComponent extends Component {
         }
     }
 
-    //메일 인증코드 전송
+    /**
+     * 메일 인증코드 발송 서버 요청 API
+     */
     transfer = () => {
         if(this.state.companyId === '') {
             alert("아이디를 입력하세요.")
@@ -66,28 +72,43 @@ class CompanyAuthComponent extends Component {
         }
     }
 
-    //인증코드 체크
+    /**
+     * 인증코드 체크 함수
+     * @param e
+     */
     authCodeCheck = (e) => {
         this.setState({inputAuthCode: e.target.value})
         if(this.state.authCode === e.target.value) {
-            this.setState({isAuthentication: true, nickNamePopup: true})
-            localStorage.setItem('isAuthentication', JSON.stringify(true))
+            this.setState({isAuth: true, nickNamePopup: true})
+            localStorage.setItem('isAuth', JSON.stringify(true))
         } else {
-            this.setState({isAuthentication: false})
+            this.setState({isAuth: false})
         }
     }
 
-    //인증 후 홈 화면으로
+    /**
+     * 홈 화면으로
+     */
     goToMain = () => {
-        if(!this.state.isAuthentication) {
+        if(!this.state.isAuth) {
             alert("인증되지 않았습니다.")
         } else if(this.state.nickName.length == 0) {
             alert("별명이 설정되지 않았습니다.")
         } else {
-            /////인증코드 체크를 위한 닉네임 등록 요청 서버 전송
-            this.props.companyAuthCheck(true)
+            this.props.loginCheck(this.state.isAuth, this.state.nickName)
             this.props.history.push("/")
         }
+    }
+
+    /**
+     * 취소 버튼 클릭 동작
+     */
+    btnNoOnClick = () => {
+        localStorage.clear()
+        //닉네임 삭제 서버 요청 ???
+        //axios.delete
+        //홈 화면으로
+        this.props.history.push("/")
     }
 
 
@@ -98,21 +119,30 @@ class CompanyAuthComponent extends Component {
                     회사메일 인증
                 </div>
                 <div className="authenmail">
-                    <input type="text" ref={(ref) => {this.refCompanyId = ref;}} value={this.state.companyId} onChange={this.inputHandler}/>{this.state.mailPath}
+                    <input type="text"
+                           ref={(ref) => {this.refCompanyId = ref;}}
+                           value={this.state.companyId}
+                           onChange={this.inputHandler}/>{this.state.mailPath}
                 </div>
-                <div><button onClick={this.transfer} style={{marginTop:"15px",width:"80%", height:"31px", background: "lightskyblue", color: "#fff", border: "1px solid lightskyblue", borderRadius: "6px", fontWeight:"600"}}>전송</button>
+                <div>
+                    <button onClick={this.transfer}
+                        style={{marginTop:"15px",width:"80%", height:"31px", background: "lightskyblue", color: "#fff", border: "1px solid lightskyblue", borderRadius: "6px", fontWeight:"600"}}>
+                        전송
+                    </button>
                 </div>
                 <div className="user-package-title2">
                     인증코드 입력
                 </div>
                 <div className="authenmail2">
-                    <input type="text" ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode} onChange={this.authCodeCheck}/>
-                    {this.state.inputAuthCode !== '' && this.state.isAuthentication &&
+                    <input type="text"
+                           ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode}
+                           onChange={this.authCodeCheck}/>
+                    {this.state.inputAuthCode !== '' && this.state.isAuth &&
                     <div className="auth-true">
                         인증 되었습니다.
                     </div>
                     }
-                    {this.state.inputAuthCode !== '' && !this.state.isAuthentication &&
+                    {this.state.inputAuthCode !== '' && !this.state.isAuth &&
                     <div className="auth-false">
                         인증코드가 일치하지 않습니다.
                     </div>
@@ -129,7 +159,7 @@ class CompanyAuthComponent extends Component {
                             &nbsp; 하기
                         </span>
                         <div className="nickname-tip">
-                           인증 여부 확인을 위한 별명입니다. 매 인증 시 새로운 별명을 만들 수 있습니다.
+                           인증 여부 확인을 위한 별명입니다.
                         </div>
                     </div>
                     {this.state.nickName.length > 0 &&
@@ -139,8 +169,8 @@ class CompanyAuthComponent extends Component {
                     }
                     {this.state.nickNamePopup &&
                     <div>
-                        <NickNameComponent
-                            isAuthentication={this.state.isAuthentication}
+                        <NickName
+                            isAuth={this.state.isAuth}
                             nickName={this.state.nickName}
                             nickNamePopup={this.nickNamePopup}
                             nickNameSetting={this.nickNameSetting}
@@ -150,17 +180,19 @@ class CompanyAuthComponent extends Component {
                 </div>
 
                 <div>
-                    <button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}onClick={this.goToMain}>확인</button>
+                    <button style={{marginTop:"28px", width:"80%", height:"31px", background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}
+                            onClick={this.goToMain}>
+                        확인
+                    </button>
                 </div>
                 <div>
-                    <button onClick={this.transfer} style={{marginTop:"11px", width:"80%", height:"31px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}} onClick={this.btnNoOnClick}>취소</button>
+                    <button style={{marginTop:"11px", width:"80%", height:"31px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}
+                            onClick={this.btnNoOnClick}>
+                        취소
+                    </button>
                 </div>
-
             </div>
-            
-           
         );
     }
 }
-
-export default withRouter(CompanyAuthComponent);
+export default withRouter(MailAuth);

@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
 import {withRouter} from "react-router-dom";
 
-class LogoutComponent extends Component {
+/**
+ * 로그아웃
+ */
+class Logout extends Component {
 
     componentDidMount() {
         this.kakaoLogout()
     }
 
+    /**
+     * 로그아웃 성공 시 로컬 스토리지 비우기, 홈 화면으로
+     */
     logoutHandler = () => {
-        this.props.companyAuthCheck(false)
+        this.props.loginCheck(false, '')
         localStorage.clear()
         //닉네임 삭제 서버 요청
         //axios.delete
         this.props.history.push("/")
     }
 
+    /**
+     * 카카오 로그아웃
+     */
     kakaoLogout = () => {
+        //CORS 문제로 인해 spring server에서 REST Api로 요청 필요
         //https://kauth.kakao.com/oauth/logout?client_id=fee0816dc12ca183996bd87acd042e2a&logout_redirect_uri=http://localhost:3001/oauth/sign-out
         window.Kakao.init("397d5b756b740a3e9f87b34697438206")
         window.Kakao.isInitialized();
@@ -39,8 +49,9 @@ class LogoutComponent extends Component {
     render() {
         return (
             <div>
+
             </div>
         );
     }
 }
-export default withRouter(LogoutComponent);
+export default withRouter(Logout);

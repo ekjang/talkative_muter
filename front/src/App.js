@@ -1,5 +1,5 @@
 import './App.css';
-import MainComponent from "./main/MainComponent";
+import HomeComponent from "./home/HomeComponent";
 
 
 
@@ -7,7 +7,7 @@ import MainComponent from "./main/MainComponent";
 function App() {
   return (
     <div className="App">
-      <MainComponent />
+      <HomeComponent />
     </div>
   );
 }

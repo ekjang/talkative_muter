@@ -4,10 +4,17 @@ import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
 import "./GymStyle.css";
 
-class GymUseInfoContents extends Component {
-    //사용 / 미사용 동작
+/**
+ * 헬스장 이용정보 아아템 컴퍼넌트
+ */
+class GymInfoItem extends Component {
+
+    /**
+     * 사용여부 동작
+     * 상태 갱신 서버 요청 API
+     */
     useOnClick = () => {
-        if(!this.props.isAuthentication) {
+        if(!this.props.isAuth) {
             alert("로그인 후 사용해주세요.")
             this.props.history.push("/login")
         } else {
@@ -56,4 +63,4 @@ class GymUseInfoContents extends Component {
         );
     }
 }
-export default withRouter(GymUseInfoContents);
+export default withRouter(GymInfoItem);

@@ -4,46 +4,58 @@ import "./TodayStyle.css"
 import {withRouter} from "react-router-dom";
 import DoYouKnowPopup from "./DoYouKnowPopup";
 import server_url from "../define/Url"
-import TodayContents from "./TodayContents";
+import TodayItem from "./TodayItem";
 
 /**
- *  벙어리 컴퍼넌트
+ *  오늘 벙어리 화면
  */
-class TodayComponent extends Component {
+class TodayMain extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            today: this.props.today,
-            list: [],
-            doYouKnow: false, //popup 여부
+            today: this.props.today, //오늘 날짜
+            list: [], //조회 결과 리스트
+            isPopup: false, //너그거아니 팝업 여부
             isSuccess: false, //response 성공 여부
-            viewFlag: 1
         }
     }
 
     componentDidMount() {
-        if(!this.props.isAuthentication) {
+        if(!this.props.isAuth) {
             alert("로그인 후 사용해주세요.")
+            //로그인 페이지로
             this.props.history.push("/login")
         }
         this.setState({today: this.props.today})
         this.searchOnClick()
     }
 
+    /**
+     * 팝업 동작 여부
+     **/
     doYouKnowPopup = () => {
-        this.setState({doYouKnow: !this.state.doYouKnow})
+        this.setState({isPopup: !this.state.isPopup})
     }
 
+    /**
+     * 날짜 변경 동작
+     */
     inputDateHandler = (e) => {
         this.setState({today: e.target.value})
         this.searchOnClick(e.target.value)
     }
 
+    /**
+     * 검색어 입력 동작
+     */
     inputContentHandler = (e) => {
         this.setState({schContent: e.target.value})
     }
 
+    /**
+     * 오늘 벙어리 조회 서버 요청 API
+     */
     searchOnClick = (date) => {
         let searchDate = ''
         let {today} = this.state
@@ -67,6 +79,9 @@ class TodayComponent extends Component {
         this.listSort()
     }
 
+    /**
+     * id 내림차순 정렬 함수
+     */
     listSort = () => {
         this.setState({list: this.state.list.sort((a, b) => {
             //id 내림차순으로 정렬
@@ -88,7 +103,7 @@ class TodayComponent extends Component {
                     <button className="button-wide1" onClick={this.doYouKnowPopup}> 너 그거 아니?</button>
                 </div>
                 <div>
-                    {this.state.doYouKnow &&
+                    {this.state.isPopup &&
                     <div>
                         <DoYouKnowPopup
                             doYouKnowPopup={this.doYouKnowPopup}
@@ -105,12 +120,11 @@ class TodayComponent extends Component {
                 <div className="contents-list-style">
                     <div className="newlist">
                     {this.state.list.map((item, idx) =>
-                    <TodayContents
+                    <TodayItem
                         item={item}
                         key={idx}
                         searchOnClick={this.searchOnClick}
                         today={this.state.today}
-                        viewFlag={this.state.viewFlag}
                     />
                     )}
                     </div>
@@ -119,4 +133,4 @@ class TodayComponent extends Component {
         );
     }
 }
-export default withRouter(TodayComponent);
+export default withRouter(TodayMain);

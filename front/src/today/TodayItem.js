@@ -6,7 +6,7 @@ import server_url from "../define/Url";
 /**
  * 오늘 벙어리 한 줄 컴퍼넌트
  */
-class TodayContents extends Component {
+class TodayItem extends Component {
     state = {
         likesFlag: false,
         dislikesFlag: false,
@@ -16,6 +16,9 @@ class TodayContents extends Component {
         this.localStorageGetData()
     }
 
+    /**
+     * 로컬 스토리지 클릭 정보 가져오기
+     */
     localStorageGetData = () => {
         let like = localStorage.getItem('likesFlag_'+this.props.item.id)
         let dislike = localStorage.getItem('dislikesFlag_'+this.props.item.id)
@@ -27,6 +30,10 @@ class TodayContents extends Component {
         })
     }
 
+    /**
+     * 좋아 클릭 정보 동작
+     * @param e
+     */
     likeOnClick = (e) => {
         e.preventDefault()
         let plus = !this.state.likesFlag
@@ -45,6 +52,10 @@ class TodayContents extends Component {
             .catch(res => console.log(res))
     }
 
+    /**
+     * 싫어 클릭 정보 동작
+     * @param e
+     */
     dislikeOnClick = (e) => {
         e.preventDefault()
         let plus = !this.state.dislikesFlag
@@ -63,6 +74,10 @@ class TodayContents extends Component {
             .catch(res => console.log(res))
     }
 
+    /**
+     * 신고 클릭 정보 동작
+     * @param e
+     */
     reportsOnClick = (e) => {
         e.preventDefault()
         let plus = !this.state.reportsFlag
@@ -93,7 +108,6 @@ class TodayContents extends Component {
                 <span className="content-item2" dataformatas="YYYY-MM-DD HH:mm:ss">
                     {this.props.item.registerDate}
                 </span>
-                {this.props.viewFlag &&
                 <span className="tagclass">
                     <span className={"content-icon-" + this.state.likesFlag}>좋아</span>
                     <span className="content-item3" onClick={this.likeOnClick}>{this.props.item.likes}</span>
@@ -102,10 +116,8 @@ class TodayContents extends Component {
                     <span className={"content-icon-" + this.state.reportsFlag}>신고</span>
                     <span className="content-item3" onClick={this.reportsOnClick}>{this.props.item.reports}</span>
                 </span>
-                }
             </div>
         );
     }
 }
-
-export default TodayContents
+export default TodayItem
