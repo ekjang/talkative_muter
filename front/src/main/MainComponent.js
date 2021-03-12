@@ -16,16 +16,18 @@ class MainComponent extends Component {
         // isMember: false, //로그인 여부
         // token: false, //유저 정보
         isAuthentication: false, //회사 인증 여부
+        nickName: ''
     }
 
     componentDidMount() {
         let date = new Date().toISOString().substr(0, 10)
         this.setState({isAuthentication: localStorage.getItem('isAuthentication')
+            , nickName: localStorage.getItem('nickName')
             , today: date})
     }
 
     companyAuthCheck = (isAuthentication) => {
-        this.setState({isAuthentication: isAuthentication})
+        this.setState({isAuthentication: isAuthentication, nickName: localStorage.getItem('nickName')})
         localStorage.setItem('isAuthentication', JSON.stringify(isAuthentication))
     }
 
@@ -37,6 +39,7 @@ class MainComponent extends Component {
                     <MenuComponent
                         /* title="말.많.벙" */
                         today={this.state.today}
+                        nickName={this.state.nickName}
                         isAuthentication={this.state.isAuthentication}
                     />
 

@@ -77,17 +77,6 @@ class CompanyAuthComponent extends Component {
         }
     }
 
-    //회원가입 화면으로
-    goToJoin = () => {
-        if(!this.state.isAuthentication) {
-            alert("인증되지 않았습니다.")
-        } else {
-            //인증코드 체크 후 성공 시 회원가입 화면으로
-            this.props.companyAuthCheck(true)
-            this.props.history.push("/join")
-        }
-    }
-
     //인증 후 홈 화면으로
     goToMain = () => {
         if(!this.state.isAuthentication) {
@@ -95,7 +84,6 @@ class CompanyAuthComponent extends Component {
         } else if(this.state.nickName.length == 0) {
             alert("별명이 설정되지 않았습니다.")
         } else {
-            alert("등록한 별명으로 하루동안 접속 가능합니다.")
             /////인증코드 체크를 위한 닉네임 등록 요청 서버 전송
             this.props.companyAuthCheck(true)
             this.props.history.push("/")
@@ -161,9 +149,11 @@ class CompanyAuthComponent extends Component {
                     }
                 </div>
 
-                <div><button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}onClick={this.goToMain}>확인</button>{/*<button className="button-wide-style" onClick={this.goToJoin}>회원가입</button>*/}
+                <div>
+                    <button onClick={this.transfer} style={{marginTop:"28px", width:"80%", height:"31px", background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}}onClick={this.goToMain}>확인</button>
                 </div>
-                <div><button onClick={this.transfer} style={{marginTop:"11px", width:"80%", height:"31px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}} onClick={this.btnNoOnClick}>취소</button>
+                <div>
+                    <button onClick={this.transfer} style={{marginTop:"11px", width:"80%", height:"31px",  background: "#3284fb", color: "#fff", border: "1px solid #3284fb", borderRadius: "6px"}} onClick={this.btnNoOnClick}>취소</button>
                 </div>
 
             </div>

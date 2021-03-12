@@ -20,6 +20,8 @@ class KakaoSignUp extends Component {
             expiresIn: '', //sec
             refreshToken: '',
             refreshTokenExpiresIn: '',
+            isCompanyAuth: '',
+            authCheckDate: '',
         }
     }
 
@@ -59,8 +61,15 @@ class KakaoSignUp extends Component {
             )
             .then(res => {
                 //서버에서 생성한 인증코드 받기
-                this.props.companyAuthCheck(true)
-                this.props.history.push("/")
+                // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
+
+                //test data
+                let testAuth = false
+                let testData = "2021-04-10"
+                // let testAuth = true
+                // let testData = "2021-03-10"
+                this.setState({isCompanyAuth: testAuth, authCheckDate: testData})
+                this.props.companyAuthCheck(testAuth)
                 console.log(res)
             })
             .catch(res => console.log(res))

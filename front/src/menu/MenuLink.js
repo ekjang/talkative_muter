@@ -12,8 +12,8 @@ class MenuLink extends Component {
 
         return (
             <div className={this.props.menuStatus} id="menu">
-                {/*{this.props.isAuthentication &&*/}
-                {/*<span className="text-style">{this.props.nickName}</span>}*/}
+                {this.props.isAuthentication &&
+                <span className="text-style">{this.props.nickName}</span>}
                 <div id="auth-icon-style">
                     <p id="auth-icon-style-p"><span id="auth-icon-style-span" onClick={() => {this.props.history.push("/" + authIcon)}}>
                         {this.props.isAuthentication ? "나가기" : "로그인"}
