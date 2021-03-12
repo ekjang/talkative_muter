@@ -34,9 +34,12 @@ class NickNameComponent extends Component {
 
     btnNoOnClick = () => {
         if (this.state.nickName.length < 1) {
-            if (window.confirm("닉네임을 설정하지 않으면 인증처리가 되지 않습니다. 설정하시겠습니까?")) {
+            if (window.confirm("닉네임을 설정하지 않으면 인증처리가 완료되지 않습니다. 설정하시겠습니까?")) {
                 return
             }
+        } else {
+            this.props.nickNameSetting(this.props.nickName, this.props.isAuthentication)
+            return
         }
         this.props.nickNameSetting(this.state.nickName, this.state.isAuthentication)
     }
