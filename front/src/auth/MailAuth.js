@@ -5,6 +5,7 @@ import server_url from "../define/Url"
 import "../login/UserStyle.css"
 import "./AuthStyle.css"
 import NickName from "./NickName";
+import AuthTimer from "./AuthTimer";
 
 /**
  * 회사메일 인증코드 전송 화면
@@ -16,6 +17,7 @@ class MailAuth extends Component {
         mailPath: '@datastreams.co.kr', //고정 값
         authCode: 'Abc123!', //생성된 인증코드 (Abc123! 은 테스트 값)
         inputAuthCode: '', //입력 인증코드
+        timerOn: false,
         isAuth: false,
         nickNamePopup: false, //별명 설정 팝업 여부
         nickName: '' //별명
@@ -64,12 +66,21 @@ class MailAuth extends Component {
                     .then(res => {
                         alert("인증번호가 전송되었습니다.")
                         //서버에서 생성한 인증코드 받기
-                        this.setState({authCode: res.data.key})
+                        this.setState({timerOn: true, authCode: res.data.key})
                     })
                 .catch(res => console.log(res)) &&
                 this.refAuthCode.focus()
                 : this.refCompanyId.focus();
         }
+    }
+
+    /**
+     * 인증번호 유효시간 초과 동작 함수
+     * @param timerOn
+     */
+    timerReset = () => {
+        alert("인증번호 입력 유효시간이 초과되었습니다. 인증번호를 다시 발급 받으세요.")
+        this.setState({timerOn: false, authCode: ''})
     }
 
     /**
@@ -137,6 +148,11 @@ class MailAuth extends Component {
                     <input type="text"
                            ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode}
                            onChange={this.authCodeCheck}/>
+                    {
+                        this.state.timerOn &&
+                        <AuthTimer
+                        />
+                    }
                     {this.state.inputAuthCode !== '' && this.state.isAuth &&
                     <div className="auth-true">
                         인증 되었습니다.
