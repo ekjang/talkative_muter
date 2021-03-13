@@ -27,8 +27,10 @@ class Logout extends Component {
     kakaoLogout = () => {
         //CORS 문제로 인해 spring server에서 REST Api로 요청 필요
         //https://kauth.kakao.com/oauth/logout?client_id=fee0816dc12ca183996bd87acd042e2a&logout_redirect_uri=http://localhost:3001/oauth/sign-out
-        window.Kakao.init("397d5b756b740a3e9f87b34697438206")
-        window.Kakao.isInitialized();
+
+        //!!! 여기 에러나서 확인해야됨.
+        // window.Kakao.init("397d5b756b740a3e9f87b34697438206")
+        // window.Kakao.isInitialized();
 
         console.log(window.Kakao.Auth.getAccessToken())
         if(!window.Kakao.Auth.getAccessToken()) {

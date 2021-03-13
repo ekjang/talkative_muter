@@ -59,28 +59,32 @@ class KakaoSignUp extends Component {
      * 카카오 로그인 성공 시 토큰 및 정보 서버 요청 API
      */
     userInfoPostApi = () => {
-        axios.post(server_url + "/oauth/login",
-            {id: this.state.id
-                , ageRange: this.state.ageRange
-                , gender: this.state.gender
-                , accessToken: this.state.accessToken
-                , refreshToken: this.state.refreshToken
-            }
-            )
-            .then(res => {
-                //회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
-                // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
+        //test data
+        let isAuth = false
+        let testData = "2021-04-10"
+        this.setState({isAuth: isAuth, authCheckDate: testData})
+        this.props.loginCheck(isAuth)
 
-                //test data
-                let isAuth = false
-                let testData = "2021-04-10"
-                // let testAuth = true
-                // let testData = "2021-03-10"
-                this.setState({isAuth: isAuth, authCheckDate: testData})
-                this.props.loginCheck(isAuth)
-                console.log(res)
-            })
-            .catch(res => console.log(res))
+        //!!!현재 서버 구현 안됨.
+        // axios.post(server_url + "/oauth/login",
+        //     {id: this.state.id
+        //         , ageRange: this.state.ageRange
+        //         , gender: this.state.gender
+        //         , accessToken: this.state.accessToken
+        //         , refreshToken: this.state.refreshToken
+        //     }
+        //     )
+        //     .then(res => {
+        //         //회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
+        //         // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
+        //
+        //         //test data
+        //         let isAuth = false
+        //         let testData = "2021-04-10"
+        //         this.setState({isAuth: isAuth, authCheckDate: testData})
+        //         this.props.loginCheck(isAuth)
+        //     })
+        //     .catch(res => console.log(res))
     }
 
     render() {

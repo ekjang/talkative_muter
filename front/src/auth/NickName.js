@@ -4,7 +4,7 @@ class NickName extends Component {
 
     state = {
         nickName: this.props.nickName,
-        isAuthentication: this.props.isAuthentication
+        isAuth: this.props.isAuth
     }
 
     inputHandler = (e) => {
@@ -16,14 +16,14 @@ class NickName extends Component {
         if(this.state.nickName.length > 0) {
             if (window.confirm("[ " + this.state.nickName + " ] 로 설정하시겠습니까?")) {
                 //중복 닉네임 있는지 서버 요청 체크
-                //axios.get => return data : nickName, isAuthentication
+                //axios.get => return data : nickName, isAuth
                 let response = false
                 ////////////////////////test
                 if(localStorage.getItem('nickName') !== null) {
                     response = true
                 }
 
-                this.props.nickNameSetting(this.state.nickName, this.props.isAuthentication || response)
+                this.props.nickNameSetting(this.state.nickName, this.props.isAuth || response)
             } else {
                 return
             }
@@ -38,10 +38,10 @@ class NickName extends Component {
                 return
             }
         } else {
-            this.props.nickNameSetting(this.props.nickName, this.props.isAuthentication)
+            this.props.nickNameSetting(this.props.nickName, this.props.isAuth)
             return
         }
-        this.props.nickNameSetting(this.state.nickName, this.state.isAuthentication)
+        this.props.nickNameSetting(this.state.nickName, this.state.isAuth)
     }
 
     render() {

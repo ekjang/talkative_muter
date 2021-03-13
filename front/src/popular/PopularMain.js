@@ -80,7 +80,7 @@ class PopularMain extends Component {
                          <span className="popular-title"> 인기 벙어리 </span>
                 </div>
                 <div>
-                    {this.props.isAuthentication &&
+                    {this.props.isAuth &&
                     <div className="popcontent">
                         {/*<button className="popbtn" onClick={this.searchOnClick}>검색</button>*/}
                     </div>

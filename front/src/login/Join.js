@@ -10,7 +10,7 @@
 //     }
 //
 //     authCheck = () => {
-//         if(!this.props.isAuthentication) {
+//         if(!this.props.isAuth) {
 //             alert("회사메일 인증이 되지 않았습니다.")
 //             this.props.history.push("/mailAuth")
 //         }
