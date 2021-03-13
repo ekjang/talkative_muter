@@ -26,7 +26,13 @@ class DoYouKnowPopup extends Component {
      * @param e
      */
     inputHandler = (e) => {
-        this.setState({content: e.target.value})
+        let maxLen = 255
+        if(e.target.value.length > maxLen) {
+            e.target.value.substring(0, maxLen)
+            alert("255자 이내로 입력할 수 있습니다.")
+        } else {
+            this.setState({content: e.target.value})
+        }
     }
 
     /**
@@ -50,6 +56,7 @@ class DoYouKnowPopup extends Component {
     }
 
     render() {
+        console.log("!")
         return (
             <div className="do-you-know-popup">
                 <div className="do-you-know-popup-inner">
