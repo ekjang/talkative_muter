@@ -3,6 +3,7 @@ import axios from "axios";
 import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
 import "./GymStyle.css";
+import {NoticeGym} from "../notice/NoticeGym";
 
 /**
  * 헬스장 이용정보 아아템 컴퍼넌트
@@ -32,6 +33,7 @@ class GymInfoItem extends Component {
                 axios.put(server_url + "/gym-info/use/" + this.props.item.id, {use: use})
                     .then(res => {
                         console.log(res.data)
+                        NoticeGym()
                         this.props.searchOnClick()
                     })
                     .catch(res => console.log(res))

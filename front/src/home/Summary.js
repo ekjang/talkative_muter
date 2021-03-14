@@ -4,18 +4,22 @@ import "./MainStyle.css"
 import server_url from "../define/Url";
 import {Link} from "react-router-dom";
 import SummaryItem from "./SummaryItem";
+import {NoticeNew} from "../notice/NoticeNew";
 
 /**
  * 홈 메뉴
  */
 class Summary extends Component {
 
-    state = {
-        todayList: [], //오늘 벙어리 리스트
-        popularList: [], //인기 벙어리 리스트
-        newCount: 0, //새글 갯수
-        totalCount: 0, //오늘 전체 갯수
-        limit: 5 //리스트 제한 수
+    constructor(props) {
+        super(props)
+        this.state = {
+            todayList: [], //오늘 벙어리 리스트
+            popularList: [], //인기 벙어리 리스트
+            newCount: 0, //새글 갯수
+            totalCount: 0, //오늘 전체 갯수
+            limit: 5 //리스트 제한 수
+        }
     }
 
     componentDidMount() {
@@ -23,6 +27,12 @@ class Summary extends Component {
         this.todayCountGetApi() //오늘 등록된 글 갯수
         this.todayList() //오늘 벙어리 최근 5
         this.popularList() //인기 벙어리 Top 5
+        setInterval(async => {
+            this.newCountGetApi() //10분 간 등록된 글 갯수
+            if(this.state.newCount > 0) {
+                NoticeNew()
+            }
+        }, 60*60*1000)
     }
 
     /**

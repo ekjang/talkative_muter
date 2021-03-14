@@ -56,7 +56,6 @@ class DoYouKnowPopup extends Component {
     }
 
     render() {
-        console.log("!")
         return (
             <div className="do-you-know-popup">
                 <div className="do-you-know-popup-inner">

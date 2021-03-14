@@ -23,7 +23,8 @@ class GymInfoMain extends Component {
         axios.get(server_url + "/gym-info/list")
             .then(res => {
                 this.setState({
-                    list: this.listSort(res.data.data),
+                    // list: this.listSort(res.data.data),
+                    list: res.data.data,
                 });
             })
             .catch(res => console.log(res))
