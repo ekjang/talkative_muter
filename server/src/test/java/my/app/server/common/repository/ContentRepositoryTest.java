@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@Rollback(value = true)
+@Rollback(value = false)
 class ContentRepositoryTest {
     static {
         System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/mail.yml");
@@ -104,8 +104,7 @@ class ContentRepositoryTest {
     }
 
     @Test
-    @Disabled("인기 벙어리 긁어오는 쿼리 만들어야함")
-    public void popularTop5inOneWeek() {
+    public void popularTop5inOneDay() {
 
         List<Content> contents = new ArrayList<>();
         contents.add(new Content("popular test1", 10L));
@@ -119,10 +118,17 @@ class ContentRepositoryTest {
 
         contentRepository.saveAll(contents);
 
+        em.flush();
+        em.clear();
 
         LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now().minusDays(1L), LocalTime.of(0,0,0)); //어제 00:00:00
         LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59)); //오늘 23:59:59
 
+        List<Content> result = contentRepository.findTop5ByRegisterDateBetweenOrderByLikesDesc(startDatetime, endDatetime);
+
+        for (Content content : result) {
+            System.out.println("content.getRegisterDate() = " + content.getRegisterDate() + " content.getLikes() = " + content.getLikes());
+        }
 
     }
 
