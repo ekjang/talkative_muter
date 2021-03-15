@@ -20,7 +20,7 @@ class MailAuth extends Component {
         timerOn: false,
         isAuth: false,
         nickNamePopup: false, //별명 설정 팝업 여부
-        nickName: '' //별명
+        nickName: localStorage.getItem('nickName') //별명
     }
 
     /**

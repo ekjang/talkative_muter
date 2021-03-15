@@ -97,8 +97,8 @@ class KakaoSignUp extends Component {
                         onFail={this.responseFail}
                         getProfile={true}
                     />
-
-
+                    {/*<a href = "https://kauth.kakao.com/oauth/authorize?client_id=397d5b756b740a3e9f87b34697438206&redirect_uri=http://localhost:18090/muter/kakao/sign-in&response_type=code&scope">*/}
+                    {/*    테스트 </a>*/}
                 </div>
             </div>
         );

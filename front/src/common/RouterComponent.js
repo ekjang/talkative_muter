@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import {Route, Switch} from "react-router-dom";
 import Summary from "../home/Summary";
 import LogoutComponent from "../login/Logout";
-import CompanyAuthComponent from "../auth/MailAuth";
+import MailAuth from "../auth/MailAuth";
 import PopularMain from "../popular/PopularMain";
 import TodayComponent from "../today/TodayMain";
-// import JoinComponent from "../login/Join";
 import GymInfoMain from "../gym/GymInfoMain";
 import LoginComponent from "../login/Login";
 
@@ -45,7 +44,7 @@ class RouterComponent extends Component {
                     />
                     {/*메일 인증코드 발송 화면*/}
                     <Route exact path="/mailAuth"
-                           render={() => <CompanyAuthComponent
+                           render={() => <MailAuth
                                isAuth={this.props.isAuth}
                                loginCheck={this.props.loginCheck}
                            />
