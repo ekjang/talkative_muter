@@ -7,6 +7,7 @@ import PopularMain from "../popular/PopularMain";
 import TodayComponent from "../today/TodayMain";
 import GymInfoMain from "../gym/GymInfoMain";
 import LoginComponent from "../login/Login";
+import RandomGame from "../enjoy/random/RandomGame";
 
 /**
  * 라우터 정의
@@ -81,6 +82,12 @@ class RouterComponent extends Component {
                            />
                            }
                     />
+                    {/*오늘 누가 쏠레 화면*/}
+                    {/*<Route exact path="/randomGame"*/}
+                    {/*       render={() => <RandomGame*/}
+                    {/*       />*/}
+                    {/*       }*/}
+                    {/*/>*/}
                 </Switch>
             </div>
         );
