@@ -5,7 +5,6 @@ import server_url from "../define/Url";
 import {Link} from "react-router-dom";
 import SummaryItem from "./SummaryItem";
 import {NoticeNew} from "../notice/NoticeNew";
-import firebase from "firebase";
 
 /**
  * 홈 메뉴
