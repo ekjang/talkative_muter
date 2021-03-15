@@ -27,7 +27,6 @@ class TodayServiceTest {
     EntityManager em;
 
     @Test
-
     public void createContentTest() {
         Content content = new Content("create content test!!");
         Long contentId = todayService.createContent(content);
@@ -48,7 +47,6 @@ class TodayServiceTest {
         System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/mail.yml");
     }
     @Test
-    //@Disabled("insert 후 db 에 있는 값을 다시 entity로 불러오는 법을 알아야함 ")
     public void plusLikeTest() {
         Content testContent = new Content("create plus like test!!");
 
@@ -68,8 +66,6 @@ class TodayServiceTest {
         System.out.println("findContent.getLikes = " + contentAfter.getLikes());
 
         assertThat(content.getLikes()).isEqualTo(beforeLikes + 1);
-
-
     }
 
     @Test

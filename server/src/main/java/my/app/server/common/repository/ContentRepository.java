@@ -13,8 +13,8 @@ public interface ContentRepository extends JpaRepository<Content,Long> {
     List<Content> findAllByOrderByRegisterDateDesc();
     List<Content> findTop5ByOrderByRegisterDateDesc();
 
-
     List<Content> findAllByRegisterDateBetweenOrderByRegisterDateDesc(LocalDateTime start, LocalDateTime end);
+    List<Content> findTop5ByRegisterDateBetweenOrderByLikesDesc(LocalDateTime start, LocalDateTime end);
 
     Page<Content> findAll(Pageable pageable);
 }
