@@ -42,7 +42,7 @@ class PopularMain extends Component {
         } else {
             searchDate = date
         }
-        axios.get(server_url + "/today/list", //!!!! 여긴 변경해야함. popular 로
+        axios.get(server_url + "/popular/list",
             {params:
                     {
                         today: searchDate
