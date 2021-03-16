@@ -25,9 +25,9 @@ class Login extends Component {
 
     render() {
         return (
-            <div >
-                <div className="kakaologin">
-                    <div className="kakao"> 
+            <div className="kakao">
+                <div >
+                    <div className="kakaologin"> 
                 <KakaoSignUp
                     isAuth={this.props.isAuth}
                     loginCheck={this.loginCheck}

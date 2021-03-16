@@ -160,7 +160,11 @@ body {
 }
 
 
-.kakaologin{
+.kakao{
+    height: 500px;
+}
+
+/* .mutsymbol{
     background-image: url(../images/mutter_symbol.svg);
     width: 150px;
     height: 150px;
@@ -168,10 +172,10 @@ body {
     position: absolute;
     top: 104px;
     left: 119px;
-}
+} */
 
-.kakao{
-    margin-top: 178px;
+.kakaologin{
+    margin-top: 285px;
     position: absolute;
-    right: -29px;
+    left: 21%;
 }

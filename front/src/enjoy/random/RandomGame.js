@@ -65,16 +65,16 @@ class RandomGame extends Component {
     render() {
         return (
             <div className="randombox">
-                <div clasName="rantitle">
+                <div className="rantitle">
                     돌려돌려
                 </div>
-                <div>
-                    <div>
-                        <span>
+                <div className="raninbox">
+                    <div className="input01">
+                        <span className="topic">
                             주제
                         </span>
                         <span>
-                            <input text="text" value={this.state.subject} onChange={this.inputSubjectHandler} />
+                            <input type="text" value={this.state.subject} onChange={this.inputSubjectHandler} />
                         </span>
                     </div>
                     {this.state.winning !== '' &&
@@ -86,16 +86,17 @@ class RandomGame extends Component {
                     }
                 </div>
                 <div>
-                    <div>
+                    <div className="redol">
                         <span>
                             후보
                         </span>
                         <span>
-                            <button onClick={this.startHandler}>돌려</button>
+                        &nbsp;&nbsp;  <button onClick={this.startHandler}> 돌려</button>
                         </span>
                         <span>
-                            <button onClick={this.restartHandler}>다시</button>
+                        &nbsp;&nbsp;  <button onClick={this.restartHandler}>다시</button>
                         </span>
+                        <div className="input02">
                         {this.state.list.map((item, idx) =>
                             <RandomGameItem
                                 item={item}
@@ -107,6 +108,7 @@ class RandomGame extends Component {
                                 removeItem={this.removeItem}
                             />
                         )}
+                        </div>
                     </div>
                     <div>
 

@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700&display=swap&subset=korean');
 
-@font-face {
-    font-family: Hoon;
-    src: url(../fonts/Hoon.ttf);
-  }
-
 
 .randombox{
     position: inherit;
@@ -26,5 +21,46 @@
     text-align: left;
     padding-left: 10px;
     padding-top: 20px;
-    font-family: "Hoon";
+
+}
+
+div span{
+
+}
+
+.raninbox{
+
+}
+
+
+.input01{
+    margin-top: 20px;
+}
+
+.topic{
+    margin-right: 10px;
+}
+
+input[type="text"]{
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    width: 70%  ;
+    margin: 0 auto;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.redol{
+    margin-top: 20px;
+
+
+}
+
+
+
+
+.input02{
+    margin-top: 20px;
+    padding-bottom: 31px;
 }
