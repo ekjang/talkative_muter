@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import RandomGameItem from "./RandomGameItem";
+import "./RandomStyle.css"
+
 class RandomGame extends Component {
     state = {
         subject: '', //주제
@@ -7,16 +9,42 @@ class RandomGame extends Component {
             // {id: 0, value: ''}
             {value: ''}
         ],
+        start: false,
         winning: '',
     }
 
-    startHandler = () => {
-        const {list} = this.state
-        let size = list.length
-        let winning = Math.floor(Math.random() * size)
-        this.setState({winning: list[winning].value})
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("componentDidUpdate:" + prevState.start+","+this.state.start)
     }
 
+    /**
+     * 돌려 버튼 동작 함수
+     */
+    startHandler = () => {
+        console.log("start")
+        const {list} = this.state
+        //빈값 input box 제거
+        const nonBlank = list.filter((d) => {
+            return d.value.length !== 0
+        })
+        this.setState({list: nonBlank})
+
+        //빈값을 제거한 아이템들 중 추첨
+        if(nonBlank.length > 1) {
+            let winning = Math.floor(Math.random() * nonBlank.length)
+            //당첨 아이템 초기화
+            this.setState({start: !this.state.start, winning: ''})
+            setTimeout(() =>
+                    this.setState({winning: nonBlank[winning].value, start: !this.state.start})
+                , 3000)
+        } else {
+            alert("빈칸을 제외한 후보를 더 등록해주세요.")
+        }
+    }
+
+    /**
+     * 다시 버튼 동작 함수
+     */
     restartHandler = () => {
         const {list} = this.state
         if(list.length > 0) {
@@ -24,7 +52,7 @@ class RandomGame extends Component {
                 list.pop()
             }
         }
-        this.setState({list: list})
+        this.setState({list: list, winning: ''})
         this.addItem()
     }
 
@@ -48,7 +76,7 @@ class RandomGame extends Component {
     }
 
     /**
-     * 아이템 입력창 추가
+     * 아이템 입력창 추가(+) 함수
      */
     addItem = () => {
         const {list} = this.state
@@ -56,6 +84,10 @@ class RandomGame extends Component {
         this.setState({list: list.concat(nextItem)})
     }
 
+    /**
+     * 아이템 입력창 제거 (-) 함수
+     * @param idx
+     */
     removeItem = (idx) => {
         const {list} = this.state
         this.setState({list: list.slice(0, idx).concat(list.slice(idx + 1, list.length))})
@@ -76,9 +108,16 @@ class RandomGame extends Component {
                             <input text="text" value={this.state.subject} onChange={this.inputSubjectHandler} />
                         </span>
                     </div>
+                    {this.state.start &&
+                    <div>
+                        <span id="loading"> {/*여기 로딩 애니메이션 넣어주세요:)*/}
+                            두구두구
+                        </span>
+                    </div>
+                    }
                     {this.state.winning !== '' &&
                     <div>
-                        <span>
+                        <span> {/*여기 당첨 아이템 애니메이션 넣어주세요:)*/}
                             당첨 : {this.state.winning}
                         </span>
                     </div>
