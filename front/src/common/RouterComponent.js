@@ -82,12 +82,12 @@ class RouterComponent extends Component {
                            />
                            }
                     />
-                    {/*오늘 누가 쏠레 화면*/}
-                    {/*<Route exact path="/randomGame"*/}
-                    {/*       render={() => <RandomGame*/}
-                    {/*       />*/}
-                    {/*       }*/}
-                    {/*/>*/}
+                    오늘 누가 쏠레 화면
+                    <Route exact path="/randomGame"
+                           render={() => <RandomGame
+                           />
+                           }
+                    />
                 </Switch>
             </div>
         );

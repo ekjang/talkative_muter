@@ -31,7 +31,7 @@ class MenuLink extends Component {
                     }
                     <li><Link to="/popular" >인기 벙어리</Link></li>
                     <li><Link to="/gymInfo" >헬스장 이용 정보</Link></li>
-                    <li><Link to="/randomGame" >오늘 누가 쏠래?</Link></li>
+                    <li><Link to="/randomGame" >돌려돌려</Link></li>
                 </ul>
             </div>
         );
