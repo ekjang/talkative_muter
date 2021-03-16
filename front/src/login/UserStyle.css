@@ -158,3 +158,20 @@ body {
     width: 130px;
     height: 30px;
 }
+
+
+.kakaologin{
+    background-image: url(../images/mutter_symbol.svg);
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 104px;
+    left: 119px;
+}
+
+.kakao{
+    margin-top: 178px;
+    position: absolute;
+    right: -29px;
+}

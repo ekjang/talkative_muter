@@ -25,13 +25,17 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div >
+                <div className="kakaologin">
+                    <div className="kakao"> 
                 <KakaoSignUp
                     isAuth={this.props.isAuth}
                     loginCheck={this.loginCheck}
                 />
+                    </div>
+                </div>
             </div>
-        );
+        )
     }
 }
 export default withRouter(Login);

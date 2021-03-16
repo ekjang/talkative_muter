@@ -8,8 +8,13 @@
     width: 100%;
 }
 .content-style {
-    color:#444;
-    margin-top: 19px;
+    color: #444;
+    /* margin-top: 93px; */
+    /* height: 300px; */
+    height: 515px;
+    position: relative;
+    top: 85px;
+    overflow: scroll;
     
 }
 
@@ -68,18 +73,25 @@
     height: 50px;
     background-color: #000;
     margin-top: 1.5%;
+    margin-top: 22px;
+    position: absolute;
+    bottom: 0;
 }
 
 .bottomtxt{
-        width: 100%;
-        color: gray;
-        text-align: center;
-        font-style: normal;
-        font-size: 12px;
-        line-height: 26px;
-        padding: 10px 0;
-        margin-top: 29px;
+    width: 100%;
+    color: gray;
+    text-align: center;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 26px;
+    padding: 10px 0;
+    margin-top: 29px;
+    position: relative;
+    top: 50;
+    bottom: 28px;
 }
+
 
 
 /* @media (min-width: 431px) {
