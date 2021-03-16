@@ -5,6 +5,7 @@ import server_url from "../define/Url";
 import {Link} from "react-router-dom";
 import SummaryItem from "./SummaryItem";
 import {NoticeNew} from "../notice/NoticeNew";
+import {FcmMessageCall} from "../notice/FcmMessageCall";
 
 /**
  * 홈 메뉴
@@ -28,6 +29,10 @@ class Summary extends Component {
         this.todayCountGetApi() //오늘 등록된 글 갯수
         this.todayList() //오늘 벙어리 최근 5
         this.popularList() //인기 벙어리 Top 5
+
+        console.log("알림..?")
+        FcmMessageCall()
+
         // setInterval(async => {
         //     this.newCountGetApi() //10분 간 등록된 글 갯수
         //     if(this.state.newCount > 0) {
