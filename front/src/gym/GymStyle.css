@@ -1,18 +1,39 @@
-.gym-item-style {
-    margin: 5px;
-    font-size: 58px;
-    height: 63px;
-    margin-top: -30px;
-}
+table tr td span{
 
-.gym-item-style span {
-    margin-right: 10px;
     font-size: 17px;
     margin: 7px;
 }
 
+table tr td:nth-child(3){
+    padding-top: 9px;
+    
+}
+
+
+/* .gym-item-style {
+    margin: 5px;
+    font-size: 58px;
+    height: 63px;
+    margin-top: -30px;
+
+   
+} */
+
+.enttime{
+    font-size: 12px !important;
+    color: #a7a7a7  !important;
+    vertical-align: super;
+}
+
+.gym-item-style span {
+
+    font-size: 17px;
+    margin: 1px;
+    margin-left: 20px;
+}
+/* 
 .gym-item-style span:nth-of-type(1) {
-    margin-right: 10px;
+  
     font-size: 17px;
     color: #b0b0b0;
 }
@@ -20,7 +41,7 @@
 .gym-item-style span:nth-of-type(2) {
     margin-right: 10px;
     font-size: 23px;
-}
+} */
 
 .gym-item-style-0 {
     font-size: 12px;
@@ -61,6 +82,7 @@
     border-radius: 5px;
     box-shadow: 0 1px 5px #dddddd;
     border: 1px solid gainsboro;
+    height: 60px;
 }
 .gymbox2 {
     position: inherit;
@@ -73,3 +95,4 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px #bbbbbb;
 }
+

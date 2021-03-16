@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./RandomGame.css"
 import RandomGameItem from "./RandomGameItem";
 class RandomGame extends Component {
     state = {
@@ -63,8 +64,8 @@ class RandomGame extends Component {
 
     render() {
         return (
-            <div>
-                <div>
+            <div className="randombox">
+                <div clasName="rantitle">
                     돌려돌려
                 </div>
                 <div>

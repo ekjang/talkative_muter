@@ -9,13 +9,7 @@
 }
 .content-style {
     color: #444;
-    /* margin-top: 93px; */
-    /* height: 300px; */
-    height: 515px;
-    position: relative;
-    top: 85px;
-    overflow: scroll;
-    
+    margin-top: 93px;    
 }
 
 .summary-count {
@@ -74,7 +68,7 @@
     background-color: #000;
     margin-top: 1.5%;
     margin-top: 22px;
-    position: absolute;
+    position: static;
     bottom: 0;
 }
 
@@ -86,10 +80,7 @@
     font-size: 12px;
     line-height: 26px;
     padding: 10px 0;
-    margin-top: 29px;
-    position: relative;
-    top: 50;
-    bottom: 28px;
+    margin-top: 11px;
 }
 
 
