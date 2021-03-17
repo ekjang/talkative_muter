@@ -46,7 +46,7 @@ class MailAuth extends Component {
     nickNameSetting = (nickName, isAuth) => {
         this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup, isAuth: isAuth})
         if(nickName !== undefined) {
-            localStorage.setItem('nickName', JSON.stringify(nickName))
+            localStorage.setItem('nickName', nickName)
             //닉네임 서버 저장 요청
             //axios.post
         }
