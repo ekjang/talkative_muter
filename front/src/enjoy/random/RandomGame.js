@@ -12,17 +12,13 @@ class RandomGame extends Component {
         ],
         start: false,
         winning: '',
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log("componentDidUpdate:" + prevState.start+","+this.state.start)
+        lastIdx: 0,
     }
 
     /**
      * 돌려 버튼 동작 함수
      */
     startHandler = () => {
-        console.log("start")
         const {list} = this.state
         //빈값 input box 제거
         const nonBlank = list.filter((d) => {
@@ -82,7 +78,7 @@ class RandomGame extends Component {
     addItem = () => {
         const {list} = this.state
         const nextItem = {value: ''}
-        this.setState({list: list.concat(nextItem)})
+        this.setState({list: list.concat(nextItem), lastIdx: list.length})
     }
 
     /**
@@ -91,7 +87,7 @@ class RandomGame extends Component {
      */
     removeItem = (idx) => {
         const {list} = this.state
-        this.setState({list: list.slice(0, idx).concat(list.slice(idx + 1, list.length))})
+        this.setState({list: list.slice(0, idx).concat(list.slice(idx + 1, list.length)), lastIdx: list.length - 2})
     }
 
     render() {
@@ -141,6 +137,7 @@ class RandomGame extends Component {
                                 item={item}
                                 key={idx}
                                 idx={idx}
+                                lastIdx={this.state.lastIdx}
                                 onFocusIndex={this.state.onFocusIndex}
                                 inputItemHandler={this.inputItemHandler}
                                 addItem={this.addItem}
