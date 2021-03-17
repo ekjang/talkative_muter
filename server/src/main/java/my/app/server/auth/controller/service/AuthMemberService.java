@@ -17,10 +17,11 @@ public class AuthMemberService {
 
     public boolean checkNewMember(Long id) {
         Optional<Member> result = memberRepository.findById(id);
-        if(result.isPresent())
-            return true;
-        else
+        if(result.isPresent()){
             return false;
+        }
+        else
+            return true;
     }
     public boolean isAuthMember(Long id) {
         Member member = memberRepository.findById(id).get();

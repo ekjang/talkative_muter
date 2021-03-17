@@ -72,7 +72,7 @@ public class AuthController {
         return map;
     }
 
-    @PostMapping("/oauth/login")
+    @PostMapping("/login")
     public boolean sendKakaoAuth(@RequestBody KakaoAuthRequest request) {
         if(memberService.checkNewMember(request.getId())){
             Long createdId = memberService.createNewMember(request.getId(), request.getAgeRange(), request.getGender());
