@@ -12,12 +12,13 @@ class PopularMain extends Component {
         today: this.props.today, //오늘 날짜
         week: 0, //이번 주 날짜 정보??
         list: [], //조회 결과 리스트
-        sizeByPage: '', //미 로그인 시 아이템 수 제한
+        sizeByPage: 0, //미 로그인 시 아이템 수 제한
     }
 
     componentDidMount() {
         if(!this.props.isAuth) {
-            this.setState({sizeByPage: 10})
+            alert("로그인 하지 않을 경우 인기 벙어리는 8개까지만 표시됩니다.")
+            this.setState({sizeByPage: 8})
         }
         this.searchOnClick()
     }
@@ -62,8 +63,8 @@ class PopularMain extends Component {
      */
     listSort = (data) => {
         //사이즈만큼만 보이기
-        if(data.length > this.state.sizeByPage) {
-            console.log(data.length)
+        if(this.state.sizeByPage > 0 && data.length > this.state.sizeByPage) {
+            return data.slice(0, this.state.sizeByPage)
         }
         return (data.sort((a, b) => {
             //status 내림차순으로 정렬

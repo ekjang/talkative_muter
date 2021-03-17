@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./RandomGame.css"
 import RandomGameItem from "./RandomGameItem";
 import "./RandomStyle.css"
+import {ShareMessage} from "../../notice/ShareMessage";
+import {KakaoFriends} from "../../notice/KakaoFriends"
 
 class RandomGame extends Component {
     state = {
@@ -90,6 +92,10 @@ class RandomGame extends Component {
         this.setState({list: list.slice(0, idx).concat(list.slice(idx + 1, list.length)), lastIdx: list.length - 2})
     }
 
+    // friendsHandler = () => {
+    //     KakaoFriends()
+    // }
+
     render() {
         return (
             <div className="randombox">
@@ -116,6 +122,9 @@ class RandomGame extends Component {
                         <span> {/*여기 당첨 아이템 애니메이션 넣어주세요:)*/}
                             당첨 : {this.state.winning}
                         </span>
+                        {/*<span>*/}
+                        {/*    <button onClick={this.friendsHandler}>공유하기</button>*/}
+                        {/*</span>*/}
                     </div>
                     }
                 </div>

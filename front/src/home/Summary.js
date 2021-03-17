@@ -192,8 +192,12 @@ class Summary extends Component {
                 </div>
                 <div className="mainbox1">
                     <div className="today-summary">
-                            <span className="mutter-icon"></span>
-                            <span className="today-summary-title"> 인기 벙어리 Top 5 </span>
+                        <span className="mutter-icon"></span>
+                        <span className="today-summary-title"> 인기 벙어리 Top 5 </span>
+
+                        {this.state.popularList.length > 0 &&
+                        <span className="more-text"><Link to="/popular">더보기 +</Link></span>
+                        }
                         
                     </div>
                     <div className="newlist">
