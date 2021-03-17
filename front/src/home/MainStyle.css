@@ -10,7 +10,7 @@
 .content-style {
     color: #444;
     margin-top: 93px;
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 126px);
 }
 
 .summary-count {
@@ -78,7 +78,6 @@
     font-size: 12px;
     line-height: 26px;
     padding: 10px 0;
-    margin-top: 11px;
 }
 
 
