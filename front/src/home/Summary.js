@@ -4,6 +4,8 @@ import "./MainStyle.css"
 import server_url from "../define/Url";
 import {Link} from "react-router-dom";
 import SummaryItem from "./SummaryItem";
+import {FcmMessageCall} from "../notice/FcmMessageCall";
+import {MessageNew} from "../notice/MessageNew";
 
 /**
  * 홈 메뉴
@@ -27,7 +29,8 @@ class Summary extends Component {
         this.todayList() //오늘 벙어리 최근 5
         this.popularList() //인기 벙어리 Top 5
 
-        // FcmMessageCall() //현재 aws 에서 처리 안됨.ㅠ
+        FcmMessageCall() //현재 aws 에서 처리 안됨.ㅠ
+
 
         // setInterval(async => {
         //     this.newCountGetApi() //10분 간 등록된 글 갯수
@@ -67,6 +70,7 @@ class Summary extends Component {
     todayList = () => {
         this.todayGetApi()
         this.listSort(1)
+        MessageNew()
     }
 
     /**

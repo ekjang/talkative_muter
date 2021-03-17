@@ -1,9 +1,19 @@
 import './App.css';
 import HomeComponent from "./home/HomeComponent";
-/*
 import firebase from 'firebase';
 
-const config =  {
+// import firebase from "firebase/app";
+// If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
+// import * as firebase from "firebase/app"
+
+// If you enabled Analytics in your project, add the Firebase SDK for Analytics
+// import "firebase/analytics";
+//
+// // Add the Firebase products that you want to use
+// import "firebase/auth";
+// import "firebase/firestore";
+
+const config = {
     apiKey: "AIzaSyCskAoyJOhiuK0N384sBFW-Ji82g40_66g",
     authDomain: "you-are-muter.firebaseapp.com",
     projectId: "you-are-muter",
@@ -12,6 +22,8 @@ const config =  {
     appId: "1:897893089831:web:eed74541fae8298f78c402",
     measurementId: "G-259B1FN335"
 };
+
+
 firebase.initializeApp(config);
 
 const messaging = firebase.messaging();
@@ -44,7 +56,6 @@ messaging.onTokenRefresh(function() {
             console.log('Unable to retrieve refreshed token ', err);
         });
 });
-*/
 
 function App() {
   return (
