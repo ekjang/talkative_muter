@@ -24,14 +24,12 @@ class Summary extends Component {
     }
 
     componentDidMount() {
-        // this.testFcm()
         this.newCountGetApi() //10분 간 등록된 글 갯수
         this.todayCountGetApi() //오늘 등록된 글 갯수
         this.todayList() //오늘 벙어리 최근 5
         this.popularList() //인기 벙어리 Top 5
 
-        console.log("알림..?")
-        FcmMessageCall()
+        // FcmMessageCall() //현재 aws 에서 처리 안됨.ㅠ
 
         // setInterval(async => {
         //     this.newCountGetApi() //10분 간 등록된 글 갯수
