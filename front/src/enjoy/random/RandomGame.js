@@ -24,10 +24,10 @@ class RandomGame extends Component {
         const nonBlank = list.filter((d) => {
             return d.value.length !== 0
         })
-        this.setState({list: nonBlank})
 
         //빈값을 제거한 아이템들 중 추첨
         if(nonBlank.length > 1) {
+            this.setState({list: nonBlank})
             let winning = Math.floor(Math.random() * nonBlank.length)
             //당첨 아이템 초기화
             this.setState({start: !this.state.start, winning: ''})
@@ -106,11 +106,10 @@ class RandomGame extends Component {
                         </span>
                     </div>
                     {this.state.start &&
-                    <div>
-                        <span id="loading"> {/*여기 로딩 애니메이션 넣어주세요:)*/}
-                            두구두구
-                        </span>
-                    </div>
+                        <div className="on-loading">
+                            <div className="lds-hourglass">
+                            </div>
+                        </div>
                     }
                     {this.state.winning !== '' &&
                     <div className="dangcheom">

@@ -33,7 +33,8 @@ class RandomGameItem extends Component {
         return (
             <div>
                 <span>
-                <input text="text"
+                <input className="randomInput"
+                       text="text"
                        id={this.props.idx}
                        value={this.props.item.value}
                        onChange={this.inputItemHandler}
@@ -42,9 +43,15 @@ class RandomGameItem extends Component {
                 />
                 </span>
                 {this.props.lastIdx === this.props.idx &&
-                    <span onClick={this.plusClickHandler}>+</span>
+                    <span className="plusIcon"
+                          onClick={this.plusClickHandler}>
+                        +
+                    </span>
                 }
-                <span onClick={this.minusClickHandler}>-</span>
+                <span className="minusIcon"
+                      onClick={this.minusClickHandler}>
+                    -
+                </span>
             </div>
         );
     }
