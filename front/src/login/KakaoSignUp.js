@@ -65,24 +65,27 @@ class KakaoSignUp extends Component {
         this.props.loginCheck(isAuth)
 
         // !!!현재 서버 구현 안됨.
-        axios.post(server_url + "/oauth/login",
+        axios.post(server_url + "/auth/login",
             {id: this.state.id //카카오톡 고유 id
                 , ageRange: this.state.ageRange //사용자 나이대
-                , gender: this.state.gender //사용자 성별
-                // , accessToken: this.state.accessToken
-                // , refreshToken: this.state.refreshToken
+                , gender: this.state.gender.toUpperCase() //사용자 성별
             }
             )
             .then(res => {
-                //회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
-                // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
+                console.log(res.data)
+                // 회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
+                this.setState({isAuth: res.data})
+                //id, isAuth 저장하기.. redux처리
+                localStorage.setItem('id', this.state.id)
 
                 //test data
-                let isAuth = false
-                this.setState({isAuth: isAuth})
+                // let isAuth = false
+                // this.setState({isAuth: isAuth})
                 this.props.loginCheck(isAuth)
             })
-            .catch(res => console.log(res))
+            .catch(res =>
+                console.log(res)
+            )
     }
 
     render() {
