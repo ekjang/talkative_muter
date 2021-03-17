@@ -22,7 +22,6 @@ class KakaoSignUp extends Component {
             refreshToken: '',
             refreshTokenExpiresIn: '',
             isAuth: false,
-            authCheckDate: '',
         }
     }
 
@@ -65,26 +64,25 @@ class KakaoSignUp extends Component {
         this.setState({isAuth: isAuth, authCheckDate: testData})
         this.props.loginCheck(isAuth)
 
-        //!!!현재 서버 구현 안됨.
-        // axios.post(server_url + "/oauth/login",
-        //     {id: this.state.id
-        //         , ageRange: this.state.ageRange
-        //         , gender: this.state.gender
-        //         , accessToken: this.state.accessToken
-        //         , refreshToken: this.state.refreshToken
-        //     }
-        //     )
-        //     .then(res => {
-        //         //회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
-        //         // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
-        //
-        //         //test data
-        //         let isAuth = false
-        //         let testData = "2021-04-10"
-        //         this.setState({isAuth: isAuth, authCheckDate: testData})
-        //         this.props.loginCheck(isAuth)
-        //     })
-        //     .catch(res => console.log(res))
+        // !!!현재 서버 구현 안됨.
+        axios.post(server_url + "/oauth/login",
+            {id: this.state.id //카카오톡 고유 id
+                , ageRange: this.state.ageRange //사용자 나이대
+                , gender: this.state.gender //사용자 성별
+                // , accessToken: this.state.accessToken
+                // , refreshToken: this.state.refreshToken
+            }
+            )
+            .then(res => {
+                //회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
+                // this.setState({isCompanyAuth: res.data.data.isCompanyAuth, authCheckDate: res.data.data.authCheckDate})
+
+                //test data
+                let isAuth = false
+                this.setState({isAuth: isAuth})
+                this.props.loginCheck(isAuth)
+            })
+            .catch(res => console.log(res))
     }
 
     render() {

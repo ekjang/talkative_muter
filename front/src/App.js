@@ -1,5 +1,6 @@
 import './App.css';
 import HomeComponent from "./home/HomeComponent";
+/*
 import firebase from 'firebase';
 
 const config =  {
@@ -43,6 +44,7 @@ messaging.onTokenRefresh(function() {
             console.log('Unable to retrieve refreshed token ', err);
         });
 });
+*/
 
 function App() {
   return (
