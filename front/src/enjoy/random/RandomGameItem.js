@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 class RandomGameItem extends Component {
 
+    componentDidMount() {
+        this.inputRef.focus()
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.inputRef.focus()
+    }
+
     inputItemHandler = (e) => {
         this.props.inputItemHandler(this.props.idx, e.target.value)
         this.inputRef.focus()
@@ -34,7 +41,9 @@ class RandomGameItem extends Component {
                        ref={(ref) => {this.inputRef = ref;}}
                 />
                 </span>
-                <span onClick={this.plusClickHandler}>+</span>
+                {this.props.lastIdx === this.props.idx &&
+                    <span onClick={this.plusClickHandler}>+</span>
+                }
                 <span onClick={this.minusClickHandler}>-</span>
             </div>
         );
