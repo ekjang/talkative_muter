@@ -84,6 +84,22 @@ public class AuthController {
             return false;
     }
 
+    @PostMapping("/access")
+    public boolean updateKakaoAuth(@RequestBody KakaoAuthUpdateRequest request) {
+        if (memberService.isAuthMember(request.getId())){
+            return true;
+        }
+        else {
+            memberService.updateAuthStatus(request.getId());
+            return true;
+        }
+    }
+
+    @Data
+    static class KakaoAuthUpdateRequest {
+        private Long id;
+    }
+
     @Data
     static class KakaoAuthRequest {
         private Long id;
