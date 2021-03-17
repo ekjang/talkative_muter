@@ -3,6 +3,7 @@ package my.app.server.auth.controller;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import my.app.server.auth.controller.model.Sender;
+import my.app.server.auth.controller.service.AuthMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -23,8 +24,8 @@ import java.util.Random;
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired
-    Sender sender;
+    private final AuthMemberService memberService;
+    private final Sender sender;
 
     @PostMapping("/checkMail")
     public Map<String, Object> SendMail(@RequestBody @Valid MailAuthRequest mail) {
@@ -69,6 +70,25 @@ public class AuthController {
         javaMailSender.send(messagePreparator);
         map.put("key", key);
         return map;
+    }
+
+    @PostMapping("/oauth/login")
+    public boolean sendKakaoAuth(@RequestBody KakaoAuthRequest request) {
+        if(memberService.checkNewMember(request.getId())){
+            Long createdId = memberService.createNewMember(request.getId(), request.getAgeRange(), request.getGender());
+            return false;
+        }
+        else if (memberService.isAuthMember(request.getId()))
+            return true;
+        else
+            return false;
+    }
+
+    @Data
+    static class KakaoAuthRequest {
+        private Long id;
+        private String ageRange;
+        private String gender;
     }
 
     @Data

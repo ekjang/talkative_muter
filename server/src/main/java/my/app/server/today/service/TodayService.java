@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -62,6 +63,13 @@ public class TodayService {
     public Long createContent(Content content) {
         contentRepository.save(content);
         return content.getId();
+    }
+
+    public void deleteContent(Long id) {
+        Optional<Content> byId = contentRepository.findById(id);
+
+        Content content = byId.orElse(null); //이렇게 처리하는게 맞나?
+        contentRepository.delete(content);
     }
 
     public void plusLike(Long id) {
