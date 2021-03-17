@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "./RandomGame.css"
 import RandomGameItem from "./RandomGameItem";
 import "./RandomStyle.css"
-import {ShareMessage} from "../../notice/ShareMessage";
-import {KakaoFriends} from "../../notice/KakaoFriends"
 
 class RandomGame extends Component {
     state = {
