@@ -87,21 +87,21 @@ class MailAuth extends Component {
      * 인증코드 체크 함수
      * @param e
      */
-    // authCodeCheck = (e) => {
-    //     this.setState({inputAuthCode: e.target.value})
-    //     if(this.state.authCode === e.target.value) {
-    //         this.setState({isAuth: true, nickNamePopup: true})
-    //         localStorage.setItem('isAuth', JSON.stringify(true))
-    //         //회사 메일 인증 여부 서버 전송
-    //         axios.post(server_url + "/auth/access", {id: userId, isAuth: true})
-    //             .then(res => {
-    //                 console.log("저장 완료!")
-    //             })
-    //             .catch(res => console.log(res))
-    //     } else {
-    //         this.setState({isAuth: false})
-    //     }
-    // }
+    authCodeCheck = (e) => {
+        this.setState({inputAuthCode: e.target.value})
+        if(this.state.authCode === e.target.value) {
+            this.setState({isAuth: true, nickNamePopup: true})
+            localStorage.setItem('isAuth', JSON.stringify(true))
+            //회사 메일 인증 여부 서버 전송
+            // axios.post(server_url + "/auth/access", {id: userId, isAuth: true})
+            //     .then(res => {
+            //         console.log("저장 완료!")
+            //     })
+            //     .catch(res => console.log(res))
+        } else {
+            this.setState({isAuth: false})
+        }
+    }
 
     /**
      * 홈 화면으로
