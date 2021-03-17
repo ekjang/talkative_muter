@@ -14,7 +14,7 @@ class MenuLink extends Component {
             <div className={this.props.menuStatus} id="menu">
                 {
                     this.props.isAuth && this.props.nickName &&
-                    <span className="text-style">{this.props.nickName}</span>
+                    <div className="text-style">{this.props.nickName}</div>
                 }
                 <div id="auth-icon-style">
                     <p id="auth-icon-style-p">

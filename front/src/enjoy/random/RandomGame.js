@@ -117,7 +117,7 @@ class RandomGame extends Component {
                     </div>
                     }
                     {this.state.winning !== '' &&
-                    <div>
+                    <div className="dangcheom">
                         <span> {/*여기 당첨 아이템 애니메이션 넣어주세요:)*/}
                             당첨 : {this.state.winning}
                         </span>

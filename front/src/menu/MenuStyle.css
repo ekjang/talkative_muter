@@ -47,7 +47,7 @@ body {
     color: rgb(33, 133, 208);
     font-size: 20px;
     text-align: left;
-    margin-top: 95px;
+    margin-top: 47px;
     margin-left: 40px;
     font-size: 17px;
 }
@@ -87,7 +87,10 @@ body {
 }
 
 .text-style {
-    color: black;
+    color: dimgray;
+    margin-top: 43px;
+    font-size: 22px;
+    font-family: Hoon;
 }
 
 #hambmenu {
@@ -99,7 +102,7 @@ body {
     cursor: pointer;
     margin-top: 8px;
     margin-left: 2px;
-    z-index: 100;
+
 }
 
 #hambmenu span {

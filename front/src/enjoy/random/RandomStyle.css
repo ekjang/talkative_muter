@@ -9,6 +9,13 @@
     -webkit-animation: spin 1s ease-in-out infinite;
 }
 
+.dangcheom{
+    margin-top: 20px;
+    font-size: 23px;
+    color: #ff8300;
+}
+
+
 @keyframes spin {
     to { -webkit-transform: rotate(360deg); }
 }
