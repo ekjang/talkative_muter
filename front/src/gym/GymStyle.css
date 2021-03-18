@@ -9,6 +9,11 @@ table tr td:nth-child(3){
     
 }
 
+.gym-item-style {
+
+    margin-left: 20px;
+
+}
 
 /* .gym-item-style {
     margin: 5px;

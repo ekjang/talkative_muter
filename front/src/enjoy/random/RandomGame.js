@@ -132,10 +132,10 @@ class RandomGame extends Component {
                             후보
                         </span>
                         <span>
-                        &nbsp;&nbsp;  <button onClick={this.startHandler}> 돌려</button>
+                        &nbsp;&nbsp;  <button className="dolbtn" onClick={this.startHandler}> 돌려</button>
                         </span>
                         <span>
-                        &nbsp;&nbsp;  <button onClick={this.restartHandler}>다시</button>
+                        &nbsp;&nbsp;  <button className="dolbtn" onClick={this.restartHandler}>다시</button>
                         </span>
                         <div className="input02">
                         {this.state.list.map((item, idx) =>
