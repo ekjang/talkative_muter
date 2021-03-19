@@ -15,6 +15,18 @@
     font-family:"Hoon"
 }
 
+.today-title2 {
+    color: rgb(33, 133, 208);
+    font-size: 22px;
+    margin-top: 5px;
+    padding: 4px;
+    text-align: left;
+    padding-left: 27px;
+    padding-top: 20px;
+    font-family:"Hoon"
+}
+
+
 .today {
 
     margin-top: 5px;
@@ -90,25 +102,24 @@
 
 .do-you-know-popup-button-style {
     position: absolute;
-    top: 75%;
-    left: 10%;
-    right: 10%;
+    top: 70%;
+    /* left: 10%; */
+    /* right: 10%; */
+    left: 12%;
 }
 
 .button-small1 {
     color: #3284fb;
     background-color: #fff;
-    margin-left: 8px;
-    width: 100px;
+    /* margin-left: 8px; */
+    width: 74px;
     height: 28px;
     font-size: 15px;
-    cursor: pointer;
+    /* cursor: pointer; */
     border: 1px solid #3284fb;
     border-radius: 5px;
-    float: right;
-    padding-right: 4;
-    margin-right: 4%;
 }
+
 
 .button-wide1 {
     color: white;
@@ -125,7 +136,7 @@
 }
 
 .contents-list-style {
-    margin-top: 60px;
+    margin-top: -16px;
     width: 95%;
 }
 

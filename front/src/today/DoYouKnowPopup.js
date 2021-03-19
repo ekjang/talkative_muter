@@ -59,14 +59,14 @@ class DoYouKnowPopup extends Component {
         return (
             <div className="do-you-know-popup">
                 <div className="do-you-know-popup-inner">
-                    <div className="today-title">
+                    <div className="today-title2">
                         너 그거 아니?
                     </div>
                     <div className="do-you-know-popup-content">
                         <textarea rows="4" value={this.state.content} onChange={this.inputHandler}></textarea>
                     </div>
                     <div className="do-you-know-popup-button-style">
-                        <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>
+                        <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>&nbsp;&nbsp;
                         <button className="button-small1" onClick={this.props.doYouKnowPopup}>취소</button>
                     </div>
                 </div>

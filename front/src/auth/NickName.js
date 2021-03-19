@@ -56,7 +56,7 @@ class NickName extends Component {
                     </div>
                     <div className="do-you-know-popup-button-style">
                         <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>
-                        <button className="button-small1" onClick={this.btnNoOnClick}>취소</button>
+                        <button className="button-small1" onClick={this.btnNoOnClick}> 취소</button>
                     </div>
                 </div>
             </div>
