@@ -30,7 +30,7 @@ class GymInfoItem extends Component {
             }
 
             if(window.confirm(useMessage + " 하시겠습니까?")) {
-                axios.put(server_url + "/gym-info/use/" + this.props.item.id, {use: use})
+                axios.put(server_url + "/gym-info/use/" + this.props.item.id, {use: use, memberId: localStorage.getItem('id')})
                     .then(res => {
                         console.log(res.data)
                         NoticeGym()

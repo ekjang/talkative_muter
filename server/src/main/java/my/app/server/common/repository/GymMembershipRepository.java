@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface GymMembershipRepository extends JpaRepository<GymMembership,Long> {
     List<GymMembership> findAllByOrderByIdAsc();
+    long countByMemberId(Long memberId);
 }

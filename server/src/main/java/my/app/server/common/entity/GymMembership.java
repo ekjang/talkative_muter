@@ -27,16 +27,20 @@ public class GymMembership {
     @ColumnDefault("0")
     private int usingStatus;
 
+    private Long memberId;
+
     public GymMembership(String membershipNumber, String gender) {
         this.membershipNumber = membershipNumber;
         this.gender = gender;
     }
-    public void enterGym(LocalDateTime enterTime) {
+    public void enterGym(LocalDateTime enterTime, Long memberId) {
         this.entranceTime = enterTime;
         this.usingStatus = 1;
+        this.memberId = memberId;
     }
     public void exitGym() {
         this.entranceTime = null;
         this.usingStatus = 0;
+        this.memberId = null;
     }
 }
