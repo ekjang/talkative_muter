@@ -15,7 +15,7 @@ body {
 
 .main-title {
 
-    background-image: url('../images/logotxt.svg');
+    background-image: url('../images/logotxt2.svg');
     height: 72px;
     width: 158px;
     box-sizing: border-box;
@@ -67,7 +67,7 @@ body {
     display: block;
     width: 100%;
     height: 76px;
-    background-color: #FFF;
+    background: linear-gradient(to right, #5A9FFF, #F87D9B);
     box-shadow: 0 2px 5px #bbbbbb;
     text-align: center;
     position: fixed;
@@ -111,7 +111,7 @@ body {
     width: 100%;
     vertical-align: middle;
     margin: 20px 0 0 15px;
-    background: #a8a8a8;
+    background: #fff;
     border-radius: 8%;
     opacity: 1;
     left: 0;
