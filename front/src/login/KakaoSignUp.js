@@ -4,6 +4,8 @@ import axios from "axios";
 import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
 
+const { Kakao } = window;
+
 /**
  * 카카오 로그인 컴퍼넌트
  */
@@ -15,7 +17,9 @@ class KakaoSignUp extends Component {
             id: '',
             name: '',
             provider: '',
+            hasAgeRange: false,
             ageRange: '',
+            hasGender: false,
             gender: '',
             accessToken: '',
             expiresIn: '', //sec
@@ -30,12 +34,12 @@ class KakaoSignUp extends Component {
      * @param res
      */
     responseKakao = (res) => {
-        //has_age_range
-        //has_gender
         this.setState({
             id: res.profile.id,
             name: res.profile.properties.nickname,
+            hasAgeRange: res.profile.kakao_account.has_age_range,
             ageRange: res.profile.kakao_account.age_range,
+            hasGender: res.profile.kakao_account.has_gender,
             gender: res.profile.kakao_account.gender,
             accessToken: res.response.access_token, // 유효시간 2시간
             expiresIn: res.response.expires_in,
@@ -58,30 +62,24 @@ class KakaoSignUp extends Component {
      * 카카오 로그인 성공 시 토큰 및 정보 서버 요청 API
      */
     userInfoPostApi = () => {
-        //test data
-        let isAuth = false
-        let testData = "2021-04-10"
-        this.setState({isAuth: isAuth, authCheckDate: testData})
-        this.props.loginCheck(isAuth)
+        let ageRange = (this.state.hasAgeRange ? this.state.ageRange : "none")
+        let gender = (this.state.hasGender ? this.state.gender : "none")
 
-        // !!!현재 서버 구현 안됨.
         axios.post(server_url + "/auth/login",
             {id: this.state.id //카카오톡 고유 id
-                , ageRange: this.state.ageRange //사용자 나이대
-                , gender: this.state.gender.toUpperCase() //사용자 성별
-            }
-            )
+                , ageRange: ageRange //사용자 나이대
+                , gender: gender.toUpperCase() //사용자 성별
+                // , accessToken: this.state.accessToken
+            })
             .then(res => {
                 console.log(res.data)
                 // 회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
                 this.setState({isAuth: res.data})
                 //id, isAuth 저장하기.. redux처리
                 localStorage.setItem('id', this.state.id)
+                localStorage.setItem('token', this.state.accessToken)
 
-                //test data
-                // let isAuth = false
-                // this.setState({isAuth: isAuth})
-                this.props.loginCheck(isAuth)
+                this.props.loginCheck(res.data)
             })
             .catch(res =>
                 console.log(res)
@@ -98,8 +96,6 @@ class KakaoSignUp extends Component {
                         onFail={this.responseFail}
                         getProfile={true}
                     />
-                    {/*<a href = "https://kauth.kakao.com/oauth/authorize?client_id=397d5b756b740a3e9f87b34697438206&redirect_uri=http://localhost:18090/muter/kakao/sign-in&response_type=code&scope">*/}
-                    {/*    테스트 </a>*/}
                 </div>
             </div>
         );
