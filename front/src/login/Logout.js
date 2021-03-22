@@ -32,7 +32,6 @@ class Logout extends Component {
         // window.Kakao.init("397d5b756b740a3e9f87b34697438206")
         // window.Kakao.isInitialized();
 
-        console.log(window.Kakao.Auth.getAccessToken())
         if(!window.Kakao.Auth.getAccessToken()) {
             alert("Not logged in.")
             return
@@ -40,7 +39,7 @@ class Logout extends Component {
 
         window.Kakao.Auth.logout(function(response) {
             if(response) {
-                console.log("response:"+response)
+                console.log("logout ok")
             } else {
                 return
             }

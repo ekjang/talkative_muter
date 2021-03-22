@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
-@ToString(of = {"id", "username"})
+@ToString(of = {"id"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate

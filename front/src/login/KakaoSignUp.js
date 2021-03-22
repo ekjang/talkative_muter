@@ -62,8 +62,8 @@ class KakaoSignUp extends Component {
      * 카카오 로그인 성공 시 토큰 및 정보 서버 요청 API
      */
     userInfoPostApi = () => {
-        let ageRange = (this.state.hasAgeRange ? this.state.ageRange : "none")
-        let gender = (this.state.hasGender ? this.state.gender : "none")
+        let ageRange = (this.state.hasAgeRange ? (this.state.ageRange !== 'undefined' && this.state.ageRange !== '' ? this.state.ageRange : "none") : "none")
+        let gender = (this.state.hasGender ? (this.state.gender !== 'undefined' && this.state.gender !== '' ? this.state.gender : "none") : "none")
 
         axios.post(server_url + "/auth/login",
             {id: this.state.id //카카오톡 고유 id
@@ -72,7 +72,6 @@ class KakaoSignUp extends Component {
                 // , accessToken: this.state.accessToken
             })
             .then(res => {
-                console.log(res.data)
                 // 회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
                 this.setState({isAuth: res.data})
                 //id, isAuth 저장하기.. redux처리
