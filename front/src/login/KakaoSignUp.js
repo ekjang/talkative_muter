@@ -62,8 +62,8 @@ class KakaoSignUp extends Component {
      * 카카오 로그인 성공 시 토큰 및 정보 서버 요청 API
      */
     userInfoPostApi = () => {
-        let ageRange = (this.state.hasAgeRange ? (this.state.ageRange !== 'undefined' && this.state.ageRange !== '' ? this.state.ageRange : "none") : "none")
-        let gender = (this.state.hasGender ? (this.state.gender !== 'undefined' && this.state.gender !== '' ? this.state.gender : "none") : "none")
+        let ageRange = (this.state.hasAgeRange ? (this.state.ageRange !== undefined && this.state.ageRange !== '' ? this.state.ageRange : "none") : "none")
+        let gender = (this.state.hasGender ? (this.state.gender !== undefined && this.state.gender !== '' ? this.state.gender : "none") : "none")
 
         axios.post(server_url + "/auth/login",
             {id: this.state.id //카카오톡 고유 id
