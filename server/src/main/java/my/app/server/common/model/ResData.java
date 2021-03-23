@@ -21,15 +21,15 @@ public class ResData {
     List<Object> list;       //넘겨줄 데이터 List 형식
     Map map;              //넘겨줄 데이터 Map 형식
 
-    ResData(List resList) {
+    public ResData(List resList) {
         this.list = resList;
     }
 
-    ResData(Map map) {
+    public ResData(Map map) {
         this.map = map;
     }
 
-    ResData(String message) {
+    public ResData(String message) {
         this.message = message;
     }
 
