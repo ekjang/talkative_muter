@@ -57,22 +57,26 @@ class GymInfoItem extends Component {
             <div>
                 <div className="gymbox1 gym-item-style">
                     <div className="gym-item-style">
-                    <table cellSpacing="0" cellPadding="0">
-
+                        <table cellSpacing="0" cellPadding="0">
+                            <tbody>
                             <tr>
                                 <td rowSpan="2"><span>{this.props.item.id}</span></td>
-                                <td rowSpan="2"> <span className={"gym-gender-" + this.props.item.gender}> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                                 </span> </td>
+                                <td rowSpan="2"> <span
+                                    className={"gym-gender-" + this.props.item.gender}> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                                     </span></td>
                                 <td><span>{this.props.item.membershipNumber}</span></td>
-                                <td rowSpan="2"><span className={"gym-item-style-" + this.props.item.usingStatus} onClick={this.useOnClick}>
-                            {status}
-                        </span></td>
+                                <td rowSpan="2">
+                                    <span className={"gym-item-style-" + this.props.item.usingStatus}
+                                                      onClick={this.useOnClick}>
+                                                    {status}
+                                    </span>
+                                </td>
                             </tr>
                             <tr>
                                 <td><span className="enttime">{this.props.item.entranceTime}</span></td>
                             </tr>
-
-                            </table>
+                            </tbody>
+                        </table>
 
 
                     </div>
