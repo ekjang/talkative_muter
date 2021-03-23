@@ -1,12 +1,18 @@
 package my.app.server.common.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 import java.util.Map;
 
 /**
+ * Response Class
  * Created by ekjan.
  * Date : 2021-03-22 오후 6:30
  */
+@Getter
+@Setter
 public class ResData {
     boolean success = true;
     String message;
@@ -14,16 +20,6 @@ public class ResData {
 
     List<Object> list;       //넘겨줄 데이터 List 형식
     Map map;              //넘겨줄 데이터 Map 형식
-    int pageNumber;              //현재 페이지
-    int totalCount;              //전체 데이터 수
-    int totalPage;               //전체 페이지 수
-
-//    ResData(List resList, Pagination page) {
-//        this.list = resList
-//        this.pageNumber = page.getPage() // 현재페이지 번호
-//        this.totalCount = page.getTotalCnt() // 데이터 수
-//        this.totalPage = page.getTotalSize() // 페이지 수 totalSize
-//    }
 
     ResData(List resList) {
         this.list = resList;

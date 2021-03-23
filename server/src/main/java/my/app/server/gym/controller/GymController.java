@@ -31,19 +31,20 @@ public class GymController {
     }
 
     @PutMapping(value = "/use/{id}")
-    public boolean clickUse(@PathVariable("id") Long id, @RequestBody GymController.UpdateReq request) {
-        try {
+    public ResData clickUse(@PathVariable("id") Long id, @RequestBody GymController.UpdateReq request) {
+//        try {
             if (request.use == 0) {
                 gymService.exitGym(id, request.memberId);
-                return true;
+                return new ResData(true, "");
             } else if (request.use == 1) {
                 gymService.enterGym(id, request.memberId);
-                return true;
-            } else
-                return false;
-        } catch (CustomException ce) {
-            throw ce;
-        }
+                return new ResData(true, "");
+            } else {
+                return new ResData(false, "");
+            }
+//        } catch (CustomException ce) {
+//            throw ce;
+//        }
     }
 
     @Data

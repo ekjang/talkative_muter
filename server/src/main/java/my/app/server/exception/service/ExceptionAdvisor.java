@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
+ * 오류 핸들러 정의
  * Created by ekjan.
  * Date : 2021-03-22 오후 6:29
  */
@@ -20,9 +21,10 @@ public class ExceptionAdvisor {
         return new ResData(false, exception.toString());
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(CustomException.class)
     ResData customError(CustomException exception) {
-        return new ResData(false, exception.errStatus, exception.toString());
+        return new ResData(false, exception.errStatus, exception.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

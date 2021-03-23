@@ -3,7 +3,7 @@ import axios from "axios";
 import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
 import "./GymStyle.css";
-import {NoticeGym} from "../notice/NoticeGym";
+// import {NoticeGym} from "../notice/NoticeGym";
 
 /**
  * 헬스장 이용정보 아아템 컴퍼넌트
@@ -32,11 +32,19 @@ class GymInfoItem extends Component {
             if(window.confirm(useMessage + " 하시겠습니까?")) {
                 axios.put(server_url + "/gym-info/use/" + this.props.item.id, {use: use, memberId: localStorage.getItem('id')})
                     .then(res => {
-                        console.log(res.data)
-                        NoticeGym()
+                        if(res.data.success) {
+                            alert("[ " + useMessage + " ] 처리 되었습니다.")
+                        }
                         this.props.searchOnClick()
                     })
-                    .catch(res => console.log(res))
+                    .catch(err => {
+                            if (err.response) {
+                                alert(err.response.data.message)
+                            } else {
+                                console.error(err)
+                            }
+                        }
+                    )
             } else {
                 return
             }
