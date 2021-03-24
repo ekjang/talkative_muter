@@ -22,7 +22,7 @@ class MenuMain extends Component {
 
     componentDidMount() {
         document.addEventListener('click', this.handleClick, false);
-        this.popupHandler() //닉네임 설정 팝업
+        // this.popupHandler() //닉네임 설정 팝업
         // this.memberAuthCheck()
     }
 
