@@ -1,14 +1,14 @@
 package my.app.server.auth.controller;
 
 import lombok.RequiredArgsConstructor;
-import my.app.server.auth.controller.model.ApiModel;
+import my.app.server.auth.model.ApiModel;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * 이건 테스트 클래스임. 추후 삭제 예정
  * Created by ekjan.
  * Date : 2021-03-12 오전 11:19
  */
-@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/oauth")

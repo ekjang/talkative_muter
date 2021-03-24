@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/gym-info")
@@ -32,19 +31,15 @@ public class GymController {
 
     @PutMapping(value = "/use/{id}")
     public ResData clickUse(@PathVariable("id") Long id, @RequestBody GymController.UpdateReq request) {
-//        try {
-            if (request.use == 0) {
-                gymService.exitGym(id, request.memberId);
-                return new ResData(true, "");
-            } else if (request.use == 1) {
-                gymService.enterGym(id, request.memberId);
-                return new ResData(true, "");
-            } else {
-                return new ResData(false, "");
-            }
-//        } catch (CustomException ce) {
-//            throw ce;
-//        }
+        if (request.use == 0) {
+            gymService.exitGym(id, request.memberId);
+            return new ResData(true, "");
+        } else if (request.use == 1) {
+            gymService.enterGym(id, request.memberId);
+            return new ResData(true, "");
+        } else {
+            return new ResData(false, "");
+        }
     }
 
     @Data

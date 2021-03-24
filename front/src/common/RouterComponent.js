@@ -8,6 +8,7 @@ import TodayComponent from "../today/TodayMain";
 import GymInfoMain from "../gym/GymInfoMain";
 import LoginComponent from "../login/Login";
 import RandomGame from "../enjoy/random/RandomGame";
+import LunchMain from "../enjoy/lunch/LunchMain";
 
 /**
  * 라우터 정의
@@ -82,7 +83,13 @@ class RouterComponent extends Component {
                            />
                            }
                     />
-                    오늘 누가 쏠레 화면
+                    {/*오늘 뭐 먹지?*/}
+                    <Route exact path="/lunch"
+                           render={() => <LunchMain
+                           />
+                           }
+                    />
+                    {/*돌려돌려 화면*/}
                     <Route exact path="/randomGame"
                            render={() => <RandomGame
                            />

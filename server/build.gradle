@@ -33,6 +33,7 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-validation'/*validation*/
+    implementation "org.springframework.boot:spring-boot-starter-security"
 
     /*mail*/
     implementation 'org.springframework.boot:spring-boot-starter-mail'
@@ -52,26 +53,27 @@ test {
     useJUnitPlatform()
 }
 
-def webappDir = "$projectDir\\..\\front"
-
-sourceSets {
-    main {
-        resources {
-            srcDirs = ["$webappDir\\build","$projectDir\\src\\main\\resources"]
-        }
-    }
-}
-
-task appNpmInstall(type: NpmTask) {
-    workingDir = file("${webappDir}")
-    args = ["run", "build"]
-    println "npm install end"
-}
-
-task copyWebApp(type: Copy) {
-    from "${webappDir}\\build"
-    into "build\\resources\\main\\static"
-}
-
-copyWebApp.dependsOn(appNpmInstall)
-compileJava.dependsOn(copyWebApp)
+//npm build 후 서버와 함께 배포할 때 아래 주석 해제
+//def webappDir = "$projectDir\\..\\front"
+//
+//sourceSets {
+//    main {
+//        resources {
+//            srcDirs = ["$webappDir\\build","$projectDir\\src\\main\\resources"]
+//        }
+//    }
+//}
+//
+//task appNpmInstall(type: NpmTask) {
+//    workingDir = file("${webappDir}")
+//    args = ["run", "build"]
+//    println "npm install end"
+//}
+//
+//task copyWebApp(type: Copy) {
+//    from "${webappDir}\\build"
+//    into "build\\resources\\main\\static"
+//}
+//
+//copyWebApp.dependsOn(appNpmInstall)
+//compileJava.dependsOn(copyWebApp)

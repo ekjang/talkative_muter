@@ -1,4 +1,4 @@
-package my.app.server.auth.controller.model;
+package my.app.server.auth.model;
 
 import lombok.Getter;
 import lombok.Setter;
