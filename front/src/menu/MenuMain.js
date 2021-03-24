@@ -48,7 +48,6 @@ class MenuMain extends Component {
     }
 
     updateNickName = () => {
-        console.log(this.state.nickNamePopup)
         let message = ''
 
         if(this.props.isAuth) {
