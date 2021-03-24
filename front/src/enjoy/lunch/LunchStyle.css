@@ -50,3 +50,16 @@
 .buttons{
     padding-bottom: 24px;
 }
+
+.menulist{
+    text-align: left;
+    /* margin-left: 50px; */
+    /* margin-top: 20px; */
+    /* border-bottom: 1px solid pink; */
+    line-height: 25px;
+    /* border: 1px solid pink; */
+    padding: 20px;
+    margin: 5%;
+    border-radius: 12px;
+    background: #faf6f7;
+}
