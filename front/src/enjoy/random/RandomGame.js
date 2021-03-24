@@ -10,7 +10,7 @@ class RandomGame extends Component {
             // {id: 0, value: ''}
             {value: ''}
         ],
-        start: false,
+        onLoading: false,
         winning: '',
         lastIdx: 0,
     }
@@ -30,9 +30,9 @@ class RandomGame extends Component {
             this.setState({list: nonBlank})
             let winning = Math.floor(Math.random() * nonBlank.length)
             //당첨 아이템 초기화
-            this.setState({start: !this.state.start, winning: ''})
+            this.setState({onLoading: !this.state.onLoading, winning: ''})
             setTimeout(() =>
-                    this.setState({winning: nonBlank[winning].value, start: !this.state.start})
+                    this.setState({winning: nonBlank[winning].value, onLoading: !this.state.onLoading})
                 , 3000)
         } else {
             alert("빈칸을 제외한 후보를 더 등록해주세요.")
@@ -109,7 +109,7 @@ class RandomGame extends Component {
                             <input type="text" value={this.state.subject} onChange={this.inputSubjectHandler} />
                         </span>
                     </div>
-                    {this.state.start &&
+                    {this.state.onLoading &&
                         <div className="on-loading">
                             <div className="lds-hourglass">
                             </div>

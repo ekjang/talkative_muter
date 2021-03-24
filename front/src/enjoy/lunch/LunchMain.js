@@ -11,6 +11,7 @@ class LunchMain extends Component {
         schContent: '',
         list: [],
         recommend: '',
+        onLoading: false,
     }
 
     /**
@@ -49,7 +50,12 @@ class LunchMain extends Component {
         const { list } = this.state
         if(list.length > 0) {
             let winning = Math.floor(Math.random() * list.length)
-            this.setState({recommend: list[winning].restaurant})
+
+            this.setState({onLoading: !this.state.onLoading})
+
+            setTimeout(() =>
+            this.setState({recommend: list[winning].restaurant, onLoading: !this.state.onLoading})
+            , 3000)
         } else {
             this.refSearch.focus();
             alert("'검색해' 를 눌러주세요.");
@@ -96,10 +102,17 @@ class LunchMain extends Component {
                             <button  className="Bopbtn" onClick={this.reset}>다시</button>
                         </div>
 
-                        {this.state.recommend !== '' &&
+                        {this.state.onLoading &&
                         <div>
-                            <span>
-                                오늘은 [[[ {this.state.recommend} ]]] (으)로 가자!!
+                            <div className="bouncingLoader">
+                                <div></div>
+                            </div>
+                        </div>
+                        }
+                        {this.state.recommend !== '' && !this.state.onLoading &&
+                        <div>
+                            <span className="typing-txt">
+                                오늘은 <span className="txt-style"> {this.state.recommend} </span> (으)로 가자!!
                             </span>
                         </div>
                         }
