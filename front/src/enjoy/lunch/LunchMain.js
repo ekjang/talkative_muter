@@ -74,39 +74,44 @@ class LunchMain extends Component {
         return (
             <div>
                 <div className="lunchbox">
-                <div>
-                    {/*검색 서비스는 api 찾아보고 추후 구현 예정*/}
-                    {/*<span>*/}
-                    {/*    <input type="text"*/}
-                    {/*           value={this.state.schContent}*/}
-                    {/*           onChange={this.inputHandler}*/}
-                    {/*           ref={(ref) => {this.refInput = ref;}}*/}
-                    {/*    />*/}
-                    {/*    <span onClick={this.clearInput}>X</span>*/}
-                    {/*</span>*/}
-                    <button onClick={this.searchGoogle}
-                            ref={(ref) => {this.refSearch = ref;}}>검색해</button>
-                </div>
-                <div>
-                    <button onClick={this.recommend}>뽑아줘</button>
-                    <button onClick={this.reset}>다시</button>
-                </div>
+                            <div className="luntitle">오늘 뭐먹지?</div>
 
-                {this.state.recommend !== '' &&
-                <div>
-                    <span>
-                        오늘은 [[[ {this.state.recommend} ]]] (으)로 가자!!
-                    </span>
-                </div>
-                }
-                <div>
-                    {this.state.list.map((item, idx) =>
-                    <LunchItem
-                        item={item}
-                        key={idx}
-                    />
-                    )}
-                </div>
+                    <div className="buttons">
+                        <div>
+                            {/*검색 서비스는 api 찾아보고 추후 구현 예정*/}
+                            {/*<span>*/}
+                            {/*    <input type="text"*/}
+                            {/*           value={this.state.schContent}*/}
+                            {/*           onChange={this.inputHandler}*/}
+                            {/*           ref={(ref) => {this.refInput = ref;}}*/}
+                            {/*    />*/}
+                            {/*    <span onClick={this.clearInput}>X</span>*/}
+                            {/*</span>*/}
+                            메뉴를 &nbsp; &nbsp;
+                            <button className="Bopbtn0" onClick={this.searchGoogle}
+                                    ref={(ref) => {this.refSearch = ref;}}>검색해</button>
+                        </div>
+                        <div>
+                            <button className="Bopbtn" onClick={this.recommend}>뽑아줘</button>
+                            <button  className="Bopbtn" onClick={this.reset}>다시</button>
+                        </div>
+
+                        {this.state.recommend !== '' &&
+                        <div>
+                            <span>
+                                오늘은 [[[ {this.state.recommend} ]]] (으)로 가자!!
+                            </span>
+                        </div>
+                        }
+                        <div>
+                            {this.state.list.map((item, idx) =>
+                            <LunchItem
+                                item={item}
+                                key={idx}
+                            />
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
         );
