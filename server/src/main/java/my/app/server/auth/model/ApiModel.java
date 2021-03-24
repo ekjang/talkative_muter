@@ -1,6 +1,7 @@
-package my.app.server.auth.controller.model;
+package my.app.server.auth.model;
 
 /**
+ * 이건 테스트 클래스임. 추후 삭제 예정
  * Created by ekjan.
  * Date : 2021-03-12 오후 2:47
  */

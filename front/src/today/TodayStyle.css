@@ -128,10 +128,9 @@
     margin-left: 8px;
     width: 90%;
     font-size: 15px;
-     cursor: pointer;
+    cursor: pointer;
     border: 2px solid lightskyblue;
     border-radius: 14px;
-    height: 20;
     height: 30px
 }
 
@@ -162,9 +161,9 @@
 }
 
 .content-item3 {
-
     margin-right: 15px;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .content-icon-true {

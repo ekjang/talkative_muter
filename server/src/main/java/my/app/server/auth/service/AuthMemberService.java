@@ -1,4 +1,4 @@
-package my.app.server.auth.controller.service;
+package my.app.server.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import my.app.server.common.entity.Member;

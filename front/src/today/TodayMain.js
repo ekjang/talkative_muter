@@ -31,6 +31,9 @@ class TodayMain extends Component {
         this.searchOnClick()
     }
 
+    componentWillUnmount() {
+    }
+
     /**
      * 팝업 동작 여부
      **/

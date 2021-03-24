@@ -2,13 +2,11 @@ package my.app.server.auth.controller;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import my.app.server.auth.controller.model.Sender;
-import my.app.server.auth.controller.service.AuthMemberService;
-import org.springframework.beans.factory.annotation.Autowired;
+import my.app.server.auth.model.Sender;
+import my.app.server.auth.service.AuthMemberService;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.internet.InternetAddress;
@@ -18,7 +16,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
-@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")
