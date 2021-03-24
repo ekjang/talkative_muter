@@ -103,7 +103,7 @@ class LunchMain extends Component {
                             </span>
                         </div>
                         }
-                        <div>
+                        <div className="menulist">
                             {this.state.list.map((item, idx) =>
                             <LunchItem
                                 item={item}
