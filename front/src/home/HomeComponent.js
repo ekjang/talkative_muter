@@ -13,9 +13,9 @@ import BottomText from "../common/BottomText";
 class HomeComponent extends Component {
     state = {
         today: new Date().toISOString().substr(0, 10),
-        token: '', //로그인 인증 토큰
-        isAuth: false, //사용 인증 여부
-        nickName: '' //등록 별명
+        token: (localStorage.getItem('token') !== null ? localStorage.getItem('token') : ''), //로그인 인증 토큰
+        isAuth: (localStorage.getItem('isAuth') !== null ? localStorage.getItem('isAuth') : false), //사용 인증 여부
+        nickName: (localStorage.getItem('nickName') !== null ? localStorage.getItem('nickName') : '') //등록 별명
     }
 
     componentDidMount() {

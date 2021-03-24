@@ -15,7 +15,7 @@ class GymInfoItem extends Component {
      * 상태 갱신 서버 요청 API
      */
     useOnClick = () => {
-        if(!localStorage.getItem("isAuth")) {
+        if(!this.props.isAuth) {
             alert("로그인 후 사용해주세요.")
             this.props.history.push("/login")
         } else {

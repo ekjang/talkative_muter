@@ -22,7 +22,7 @@ class TodayMain extends Component {
     }
 
     componentDidMount() {
-        if(!localStorage.getItem("isAuth")) {
+        if(!this.props.isAuth) {
             alert("로그인 후 사용해주세요.")
             //로그인 페이지로
             this.props.history.push("/login")

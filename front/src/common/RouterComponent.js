@@ -4,7 +4,7 @@ import Summary from "../home/Summary";
 import LogoutComponent from "../login/Logout";
 import MailAuth from "../auth/MailAuth";
 import PopularMain from "../popular/PopularMain";
-import TodayComponent from "../today/TodayMain";
+import TodayMain from "../today/TodayMain";
 import GymInfoMain from "../gym/GymInfoMain";
 import LoginComponent from "../login/Login";
 import RandomGame from "../enjoy/random/RandomGame";
@@ -61,7 +61,7 @@ class RouterComponent extends Component {
                     {/*/>*/}
                     {/*오늘 벙어리 화면*/}
                     <Route exact path="/today"
-                           render={() => <TodayComponent
+                           render={() => <TodayMain
                                today={this.props.today}
                                isAuth={this.props.isAuth}
                            />
