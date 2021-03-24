@@ -1,0 +1,11 @@
+.lunchbox {
+    position: inherit;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* width: calc(100% - 20px); */
+    margin-top: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #bbbbbb;
+}

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import server_url from "../../define/Url";
 import LunchItem from "./LunchItem";
+import "./LunchStyle.css"
+
+
 class LunchMain extends Component {
 
     state = {
@@ -70,6 +73,7 @@ class LunchMain extends Component {
     render() {
         return (
             <div>
+                <div className="lunchbox">
                 <div>
                     {/*검색 서비스는 api 찾아보고 추후 구현 예정*/}
                     {/*<span>*/}
@@ -102,6 +106,7 @@ class LunchMain extends Component {
                         key={idx}
                     />
                     )}
+                </div>
                 </div>
             </div>
         );
