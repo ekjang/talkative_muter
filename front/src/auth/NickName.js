@@ -13,35 +13,15 @@ class NickName extends Component {
 
 
     btnOkOnClick = () => {
-        if(this.state.nickName.length > 0) {
-            if (window.confirm("[ " + this.state.nickName + " ] 로 설정하시겠습니까?")) {
-                //중복 닉네임 있는지 서버 요청 체크
-                //axios.get => return data : nickName, isAuth
-                let response = false
-                ////////////////////////test
-                if(localStorage.getItem('nickName') !== null) {
-                    response = true
-                }
-
-                this.props.nickNameSetting(this.state.nickName, this.props.isAuth || response)
-            } else {
-                return
-            }
+        if (window.confirm("[ " + this.state.nickName + " ] 로 설정하시겠습니까?")) {
+            this.props.nickNameSetting(this.state.nickName)
         } else {
-            alert("닉네임을 입력해주세요.")
+            this.props.nickNamePopup()
         }
     }
 
     btnNoOnClick = () => {
-        if (this.state.nickName.length < 1) {
-            if (window.confirm("닉네임을 설정하지 않으면 인증처리가 완료되지 않습니다. 설정하시겠습니까?")) {
-                return
-            }
-        } else {
-            this.props.nickNameSetting(this.props.nickName, this.props.isAuth)
-            return
-        }
-        this.props.nickNameSetting(this.state.nickName, this.state.isAuth)
+        this.props.nickNamePopup()
     }
 
     render() {

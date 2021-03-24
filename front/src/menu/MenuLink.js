@@ -13,9 +13,13 @@ class MenuLink extends Component {
         return (
             <div className={this.props.menuStatus} id="menu">
                 {this.props.isAuth && this.props.nickName !== '' &&
-                    <div className="text-style">{this.props.nickName}</div>
+                    <div className="text-style" onClick={this.props.updateNickName}>{this.props.nickName}</div>
                 }
-                {this.props.isAuth}
+                {this.props.isAuth && this.props.nickName === '' &&
+                    <div>
+                        <div className="text-style" onClick={this.props.updateNickName}>닉네임 설정하기</div>
+                    </div>
+                }
                 <div id="auth-icon-style">
                     <p id="auth-icon-style-p">
                         <span id="auth-icon-style-span" onClick={() => {this.props.history.push("/" + authIcon)}}>

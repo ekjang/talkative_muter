@@ -17,7 +17,7 @@ class Summary extends Component {
             popularList: [], //인기 벙어리 리스트
             newCount: 0, //새글 갯수
             totalCount: 0, //오늘 전체 갯수
-            limit: 5 //리스트 제한 수
+            limit: 5, //리스트 제한 수
         }
     }
 

@@ -33,8 +33,8 @@ class HomeComponent extends Component {
             , token: localStorage.getItem('token')
             , isAuth: isAuth
             , nickName: nickName})
-        localStorage.setItem('isAuth', JSON.stringify(isAuth))
-        localStorage.setItem('nickName', JSON.stringify(nickName))
+        localStorage.setItem('isAuth', isAuth)
+        localStorage.setItem('nickName', nickName)
     }
 
 
@@ -52,6 +52,7 @@ class HomeComponent extends Component {
                             <RouterComponent
                                 today={this.state.today}
                                 isAuth={this.state.isAuth}
+                                nickName={this.state.nickName}
                                 loginCheck={this.loginCheck}
                             />
                         </div>

@@ -9,6 +9,7 @@ import GymInfoMain from "../gym/GymInfoMain";
 import LoginComponent from "../login/Login";
 import RandomGame from "../enjoy/random/RandomGame";
 import LunchMain from "../enjoy/lunch/LunchMain";
+import NickName from "../auth/NickName";
 
 /**
  * 라우터 정의
@@ -24,6 +25,7 @@ class RouterComponent extends Component {
                            render={() => <Summary
                                today={this.props.today}
                                isAuth={this.props.isAuth}
+                               nickName={this.props.nickName}
                                loginCheck={this.props.loginCheck}
                            />
                            }
@@ -52,13 +54,6 @@ class RouterComponent extends Component {
                            />
                            }
                     />
-                    {/*<Route exact path="/join"*/}
-                    {/*       render={() => <JoinComponent*/}
-                    {/*           isAuth={this.props.isAuth}*/}
-                    {/*           loginCheck={this.props.loginCheck}*/}
-                    {/*       />*/}
-                    {/*       }*/}
-                    {/*/>*/}
                     {/*오늘 벙어리 화면*/}
                     <Route exact path="/today"
                            render={() => <TodayMain
