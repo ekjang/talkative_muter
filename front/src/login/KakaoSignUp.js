@@ -73,12 +73,13 @@ class KakaoSignUp extends Component {
             })
             .then(res => {
                 // 회사 메일인증, 메일 인증 최종일자 (또는 유효기간/만료기간 정보) 받기
+                // 설정한 닉네임 받아오기 추가..?
                 this.setState({isAuth: res.data})
                 //id, isAuth 저장하기.. redux처리
                 localStorage.setItem('id', this.state.id)
                 localStorage.setItem('token', this.state.accessToken)
 
-                this.props.loginCheck(res.data)
+                this.props.loginCheck(res.data, '')
             })
             .catch(res =>
                 console.log(res)
