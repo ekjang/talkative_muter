@@ -63,7 +63,8 @@
 
 .todayclass input[type="date"] {
     float: left;
-    margin-left: 5%;
+    margin-left: 7%;
+    width: 60%;
 }
 
 
@@ -108,11 +109,11 @@
     left: 12%;
 }
 
-.button-small1 {
+.todayclass .button-small1 {
     color: #3284fb;
     background-color: #fff;
-    /* margin-left: 8px; */
-    width: 74px;
+    margin-left: -13px;
+    width: 80px;
     height: 28px;
     font-size: 15px;
     /* cursor: pointer; */
@@ -176,10 +177,10 @@
     font-size: 12px;
 }
 
-.newlist {
+.todaybox .newlist {
     text-align: left;
     padding-left: 29px;
-    padding-top: 10px;
+    padding-top: 35px;
     line-height: 31px;
     font-size: 16px;
     padding-bottom: 24px;
