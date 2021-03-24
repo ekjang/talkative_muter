@@ -82,6 +82,7 @@
 
 .bouncingLoader > div {
     margin: 0 5px;
+    margin-top: 30px;
 }
 
 .bouncingLoader > div {
@@ -93,6 +94,7 @@
 }
 
 @keyframes bouncing-loader {
+    
     to {
         opacity: 0.1;
         transform: translate3d(0, -16px, 0);
@@ -109,6 +111,7 @@
     display: inline-block;
     height: 25px; overflow: hidden;
     animation: typingAni 2s steps(30, end) 1;
+    margin-top: 20px;
 }
 .typing-txt::after{
     position:absolute;
@@ -120,6 +123,8 @@
     right:0;
     border-right: 1px solid #000;
     animation: cursor 0.5s step-end infinite;
+    margin-top: 20px;
+
 }
 @keyframes typingAni {
     0%{width:0%;}
