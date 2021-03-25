@@ -46,7 +46,6 @@ class TodayMain extends Component {
      */
     inputDateHandler = (e) => {
         this.setState({today: e.target.value})
-        this.searchOnClick(e.target.value)
     }
 
     /**
@@ -59,26 +58,15 @@ class TodayMain extends Component {
     /**
      * 오늘 벙어리 조회 서버 요청 API
      */
-    searchOnClick = (date) => {
-        let searchDate = ''
-        let {today} = this.state
-        if(date === undefined) {
-            searchDate = today
-        } else {
-            searchDate = date
-        }
-        axios.get(server_url + "/today/list",
-            {params:
-                    {schContent: this.state.schContent,
-                    today: searchDate
-                    }})
+    searchOnClick = () => {
+        axios.get(server_url + "/today/list", {params: {
+                today: this.state.today
+                , schContent: this.state.schContent
+            }})
             .then(res => {
-                this.setState({
-                    list: res.data.data,
-                    isSuccess:true
-                });
+                this.setState({list: res.data.data});
             })
-            .catch(res => console.log(res))
+            .catch(err => console.log(err));
         this.listSort()
     }
 
@@ -117,7 +105,7 @@ class TodayMain extends Component {
                 </div>
                 <div className="todayclass">
                     <input type="date" value={this.state.today} onChange={this.inputDateHandler}></input>
-                    {/*<input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />*/}
+                    <input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                 </div>
                 <div className="contents-list-style">
