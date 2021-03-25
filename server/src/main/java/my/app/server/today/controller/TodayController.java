@@ -90,11 +90,24 @@ public class TodayController {
     }
 
     @GetMapping("/list")
-    public Result contentsTodayList(String today) {
-        List<Content> findContents = todayService.findOneDayContents(today);
-
+    public Result contentsTodayList(String today, String schContent) {
+        List<Content> findContents;
+        if(schContent == null) {
+            findContents = todayService.findOneDayContents(today);
+        } else {
+            findContents = todayService.searchOneDayByString(today,schContent);
+        }
         List<TodayDto> collect = findContents.stream()
                 .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
+                .collect(Collectors.toList());
+        return new Result(collect);
+    }
+
+    @GetMapping("/search")
+    public Result searchContent(String searchString) {
+        List<Content> searchContent = todayService.searchByString(searchString);
+        List<TodayDto> collect = searchContent.stream()
+                .map(c -> new TodayDto(c.getId(), c.getContent(), c.getRegisterDate(), c.getLikes(), c.getDislikes(), c.getReports()))
                 .collect(Collectors.toList());
         return new Result(collect);
     }
@@ -119,6 +132,12 @@ public class TodayController {
             return true;
         }
         return false;
+    }
+
+    @DeleteMapping("/content/{id}")
+    public boolean deleteContent(@PathVariable("id") Long id) {
+        todayService.deleteContent(id);
+        return true;
     }
 
     @Data

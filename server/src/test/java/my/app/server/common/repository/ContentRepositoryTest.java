@@ -132,5 +132,25 @@ class ContentRepositoryTest {
 
     }
 
+    @Test
+    public void stringSearchTest() {
+        List<Content> popular = contentRepository.stringSearch("popular");
+        for (Content content : popular) {
+            System.out.println("content.getContent() = " + content.getContent());
+        }
+    }
+
+    @Test
+    public void stringOneDaySearchTest() {
+        LocalDate todayDate = LocalDate.parse("2021-03-16", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDateTime startDatetime = LocalDateTime.of(todayDate, LocalTime.of(0,0,0));
+        LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59));
+
+        List<Content> popular = contentRepository.stringSearchOneDay(startDatetime,endDatetime,null);
+        for (Content content : popular) {
+            System.out.println("content.getContent() = " + content.getContent());
+        }
+    }
+
 
 }

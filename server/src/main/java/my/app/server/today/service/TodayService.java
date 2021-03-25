@@ -40,8 +40,8 @@ public class TodayService {
     @Transactional(readOnly = true)
     public List<Content> findOneDayContents(String today) {
         LocalDate todayDate = LocalDate.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDateTime startDatetime = LocalDateTime.of(todayDate.minusDays(1L), LocalTime.of(0,0,0)); //어제 00:00:00
-        LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59)); //오늘 23:59:59
+        LocalDateTime startDatetime = LocalDateTime.of(todayDate, LocalTime.of(0,0,0));
+        LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59));
         return contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime,endDatetime);
     }
 
@@ -58,6 +58,19 @@ public class TodayService {
         LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.now().minusMinutes(10L)); //10분 전
         LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.now()); //오늘 23:59:59
         return contentRepository.findAllByRegisterDateBetweenOrderByRegisterDateDesc(startDatetime,endDatetime);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Content> searchByString(String searchString) {
+        return contentRepository.stringSearch(searchString);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Content> searchOneDayByString(String today,String searchString) {
+        LocalDate todayDate = LocalDate.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDateTime startDatetime = LocalDateTime.of(todayDate, LocalTime.of(0,0,0));
+        LocalDateTime endDatetime = LocalDateTime.of(todayDate, LocalTime.of(23,59,59));
+        return contentRepository.stringSearchOneDay(startDatetime,endDatetime,searchString);
     }
 
     public Long createContent(Content content) {
