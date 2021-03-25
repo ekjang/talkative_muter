@@ -3,8 +3,9 @@ import KakaoLogin from "react-kakao-login";
 import axios from "axios";
 import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
+import { connect } from "react-redux";
+import user, { loginAction, logoutAction } from "../reducers/user";
 
-const { Kakao } = window;
 
 /**
  * 카카오 로그인 컴퍼넌트
@@ -80,6 +81,7 @@ class KakaoSignUp extends Component {
                 localStorage.setItem('token', this.state.accessToken)
 
                 this.props.loginCheck(res.data, '')
+                loginAction(this.state.id, this.state.accessToken, true) //reducer를 통해 store에 저장gkrl
             })
             .catch(res =>
                 console.log(res)
@@ -87,6 +89,8 @@ class KakaoSignUp extends Component {
     }
 
     render() {
+        const { id, loginAction } = this.props
+        console.log(id)
         return (
             <div>
                 <div>
@@ -101,4 +105,17 @@ class KakaoSignUp extends Component {
         );
     }
 }
-export default withRouter(KakaoSignUp);
+
+const mapStateToProps = (state) => ({
+    id: state.user.id
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    loginAction: () => dispatch(loginAction())
+})
+
+// export default withRouter(KakaoSignUp);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(KakaoSignUp));
+// export default connect((dispatch) => ({
+//     loginAction: bindActionCreators(loginAction, dispatch)
+// }))(KakaoSignUp)

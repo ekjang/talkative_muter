@@ -5,6 +5,20 @@ import RouterComponent from "../common/RouterComponent";
 import "./MainStyle.css"
 import BottomText from "../common/BottomText";
 
+import * as user from "../reducers/user"
+
+
+const mapStateToProps = (state) => ({
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onLoginAction: () => dispatch(user.loginAction()),
+    onLogoutAction: () => dispatch(user.logoutAction()),
+})
+
 /**
  * 홈 컴퍼넌트
  * - 슬라이드 메뉴
@@ -39,6 +53,8 @@ class HomeComponent extends Component {
 
 
     render() {
+        const {id, token, isAuth} = this.props
+        console.log(id+","+token+","+isAuth)
         return (
             <div className="site-style">
                 <Router>
