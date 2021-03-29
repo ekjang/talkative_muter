@@ -1,5 +1,10 @@
 import './App.css';
 import HomeComponent from "./home/HomeComponent";
+import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+import createStore from "./store/store"
+import reducers from "./reducers";
 /*
 import firebase from 'firebase';
 
@@ -46,12 +51,20 @@ messaging.onTokenRefresh(function() {
 });
 */
 
+const store = createStore(reducers);
+const persistor = persistStore(store)
+
 function App() {
-  return (
-    <div className="App">
-      <HomeComponent />
-    </div>
-  );
+    console.log(store)
+    return (
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+            <div className="App">
+                <HomeComponent />
+            </div>
+            </PersistGate>
+        </Provider>
+    );
 }
 
 export default App;

@@ -4,6 +4,13 @@ import MenuComponent from "../menu/MenuMain";
 import RouterComponent from "../common/RouterComponent";
 import "./MainStyle.css"
 import BottomText from "../common/BottomText";
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => ({
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
+});
 
 /**
  * 홈 컴퍼넌트
@@ -13,16 +20,21 @@ import BottomText from "../common/BottomText";
 class HomeComponent extends Component {
     state = {
         today: new Date().toISOString().substr(0, 10),
-        token: (localStorage.getItem('token') !== null ? localStorage.getItem('token') : ''), //로그인 인증 토큰
-        isAuth: (localStorage.getItem('isAuth') !== null ? localStorage.getItem('isAuth') : false), //사용 인증 여부
+        id: '',
+        token: '',
+        isAuth: false,
+        // token: (localStorage.getItem('token') !== null ? localStorage.getItem('token') : ''), //로그인 인증 토큰
+        // isAuth: (localStorage.getItem('isAuth') !== null ? localStorage.getItem('isAuth') : false), //사용 인증 여부
         nickName: (localStorage.getItem('nickName') !== null ? localStorage.getItem('nickName') : '') //등록 별명
     }
 
     componentDidMount() {
         let date = new Date().toISOString().substr(0, 10)
+        const {id, token, isAuth} = this.props
         this.setState({today: date
-            , token: localStorage.getItem('token')
-            , isAuth: localStorage.getItem('isAuth')
+            , id: id
+            , token: token
+            , isAuth: isAuth
             , nickName: localStorage.getItem('nickName')})
     }
 
@@ -30,11 +42,11 @@ class HomeComponent extends Component {
     loginCheck = (isAuth, nickName) => {
         let date = new Date().toISOString().substr(0, 10)
         this.setState({today: date
-            , token: localStorage.getItem('token')
-            , isAuth: isAuth
+            // , token: localStorage.getItem('token')
+            // , isAuth: isAuth
             , nickName: nickName})
-        localStorage.setItem('isAuth', isAuth)
-        localStorage.setItem('nickName', nickName)
+        // localStorage.setItem('isAuth', isAuth)
+        // localStorage.setItem('nickName', nickName)
     }
 
 
@@ -63,4 +75,4 @@ class HomeComponent extends Component {
         );
     }
 }
-export default HomeComponent;
+export default connect(mapStateToProps)(HomeComponent);
