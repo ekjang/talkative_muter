@@ -64,7 +64,7 @@
 .todayclass input[type="date"] {
     float: left;
     margin-left: 7%;
-    width: 200px;
+    width: 125px;
 }
 
 
@@ -108,6 +108,21 @@
     /* right: 10%; */
     left: 12%;
 }
+
+.do-you-know-popup .button-small1{
+    color: #3284fb;
+    background-color: #fff;
+    margin-left: 9px;
+    width: 80px;
+    height: 28px;
+    font-size: 15px;
+    /* cursor: pointer; */
+    border: 1px solid #3284fb;
+    border-radius: 5px;
+    float: left;
+
+}
+
 
 .todayclass .button-small1 {
     color: #3284fb;
