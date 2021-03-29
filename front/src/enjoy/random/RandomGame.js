@@ -106,7 +106,7 @@ class RandomGame extends Component {
                             주제
                         </span>
                         <span>
-                            <input type="text" value={this.state.subject} onChange={this.inputSubjectHandler} />
+                            <input type="text" placeholder="주제를 입력해 주세요" value={this.state.subject} onChange={this.inputSubjectHandler} />
                         </span>
                     </div>
                     {this.state.onLoading &&
