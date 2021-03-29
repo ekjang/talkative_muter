@@ -5,18 +5,18 @@
 import * as type from "./type";
 
 export const loginAction = (id, token, isAuth) => ({
-        type: type.LOGIN,
-        id, //: id,
-        token, //: token,
-        isAuth //: isAuth
+    type: type.LOGIN,
+    id, //: id,
+    token, //: token,
+    isAuth //: isAuth
 });
 
 export const logoutAction = () => ({
-        type: type.LOGOUT,
-        // id, //: '',
-        // token, //: '',
-        // isAuth, //: false,
-        // nickName//: ''
+    type: type.LOGOUT,
+    // id, //: '',
+    // token, //: '',
+    // isAuth, //: false,
+    // nickName//: ''
 });
 
 const initialState = {
@@ -29,7 +29,6 @@ const initialState = {
 const user = (state = initialState, action) => {
     switch(action.type) {
         case(type.LOGIN):
-            console.log("login!" + action.id+","+action.token+","+action.isAuth)
             return {
                 ...state,
                 id: action.id,
