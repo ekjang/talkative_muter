@@ -27,7 +27,7 @@ class LunchMain extends Component {
      */
     clearInput = () => {
         this.setState({schContent: ''})
-        this.refInput.focus()
+        this.inputRef.focus()
     }
 
     /**
@@ -57,7 +57,7 @@ class LunchMain extends Component {
             this.setState({recommend: list[winning].restaurant, onLoading: !this.state.onLoading})
             , 3000)
         } else {
-            this.refSearch.focus();
+            this.searchRef.focus();
             alert("'검색해' 를 눌러주세요.");
         }
     }
@@ -89,13 +89,13 @@ class LunchMain extends Component {
                             {/*    <input type="text"*/}
                             {/*           value={this.state.schContent}*/}
                             {/*           onChange={this.inputHandler}*/}
-                            {/*           ref={(ref) => {this.refInput = ref;}}*/}
+                            {/*           ref={(ref) => {this.inputRef = ref;}}*/}
                             {/*    />*/}
                             {/*    <span onClick={this.clearInput}>X</span>*/}
                             {/*</span>*/}
                             메뉴를 &nbsp; &nbsp;
                             <button className="Bopbtn0" onClick={this.searchGoogle}
-                                    ref={(ref) => {this.refSearch = ref;}}>검색해</button>
+                                    ref={(ref) => {this.searchRef = ref;}}>검색해</button>
                         </div>
                         <div>
                             <button className="Bopbtn" onClick={this.recommend}>뽑아줘</button>

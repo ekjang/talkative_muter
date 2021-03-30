@@ -80,3 +80,10 @@
     margin-top: 20px;
     padding-bottom: 31px;
 }
+
+.x-style {
+    margin: 5px;
+    color: cornflowerblue;
+    font-size: 12px;
+    cursor: pointer;
+}
