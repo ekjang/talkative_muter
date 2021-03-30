@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import KakaoLogin from "react-kakao-login";
 import axios from "axios";
 import server_url from "../define/Url";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux"; //redux store에 연결해주는 API
 import { loginAction } from "../reducers/user";
 
@@ -77,8 +77,8 @@ class KakaoSignUp extends Component {
                 // 설정한 닉네임 받아오기 추가..?
                 this.setState({isAuth: res.data})
                 //id, isAuth 저장하기.. redux처리
-                localStorage.setItem('id', this.state.id)
-                localStorage.setItem('token', this.state.accessToken)
+                // localStorage.setItem('id', this.state.id)
+                // localStorage.setItem('token', this.state.accessToken)
 
                 this.props.loginCheck(res.data, '')
                 this.props.storeLoginAction(this.state.id, this.state.accessToken, true) //reducer를 통해 store에 저장
@@ -106,7 +106,9 @@ class KakaoSignUp extends Component {
 
 //store의 state를 컴포넌트의 props에 매핑
 const mapStateToProps = (state) => ({
-    id: state.user.id
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
 })
 
 //컴포넌트의 특정 함수형 props를 실행했을 때, 지정한 action을 dispatch하도록 설정

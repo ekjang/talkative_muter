@@ -91,7 +91,6 @@ class MailAuth extends Component {
         this.setState({inputAuthCode: e.target.value})
         if(this.state.authCode === e.target.value) {
             this.setState({isAuth: true, nickNamePopup: true})
-            localStorage.setItem('isAuth', JSON.stringify(true))
 
             // 회사 메일 인증 여부 서버 전송
             axios.post(server_url + "/auth/access", {id: localStorage.getItem('id')})
@@ -193,7 +192,6 @@ class MailAuth extends Component {
                     {this.state.nickNamePopup &&
                     <div>
                         <NickName
-                            isAuth={this.state.isAuth}
                             nickName={this.state.nickName}
                             nickNamePopup={this.nickNamePopup}
                             nickNameSetting={this.nickNameSetting}

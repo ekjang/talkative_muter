@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import "./TodayStyle.css"
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import DoYouKnowPopup from "./DoYouKnowPopup";
 import server_url from "../define/Url"
 import TodayItem from "./TodayItem";
+import { connect } from "react-redux"; //redux store에 연결해주는 API
 
 /**
  *  오늘 벙어리 화면
@@ -124,4 +125,10 @@ class TodayMain extends Component {
         );
     }
 }
-export default withRouter(TodayMain);
+//store의 state를 컴포넌트의 props에 매핑
+const mapStateToProps = (state) => ({
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
+})
+export default withRouter(connect(mapStateToProps)(TodayMain));

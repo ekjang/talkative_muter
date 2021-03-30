@@ -3,6 +3,8 @@ import "./PopularStyle.css"
 import axios from "axios";
 import server_url from "../define/Url";
 import PopularItem from "./PopularItem";
+import { connect } from "react-redux";
+
 
 /**
  * 인기 벙어리 화면
@@ -80,13 +82,6 @@ class PopularMain extends Component {
                          <span className="mutter-icon"></span>
                          <span className="popular-title"> 인기 벙어리 </span>
                 </div>
-                <div>
-                    {this.props.isAuth &&
-                    <div className="popcontent">
-                        {/*<button className="popbtn" onClick={this.searchOnClick}>검색</button>*/}
-                    </div>
-                    }
-                </div>
                 <div className="contents-list-style">
                   <div className="newlist">
                     {this.state.list.map((item, idx) =>
@@ -107,4 +102,10 @@ class PopularMain extends Component {
         );
     }
 }
-export default PopularMain;
+
+//store의 state를 컴포넌트의 props에 매핑
+const mapStateToProps = (state) => ({
+    isAuth: state.user.isAuth,
+})
+
+export default connect(mapStateToProps)(PopularMain);

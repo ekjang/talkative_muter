@@ -13,10 +13,10 @@ export const loginAction = (id, token, isAuth) => ({
 
 export const logoutAction = () => ({
     type: type.LOGOUT,
-    // id, //: '',
-    // token, //: '',
-    // isAuth, //: false,
-    // nickName//: ''
+    id: '',
+    token: '',
+    isAuth: false,
+    nickName: ''
 });
 
 const initialState = {

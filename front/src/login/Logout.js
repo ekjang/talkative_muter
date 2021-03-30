@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux"; //redux store에 연결해주는 API
+import { logoutAction } from "../reducers/user"
 
 /**
  * 로그아웃
@@ -15,6 +17,7 @@ class Logout extends Component {
      */
     logoutHandler = () => {
         this.props.loginCheck(false, '')
+        this.props.storeLogoutAction() //reducer를 통해 store에 저장
         localStorage.clear()
         //닉네임 삭제 서버 요청
         //axios.delete
@@ -55,4 +58,17 @@ class Logout extends Component {
         );
     }
 }
-export default withRouter(Logout);
+
+//store의 state를 컴포넌트의 props에 매핑
+const mapStateToProps = (state) => ({
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
+})
+
+//컴포넌트의 특정 함수형 props를 실행했을 때, 지정한 action을 dispatch하도록 설정
+const mapDispatchToProps = (dispatch) => ({
+    storeLogoutAction: () => dispatch(logoutAction())
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Logout));

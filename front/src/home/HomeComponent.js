@@ -6,11 +6,6 @@ import "./MainStyle.css"
 import BottomText from "../common/BottomText";
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => ({
-    id: state.user.id,
-    token: state.user.token,
-    isAuth: state.user.isAuth,
-});
 
 /**
  * 홈 컴퍼넌트
@@ -23,14 +18,12 @@ class HomeComponent extends Component {
         id: '',
         token: '',
         isAuth: false,
-        // token: (localStorage.getItem('token') !== null ? localStorage.getItem('token') : ''), //로그인 인증 토큰
-        // isAuth: (localStorage.getItem('isAuth') !== null ? localStorage.getItem('isAuth') : false), //사용 인증 여부
         nickName: (localStorage.getItem('nickName') !== null ? localStorage.getItem('nickName') : '') //등록 별명
     }
 
     componentDidMount() {
         let date = new Date().toISOString().substr(0, 10)
-        const {id, token, isAuth} = this.props
+        const {id, token, isAuth} = this.props //redux data 가져오기
         this.setState({today: date
             , id: id
             , token: token
@@ -42,11 +35,7 @@ class HomeComponent extends Component {
     loginCheck = (isAuth, nickName) => {
         let date = new Date().toISOString().substr(0, 10)
         this.setState({today: date
-            // , token: localStorage.getItem('token')
-            // , isAuth: isAuth
             , nickName: nickName})
-        // localStorage.setItem('isAuth', isAuth)
-        // localStorage.setItem('nickName', nickName)
     }
 
 
@@ -57,13 +46,11 @@ class HomeComponent extends Component {
                     <div>
                         <MenuComponent
                             today={this.state.today}
-                            isAuth={this.state.isAuth}
                             nickName={this.state.nickName}
                         />
                         <div className="content-style">
                             <RouterComponent
                                 today={this.state.today}
-                                isAuth={this.state.isAuth}
                                 nickName={this.state.nickName}
                                 loginCheck={this.loginCheck}
                             />
@@ -75,4 +62,11 @@ class HomeComponent extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
+});
+
 export default connect(mapStateToProps)(HomeComponent);

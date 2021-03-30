@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import {Link, withRouter} from "react-router-dom";
 import "./MenuStyle.css"
+import { connect } from 'react-redux';
+
 
 /**
  * 메뉴 링크 정의
  */
 class MenuLink extends Component {
+
 
     render() {
         let authIcon = this.props.isAuth ? "logout" : "login";
@@ -42,4 +45,9 @@ class MenuLink extends Component {
         );
     }
 }
-export default withRouter(MenuLink);
+
+const mapStateToProps = (state) => ({
+    isAuth: state.user.isAuth,
+});
+
+export default withRouter(connect(mapStateToProps)(MenuLink));

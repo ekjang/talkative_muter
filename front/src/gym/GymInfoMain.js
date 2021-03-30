@@ -50,7 +50,6 @@ class GymInfoMain extends Component {
                         item={item}
                         key={idx}
                         searchOnClick={this.searchOnClick}
-                        isAuth={this.props.isAuth}
                     />
                 )}
                 </div>

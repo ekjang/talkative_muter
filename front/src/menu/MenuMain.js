@@ -3,6 +3,8 @@ import MenuLink from "./MenuLink";
 import {withRouter} from "react-router-dom";
 import './MenuStyle.css'
 import NickName from "../auth/NickName";
+import { connect } from 'react-redux';
+
 
 /**
  * 메뉴 컴퍼넌트
@@ -22,8 +24,6 @@ class MenuMain extends Component {
 
     componentDidMount() {
         document.addEventListener('click', this.handleClick, false);
-        // this.popupHandler() //닉네임 설정 팝업
-        // this.memberAuthCheck()
     }
 
     componentWillUnmount() {
@@ -49,7 +49,6 @@ class MenuMain extends Component {
 
     updateNickName = () => {
         let message = ''
-
         if(this.props.isAuth) {
             if (this.state.nickName === '') {
                 message = "닉네임을 설정하시겠습니까?"
@@ -59,12 +58,6 @@ class MenuMain extends Component {
             if(window.confirm(message)) {
                 this.setState({nickNamePopup: !this.state.nickNamePopup})
             }
-        }
-    }
-
-    popupHandler = () => {
-        if(this.props.nickName === '') {
-            this.updateNickName()
         }
     }
 
@@ -97,7 +90,6 @@ class MenuMain extends Component {
                 {this.state.nickNamePopup &&
                 <div>
                     <NickName
-                        isAuth={this.props.isAuth}
                         nickName={this.state.nickName}
                         nickNamePopup={this.nickNamePopup}
                         nickNameSetting={this.nickNameSetting}
@@ -117,7 +109,6 @@ class MenuMain extends Component {
                     </div>
                     <MenuLink
                         menuStatus={menuStatus}
-                        isAuth={this.props.isAuth}
                         nickName={this.state.nickName}
                         updateNickName={this.updateNickName}
                     />
@@ -126,4 +117,9 @@ class MenuMain extends Component {
         );
     }
 }
-export default withRouter(MenuMain);
+
+const mapStateToProps = (state) => ({
+    isAuth: state.user.isAuth,
+});
+
+export default withRouter(connect(mapStateToProps)(MenuMain));

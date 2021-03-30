@@ -29,7 +29,6 @@ class Login extends Component {
                 <div >
                     <div className="kakaologin"> 
                         <KakaoSignUp
-                            isAuth={this.props.isAuth}
                             loginCheck={this.loginCheck}
                         />
                     </div>
