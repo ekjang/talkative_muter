@@ -11,6 +11,7 @@ class LunchMain extends Component {
         schContent: '',
         list: [],
         recommend: '',
+        recommendUrl: '',
         onLoading: false,
     }
 
@@ -54,7 +55,7 @@ class LunchMain extends Component {
             this.setState({onLoading: !this.state.onLoading})
 
             setTimeout(() =>
-            this.setState({recommend: list[winning].restaurant, onLoading: !this.state.onLoading})
+            this.setState({recommend: list[winning].name, recommendUrl: list[winning].address, onLoading: !this.state.onLoading})
             , 3000)
         } else {
             this.searchRef.focus();
@@ -122,7 +123,9 @@ class LunchMain extends Component {
                         {this.state.recommend !== '' && !this.state.onLoading &&
                         <div>
                             <span className="typing-txt">
-                                오늘은 <span className="txt-style"> {this.state.recommend} </span> (으)로 가자!!
+                                오늘은 <span className="txt-style"> {this.state.recommend} </span>
+                                (<a href={this.state.recommendUrl} target="_blank">{this.state.recommendUrl}</a>)
+                                (으)로 가자!!
                             </span>
                         </div>
                         }
