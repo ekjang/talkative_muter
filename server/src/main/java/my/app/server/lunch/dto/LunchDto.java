@@ -1,30 +1,17 @@
 package my.app.server.lunch.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Builder
 @Data
 @AllArgsConstructor
 public class LunchDto {
-    private String restaurant;
 
-    public LunchDto(){
-    }
+    private Long id;
 
-    public String getRestaurant() {
-        return restaurant;
-    }
+    private String name;
 
-    public void setRestaurant(String restaurant) {
-        this.restaurant = restaurant;
-    }
+    private String address;
 
-    @Override
-    public String toString() {
-        return "LunchDto{" +
-                "restaurant='" + restaurant + '\'' +
-                '}';
+    public LunchDto() {
     }
 }

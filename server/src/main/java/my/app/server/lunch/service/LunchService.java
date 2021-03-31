@@ -1,37 +1,70 @@
 package my.app.server.lunch.service;
 
-
+import lombok.RequiredArgsConstructor;
 import my.app.server.lunch.dto.LunchDto;
-import org.jsoup.nodes.Element;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import javax.annotation.PostConstruct;
-import java.io.IOException;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
+@Configuration
+@RequiredArgsConstructor
 public class LunchService {
-    private static String RESTAURANT_DATA_URL = "https://www.google.com/search?hl=ko&tbs=lf:1,lf_ui:9&tbm=lcl&sxsrf=ALeKk01l5kLJ1h816JX7L72pqgs8_wdHWg:1616397866453&q=%EC%9C%A0%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4+%EC%A0%90%EC%8B%AC+%EB%A7%9B%EC%A7%91&rflfq=1&num=10&sa=X&ved=2ahUKEwiux5Slr8PvAhWTFIgKHRiDA7wQjGp6BAgIEE8&biw=1071&bih=1076#rlfi=hd:;si:;mv:[[37.404032199999996,127.1093441],[37.3999622,127.10585490000001]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3,lf:1,lf_ui:9";
 
-    @PostConstruct
-    public List<LunchDto> getRestaurantData() throws IOException {
-        Document doc = Jsoup.connect(RESTAURANT_DATA_URL).get();
-        Elements elements = doc.select("div.dbg0pd");
+    @Transactional
+    public List<LunchDto> list(String search) {
         List<LunchDto> lunchDtoList = new ArrayList<>();
+        try {
+            for (int i = 1; i <= 3; i++) {
+                String encodeResult = URLEncoder.encode(search, "UTF-8");
+                URL url = new URL("https://dapi.kakao.com/v2/local/search/keyword.json?y=37.40207474911747&x=127.1067572519869&radius=500&query=" + encodeResult + "&page=" + i);
 
-        for(Element element : elements){
-            LunchDto lunchDto = new LunchDto();
-            String title = element.text();
-            lunchDto.setRestaurant(title);
-            lunchDtoList.add(lunchDto);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Accept", "application/json");
+                conn.setRequestProperty("Authorization", "KakaoAK 7aa4518a2eed82fa311a9de9407adb61");
+                conn.setRequestProperty("Access-Control-Allow-Origin", "*");
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = br.readLine()) != null) {
+                    response.append(inputLine + "\n");
+                }
+                ScriptEngineManager sem = new ScriptEngineManager(); //자바스크립트 엔진불러오기
+                ScriptEngine engine = sem.getEngineByName("javascript");
+                String json = response.toString();
+                String script = "Java.asJSONCompatible(" + json + ")";
+                Object result = engine.eval(script);            //script 실행한걸 result에 넣기
+                Map<String, Object> contents = (Map) result;
+                Map<String, Object> meta = (Map) contents.get("meta");
+                Integer count = (Integer) meta.get("total_count");
+                List<Map> list = (List<Map>) contents.get("documents");
+
+                for (Map m : list) {
+                    LunchDto dto = new LunchDto();
+                    dto.setName((String) m.get("place_name"));
+                    dto.setAddress((String) m.get("place_url"));
+                    lunchDtoList.add(dto);
+                }
+                if (count < 15 || count < 30) break;
+            }
+        } catch (
+                Exception e) {
+            System.out.println(e);
         }
-        /*for(int i = 0; i<lunchDtoList.size(); i++){
-            System.out.println(lunchDtoList.get(i).toString());
-        }*/
         return lunchDtoList;
     }
+
 }
