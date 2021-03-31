@@ -87,11 +87,16 @@ class TodayMain extends Component {
     }
 
     moreView = () => {
+        console.log(this.state.isMore)
         let page = this.state.page + 1
         let view = this.state.list.slice((page - 1) * this.state.pageSize, page * this.state.pageSize)
         this.setState({page: page, view: [...this.state.view, ...view]})
-        if(this.state.list.length > 0 && (this.state.list.length === (page - 1) * this.state.pageSize + view.length)) {
-            this.setState({isMore: false})
+        if(this.state.list.length > 0) {
+            if(this.state.list.length === (page - 1) * this.state.pageSize + view.length) {
+                this.setState({isMore: false})
+            } else {
+                this.setState({isMore: true})
+            }
         }
     }
 
