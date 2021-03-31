@@ -105,8 +105,10 @@ class TodayMain extends Component {
                 </div>
                 <div className="todayclass">
                     <input type="date" value={this.state.today} onChange={this.inputDateHandler}></input>
+                    <div className="today-search">
                     <input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
+                    </div>
                 </div>
                 <div className="contents-list-style">
                     <div className="newlist">

@@ -64,7 +64,19 @@
 .todayclass input[type="date"] {
     float: left;
     margin-left: 7%;
-    width: 200px;
+    width: 120px;
+}
+
+.todayclass input[type="text"] {
+    border-bottom: 1px solid black;
+    /* background: none; */
+    width: 54%;
+    /* margin: 0 auto; */
+    height: 15px;
+    margin-top: 10px;
+    float: left;
+    /* padding-left: 16px; */
+    margin-left: 17px;
 }
 
 
@@ -143,7 +155,7 @@
 .content-item0 {
     margin-right: 13px;
     line-height: 2;
-    color: #666;
+    color: darkgray;
     font-size: 15px;
     vertical-align: top;
 }
@@ -180,7 +192,7 @@
 .todaybox .newlist {
     text-align: left;
     padding-left: 29px;
-    padding-top: 63px;
+    padding-top: 86px;
     line-height: 31px;
     font-size: 16px;
     padding-bottom: 24px;
@@ -202,4 +214,9 @@
 
 .tagclass span:nth-child(1){
     margin-left: 13px;
+}
+
+
+.today-search{
+
 }
