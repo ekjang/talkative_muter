@@ -4,9 +4,6 @@ class RandomGameItem extends Component {
     componentDidMount() {
         this.inputRef.focus()
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        // this.inputRef.focus()
-    }
 
     inputItemHandler = (e) => {
         this.props.inputItemHandler(this.props.idx, e.target.value)

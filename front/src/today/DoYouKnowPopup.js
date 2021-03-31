@@ -14,6 +14,7 @@ class DoYouKnowPopup extends Component {
     }
 
     componentDidMount() {
+        this.inputRef.focus()
         this.setState({isSuccess: false})
     }
 
@@ -44,6 +45,16 @@ class DoYouKnowPopup extends Component {
     }
 
     /**
+     * 엔터 동작 시 확인 버튼 동작 호출
+     * @param e
+     */
+    enterHandler = (e) => {
+        if(e.key == 'Enter') {
+            this.btnOkOnClick()
+        }
+    }
+
+    /**
      * 입력 글 등록 서버 요청 API
      */
     postApi = () => {
@@ -63,7 +74,12 @@ class DoYouKnowPopup extends Component {
                         너 그거 아니?
                     </div>
                     <div className="do-you-know-popup-content">
-                        <textarea rows="4" value={this.state.content} onChange={this.inputHandler}></textarea>
+                        <textarea rows="4" value={this.state.content}
+                                  onChange={this.inputHandler}
+                                  onKeyPress={this.enterHandler}
+                                  ref={(ref) => {this.inputRef = ref;}}
+                        >
+                        </textarea>
                     </div>
                     <div className="do-you-know-popup-button-style">
                         <button className="button-small1" onClick={this.btnOkOnClick}>확인</button>&nbsp;&nbsp;
