@@ -87,7 +87,6 @@ class TodayMain extends Component {
     }
 
     moreView = () => {
-        console.log(this.state.isMore)
         let page = this.state.page + 1
         let view = this.state.list.slice((page - 1) * this.state.pageSize, page * this.state.pageSize)
         this.setState({page: page, view: [...this.state.view, ...view]})
@@ -137,9 +136,9 @@ class TodayMain extends Component {
                         )}
                     </div>
                     <div>
-                        {this.state.list.length > 10 && this.state.isMore &&
-                            <button className="button-wide1" onClick={this.moreView}>More</button>
-                        }
+                    {this.state.list.length > 10 && this.state.isMore &&
+                        <button className="button-wide1" onClick={this.moreView}>More</button>
+                    }
                     </div>
                     <div>
                     {this.state.view.length > 10 &&
