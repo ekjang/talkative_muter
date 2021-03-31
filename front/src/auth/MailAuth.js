@@ -17,7 +17,7 @@ class MailAuth extends Component {
         mailPath: '@datastreams.co.kr', //고정 값
         authCode: 'Abc123!', //생성된 인증코드 (Abc123! 은 테스트 값)
         inputAuthCode: '', //입력 인증코드
-        timerOn: false,
+        timerOn: -1,
         isAuth: false,
         nickNamePopup: false, //별명 설정 팝업 여부
         nickName: '' //별명
@@ -43,8 +43,8 @@ class MailAuth extends Component {
      * @param nickName
      * @param isAuth
      */
-    nickNameSetting = (nickName, isAuth) => {
-        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup, isAuth: isAuth})
+    nickNameSetting = (nickName) => {
+        this.setState({nickName: nickName, nickNamePopup: !this.state.nickNamePopup})
         if(nickName !== undefined) {
             localStorage.setItem('nickName', nickName)
             //닉네임 서버 저장 요청
@@ -60,13 +60,14 @@ class MailAuth extends Component {
             alert("아이디를 입력하세요.")
         } else {
             let mail = this.state.companyId + this.state.mailPath
+            this.setState({timerOn: -1})
 
             window.confirm("[ " + this.state.companyId + this.state.mailPath + " ] 로 인증코드를 전송합니다.!") ?
                 axios.post(server_url + "/auth/checkMail", {mail: mail})
                     .then(res => {
                         alert("인증번호가 전송되었습니다.")
                         //서버에서 생성한 인증코드 받기
-                        this.setState({timerOn: true, authCode: res.data.key})
+                        this.setState({timerOn: 1, authCode: res.data.key})
                     })
                 .catch(res => console.log(res)) &&
                 this.refAuthCode.focus()
@@ -80,7 +81,7 @@ class MailAuth extends Component {
      */
     timerReset = () => {
         alert("인증번호 입력 유효시간이 초과되었습니다. 인증번호를 다시 발급 받으세요.")
-        this.setState({timerOn: false, authCode: ''})
+        this.setState({timerOn: 0, authCode: ''})
     }
 
     /**
@@ -89,7 +90,7 @@ class MailAuth extends Component {
      */
     authCodeCheck = (e) => {
         this.setState({inputAuthCode: e.target.value})
-        if(this.state.authCode === e.target.value) {
+        if(this.state.authCode === e.target.value && this.state.timerOn === 1) {
             this.setState({isAuth: true, nickNamePopup: true})
 
             // 회사 메일 인증 여부 서버 전송
@@ -128,6 +129,36 @@ class MailAuth extends Component {
         this.props.history.push("/")
     }
 
+    authCodeResult = () => {
+        if (this.state.timerOn === 1) {
+            if (this.state.isAuth) {
+                return (
+                    <div className="auth-true">
+                        인증 되었습니다.
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="auth-false">
+                        인증코드가 일치하지 않습니다.
+                    </div>
+                )
+            }
+        } else if(this.state.timerOn === 0) {
+            return (
+                <div className="auth-false">
+                    입력 유효시간이 만료되었습니다. 인증코드를 다시 발급받으세요.
+                </div>
+            )
+        } else if(this.state.timerOn === -1) {
+            return (
+                <div className="auth-false">
+                    인증코드를 발급받으세요.
+                </div>
+            )
+        }
+    }
+
 
     render() {
         return (
@@ -155,20 +186,24 @@ class MailAuth extends Component {
                            ref={(ref) => {this.refAuthCode = ref;}}value={this.state.inputAuthCode}
                            onChange={this.authCodeCheck}/>
                     {
-                        this.state.timerOn &&
+                        this.state.timerOn === 1 &&
                         <AuthTimer
+                            timerReset={this.timerReset}
                         />
                     }
-                    {this.state.inputAuthCode !== '' && this.state.isAuth &&
-                    <div className="auth-true">
-                        인증 되었습니다.
-                    </div>
+                    {this.state.inputAuthCode !== '' &&
+                    this.authCodeResult()
                     }
-                    {this.state.inputAuthCode !== '' && !this.state.isAuth &&
-                    <div className="auth-false">
-                        인증코드가 일치하지 않습니다.
-                    </div>
-                    }
+                    {/*{this.state.inputAuthCode !== '' && this.state.isAuth &&*/}
+                    {/*<div className="auth-true">*/}
+                    {/*    인증 되었습니다.*/}
+                    {/*</div>*/}
+                    {/*}*/}
+                    {/*{this.state.inputAuthCode !== '' && !this.state.isAuth &&*/}
+                    {/*<div className="auth-false">*/}
+                    {/*    인증코드가 일치하지 않습니다.*/}
+                    {/*</div>*/}
+                    {/*}*/}
                 </div>
                 <div>
                     <div className="nickname-title1">
