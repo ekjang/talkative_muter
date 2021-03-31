@@ -3,16 +3,21 @@ import axios from "axios";
 import server_url from "../../define/Url";
 import LunchItem from "./LunchItem";
 import "./LunchStyle.css"
+import ScrollButton from "../../common/ScrollButton";
 
 
 class LunchMain extends Component {
 
     state = {
         schContent: '',
-        list: [],
+        list: [], //조회 전체 결과 리스트
+        view: [], //화면에 보여질 결과 리스트
         recommend: '',
         recommendUrl: '',
         onLoading: false,
+        page: 0,
+        pageSize: 10,
+        isMore: true,
     }
 
     /**
@@ -37,7 +42,8 @@ class LunchMain extends Component {
     searchHandler = () => {
         axios.get(server_url + "/lunch/list", {params: {search: this.state.schContent}})
             .then(res => {
-                this.setState({list: res.data.list});
+                this.setState({list: res.data.list, view: [], page: 0});
+                this.moreView()
             })
             .catch(err => console.log(err));
 
@@ -48,14 +54,14 @@ class LunchMain extends Component {
      *  - 검색해 결과 목록 중 하나를 랜덤하게 추출하는 서비스
      */
     recommend = () => {
-        const { list } = this.state
-        if(list.length > 0) {
-            let winning = Math.floor(Math.random() * list.length)
+        const { list, view } = this.state
+        if(view.length > 0) {
+            let winning = Math.floor(Math.random() * view.length)
 
             this.setState({onLoading: !this.state.onLoading})
 
             setTimeout(() =>
-            this.setState({recommend: list[winning].name, recommendUrl: list[winning].address, onLoading: !this.state.onLoading})
+            this.setState({recommend: view[winning].name, recommendUrl: view[winning].address, onLoading: !this.state.onLoading})
             , 3000)
         } else {
             this.searchRef.focus();
@@ -73,13 +79,27 @@ class LunchMain extends Component {
             while (list.length > 0) {
                 list.pop()
             }
-            this.setState({list: list, recommend: ''})
+            this.setState({list: list, view: [], page: 0, recommend: '', recommendUrl: ''})
+            // this.moreView()
         }
     }
 
     enterHandler = (e) => {
         if(e.key == 'Enter') {
             this.searchHandler()
+        }
+    }
+
+    moreView = () => {
+        let page = this.state.page + 1
+        let view = this.state.list.slice((page - 1) * this.state.pageSize, page * this.state.pageSize)
+        this.setState({page: page, view: [...this.state.view, ...view]})
+        if(this.state.list.length > 0) {
+            if(this.state.list.length === (page - 1) * this.state.pageSize + view.length) {
+                this.setState({isMore: false})
+            } else {
+                this.setState({isMore: true})
+            }
         }
     }
 
@@ -130,12 +150,23 @@ class LunchMain extends Component {
                         </div>
                         }
                         <div className="menulist">
-                            {this.state.list.map((item, idx) =>
+                            {this.state.view.map((item, idx) =>
                             <LunchItem
                                 item={item}
                                 key={idx}
                             />
                             )}
+                        </div>
+                        <div>
+                            {this.state.list.length > 10 && this.state.isMore &&
+                            <button className="button-more" onClick={this.moreView}>More +</button>
+                            }
+                        </div>
+                        <div>
+                            {this.state.view.length > 10 &&
+                            <ScrollButton scrollStepInPx="50"
+                                          delayInMs="16.66"/>
+                            }
                         </div>
                     </div>
                 </div>
