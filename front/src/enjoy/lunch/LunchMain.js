@@ -33,7 +33,7 @@ class LunchMain extends Component {
     /**
      * 검색해 버튼 동작
      */
-    searchGoogle = () => {
+    searchHandler = () => {
         axios.get(server_url + "/lunch/list", {params: {search: this.state.schContent}})
             .then(res => {
                 this.setState({list: res.data.list});
@@ -76,11 +76,17 @@ class LunchMain extends Component {
         }
     }
 
+    enterHandler = (e) => {
+        if(e.key == 'Enter') {
+            this.searchHandler()
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className="lunchbox">
-                            <div className="luntitle">오늘 뭐먹지?</div>
+                    <div className="luntitle">오늘 뭐먹지?</div>
 
                     <div className="buttons">
                         <div>
@@ -89,12 +95,16 @@ class LunchMain extends Component {
                                 <input type="text"
                                        value={this.state.schContent}
                                        onChange={this.inputHandler}
+                                       onKeyPress={this.enterHandler}
                                        ref={(ref) => {this.inputRef = ref;}}
                                 />
-                                {/*<span onClick={this.clearInput}>X</span>*/}
+                                {this.state.schContent.length > 0 &&
+                                <span className="x-style" onClick={this.clearInput}>X</span>
+                                }
                             </span>
-                            메뉴를 &nbsp; &nbsp;
-                            <button className="Bopbtn0" onClick={this.searchGoogle}
+                            {/*메뉴를 &nbsp; &nbsp;*/}
+                            <button className="Bopbtn0"
+                                    onClick={this.searchHandler}
                                     ref={(ref) => {this.searchRef = ref;}}>검색해</button>
                         </div>
                         <div>

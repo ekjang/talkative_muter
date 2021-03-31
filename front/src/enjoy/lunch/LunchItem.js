@@ -7,7 +7,7 @@ class LunchItem extends Component {
                     {this.props.item.name}
                 </span>
                 <span>
-                    {this.props.item.address}
+                    <a href={this.props.item.address} target="_blank">{this.props.item.address}</a>
                 </span>
             </div>
         );
