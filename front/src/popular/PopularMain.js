@@ -112,7 +112,7 @@ class PopularMain extends Component {
                     </div>
                     <div>
                         {this.state.list.length > 10 && this.state.isMore &&
-                        <button className="button-wide1" onClick={this.moreView}>More</button>
+                        <button className="button-more" onClick={this.moreView}>More +</button>
                         }
                     </div>
                     <div>

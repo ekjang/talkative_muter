@@ -120,9 +120,10 @@ class TodayMain extends Component {
                     }
                 </div>
                 <div className="todayclass">
+                   
                     <input type="date" value={this.state.today} onChange={this.inputDateHandler}></input>
                     <div className="today-search">
-                    <input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />
+                   <input type="text" value={this.state.schContent} onChange={this.inputContentHandler} />
                     <button className="button-small1" onClick={this.searchOnClick} >검색</button>
                     </div>
                 </div>
@@ -139,7 +140,7 @@ class TodayMain extends Component {
                     </div>
                     <div>
                     {this.state.list.length > 10 && this.state.isMore &&
-                        <button className="button-wide1" onClick={this.moreView}>More</button>
+                        <button className="button-more" onClick={this.moreView}>More +</button>
                     }
                     </div>
                     <div>
