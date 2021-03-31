@@ -4,7 +4,10 @@ class LunchItem extends Component {
         return (
             <div>
                 <span>
-                    {this.props.item.restaurant}
+                    {this.props.item.name}
+                </span>
+                <span>
+                    {this.props.item.address}
                 </span>
             </div>
         );
