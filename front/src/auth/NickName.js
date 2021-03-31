@@ -4,7 +4,6 @@ class NickName extends Component {
 
     state = {
         nickName: this.props.nickName,
-        isAuth: this.props.isAuth
     }
 
     inputHandler = (e) => {

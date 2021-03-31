@@ -3,7 +3,7 @@ import axios from "axios";
 import server_url from "../define/Url";
 import {withRouter} from "react-router-dom";
 import "./GymStyle.css";
-// import {NoticeGym} from "../notice/NoticeGym";
+import { connect } from "react-redux";
 
 /**
  * 헬스장 이용정보 아아템 컴퍼넌트
@@ -85,4 +85,7 @@ class GymInfoItem extends Component {
         );
     }
 }
-export default withRouter(GymInfoItem);
+const mapStateToProps = (state) => ({
+    isAuth: state.user.isAuth
+})
+export default withRouter(connect(mapStateToProps)(GymInfoItem));

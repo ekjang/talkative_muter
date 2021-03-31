@@ -62,6 +62,14 @@ class RandomGame extends Component {
     }
 
     /**
+     * 입력한 검색어 삭제 동작
+     */
+    clearInput = () => {
+        this.setState({subject: ''})
+        this.inputRef.focus()
+    }
+
+    /**
      * 후보 입력 동작
      * @param id
      * @param value
@@ -106,7 +114,15 @@ class RandomGame extends Component {
                             주제
                         </span>
                         <span>
-                            <input type="text" value={this.state.subject} onChange={this.inputSubjectHandler} />
+                            <input type="text"
+                                   placeholder="주제를 입력해 주세요"
+                                   value={this.state.subject}
+                                   onChange={this.inputSubjectHandler}
+                                   ref={(ref) => {this.inputRef = ref;}}
+                            />
+                            {this.state.subject.length > 0 &&
+                                <span className="x-style" onClick={this.clearInput}>X</span>
+                            }
                         </span>
                     </div>
                     {this.state.onLoading &&

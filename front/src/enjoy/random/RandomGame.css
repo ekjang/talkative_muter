@@ -34,15 +34,38 @@
     margin-right: 10px;
 }
 
-input[type="text"]{
+.input01 input[type="text"]{
     border: none;
     border-bottom: 1px solid black;
     background: none;
-    width: 70%  ;
+    width: 42%;
     margin: 0 auto;
-    height: 30px;
+    height: 13px;
     margin-top: 10px;
+
 }
+
+
+.input01 input[type="text"]::placeholder{
+    color: darkgray;
+    font-size: 13px;
+    padding-left: 10px;
+    padding-bottom : 3px;
+}
+
+
+.redol input[type="text"]{
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    width: 35%;
+    margin: 0 auto;
+    height: 13px;
+    margin-top: 10px;
+    float: left;
+}
+
+
 
 .redol{
     margin-top: 28px;
@@ -56,4 +79,11 @@ input[type="text"]{
 .input02{
     margin-top: 20px;
     padding-bottom: 31px;
+}
+
+.x-style {
+    margin: 5px;
+    color: cornflowerblue;
+    font-size: 12px;
+    cursor: pointer;
 }

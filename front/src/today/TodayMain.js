@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import "./TodayStyle.css"
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import DoYouKnowPopup from "./DoYouKnowPopup";
 import server_url from "../define/Url"
 import TodayItem from "./TodayItem";
+import ScrollButton from "../common/ScrollButton"
+import { connect } from "react-redux"; //redux store에 연결해주는 API
 
 /**
  *  오늘 벙어리 화면
@@ -15,9 +17,13 @@ class TodayMain extends Component {
         super(props);
         this.state = {
             today: this.props.today, //오늘 날짜
-            list: [], //조회 결과 리스트
+            list: [], //조회 전체 결과 리스트
+            view: [], //화면에 보여질 결과 리스트
             isPopup: false, //너그거아니 팝업 여부
             isSuccess: false, //response 성공 여부
+            page: 0,
+            pageSize: 10,
+            isMore: true,
         }
     }
 
@@ -29,9 +35,6 @@ class TodayMain extends Component {
         }
         this.setState({today: this.props.today})
         this.searchOnClick()
-    }
-
-    componentWillUnmount() {
     }
 
     /**
@@ -64,10 +67,10 @@ class TodayMain extends Component {
                 , schContent: this.state.schContent
             }})
             .then(res => {
-                this.setState({list: res.data.data});
+                this.setState({list: res.data.data, view: [], page: 0});
+                this.moreView()
             })
             .catch(err => console.log(err));
-        this.listSort()
     }
 
     /**
@@ -81,6 +84,19 @@ class TodayMain extends Component {
             // return a.id - b.id;
             })
         })
+    }
+
+    moreView = () => {
+        let page = this.state.page + 1
+        let view = this.state.list.slice((page - 1) * this.state.pageSize, page * this.state.pageSize)
+        this.setState({page: page, view: [...this.state.view, ...view]})
+        if(this.state.list.length > 0) {
+            if(this.state.list.length === (page - 1) * this.state.pageSize + view.length) {
+                this.setState({isMore: false})
+            } else {
+                this.setState({isMore: true})
+            }
+        }
     }
 
     render() {
@@ -112,18 +128,35 @@ class TodayMain extends Component {
                 </div>
                 <div className="contents-list-style">
                     <div className="newlist">
-                    {this.state.list.map((item, idx) =>
-                    <TodayItem
-                        item={item}
-                        key={idx}
-                        searchOnClick={this.searchOnClick}
-                        today={this.state.today}
-                    />
-                    )}
+                        {this.state.view.map((item, idx) =>
+                            <TodayItem
+                                item={item}
+                                key={idx}
+                                searchOnClick={this.searchOnClick}
+                                today={this.state.today}
+                            />
+                        )}
+                    </div>
+                    <div>
+                    {this.state.list.length > 10 && this.state.isMore &&
+                        <button className="button-wide1" onClick={this.moreView}>More</button>
+                    }
+                    </div>
+                    <div>
+                    {this.state.view.length > 10 &&
+                    <ScrollButton scrollStepInPx="50"
+                                  delayInMs="16.66"/>
+                    }
                     </div>
                 </div>
             </div>
         );
     }
 }
-export default withRouter(TodayMain);
+//store의 state를 컴포넌트의 props에 매핑
+const mapStateToProps = (state) => ({
+    id: state.user.id,
+    token: state.user.token,
+    isAuth: state.user.isAuth,
+})
+export default withRouter(connect(mapStateToProps)(TodayMain));

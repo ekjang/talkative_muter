@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function AuthTimer (props) {
+function AuthTimer ({timerReset}) {
     const [minutes, setMinutes] = useState(3);
     const [seconds, setSeconds] = useState(0);
 
@@ -12,7 +12,7 @@ function AuthTimer (props) {
             if (parseInt(seconds) === 0) {
                 if (parseInt(minutes) === 0) {
                     clearInterval(countdown);
-                    //!!!여기에 props.timerOn = false 로 갱신해야됨.
+                    timerReset()
                 } else {
                     setMinutes(parseInt(minutes) - 1);
                     setSeconds(59);

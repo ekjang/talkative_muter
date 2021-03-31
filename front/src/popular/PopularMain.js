@@ -3,6 +3,9 @@ import "./PopularStyle.css"
 import axios from "axios";
 import server_url from "../define/Url";
 import PopularItem from "./PopularItem";
+import { connect } from "react-redux";
+import ScrollButton from "../common/ScrollButton";
+
 
 /**
  * 인기 벙어리 화면
@@ -12,7 +15,11 @@ class PopularMain extends Component {
         today: this.props.today, //오늘 날짜
         week: 0, //이번 주 날짜 정보??
         list: [], //조회 결과 리스트
+        view: [], //화면에 보여질 결과 리스트
         sizeByPage: 0, //미 로그인 시 아이템 수 제한
+        page: 0,
+        pageSize: 10,
+        isMore: true,
     }
 
     componentDidMount() {
@@ -49,10 +56,8 @@ class PopularMain extends Component {
                         today: searchDate
                     }})
             .then(res => {
-                this.setState({
-                    list: this.listSort(res.data.data),
-                    // list: res.data.data,
-                });
+                this.setState({list: this.listSort(res.data.data), view: [], page: 0});
+                this.moreView()
             })
             .catch(res => console.log(res))
     }
@@ -72,6 +77,19 @@ class PopularMain extends Component {
         }))
     }
 
+    moreView = () => {
+        let page = this.state.page + 1
+        let view = this.state.list.slice((page - 1) * this.state.pageSize, page * this.state.pageSize)
+        this.setState({page: page, view: [...this.state.view, ...view]})
+        if(this.state.list.length > 0) {
+            if(this.state.list.length === (page - 1) * this.state.pageSize + view.length) {
+                this.setState({isMore: false})
+            } else {
+                this.setState({isMore: true})
+            }
+        }
+    }
+
     render() {
         return (
             <div className="popbox">
@@ -80,16 +98,9 @@ class PopularMain extends Component {
                          <span className="mutter-icon"></span>
                          <span className="popular-title"> 인기 벙어리 </span>
                 </div>
-                <div>
-                    {this.props.isAuth &&
-                    <div className="popcontent">
-                        {/*<button className="popbtn" onClick={this.searchOnClick}>검색</button>*/}
-                    </div>
-                    }
-                </div>
                 <div className="contents-list-style">
-                  <div className="newlist">
-                    {this.state.list.map((item, idx) =>
+                    <div className="newlist">
+                    {this.state.view.map((item, idx) =>
                         <PopularItem
                             item={item}
                             key={idx}
@@ -98,7 +109,18 @@ class PopularMain extends Component {
                             week={this.state.week}
                         />
                     )}
-                  </div>
+                    </div>
+                    <div>
+                        {this.state.list.length > 10 && this.state.isMore &&
+                        <button className="button-wide1" onClick={this.moreView}>More</button>
+                        }
+                    </div>
+                    <div>
+                        {this.state.view.length > 10 &&
+                        <ScrollButton scrollStepInPx="50"
+                                      delayInMs="16.66"/>
+                        }
+                    </div>
                 </div>
                 
  
@@ -107,4 +129,10 @@ class PopularMain extends Component {
         );
     }
 }
-export default PopularMain;
+
+//store의 state를 컴포넌트의 props에 매핑
+const mapStateToProps = (state) => ({
+    isAuth: state.user.isAuth,
+})
+
+export default connect(mapStateToProps)(PopularMain);
