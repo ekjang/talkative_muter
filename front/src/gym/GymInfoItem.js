@@ -21,10 +21,10 @@ class GymInfoItem extends Component {
         } else {
             let use = 0
             let useMessage = '사용'
-            if (parseInt(this.props.item.usingStatus) == 1) {
+            if (parseInt(this.props.item.usingStatus) === 1) {
                 use = 0
                 useMessage = '반납'
-            } else if (parseInt(this.props.item.usingStatus) == 0) {
+            } else if (parseInt(this.props.item.usingStatus) === 0) {
                 use = 1
                 useMessage = '사용'
             }

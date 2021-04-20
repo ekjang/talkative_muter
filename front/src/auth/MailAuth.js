@@ -110,7 +110,7 @@ class MailAuth extends Component {
     goToMain = () => {
         if(!this.state.isAuth) {
             alert("인증되지 않았습니다.")
-        } else if(this.state.nickName.length == 0) {
+        } else if(this.state.nickName.length === 0) {
             alert("별명이 설정되지 않았습니다.")
         } else {
             this.props.loginCheck(this.state.isAuth, this.state.nickName)

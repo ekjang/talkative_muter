@@ -24,6 +24,7 @@ class HomeComponent extends Component {
     componentDidMount() {
         let date = new Date().toISOString().substr(0, 10)
         const {id, token, isAuth} = this.props //redux data 가져오기
+        console.log(this.props)
         this.setState({today: date
             , id: id
             , token: token

@@ -110,7 +110,7 @@ class Summary extends Component {
     /**
      * 오늘 벙어리 서버 호출 API
      */
-    todayGetApi = () => {
+    todayGetApi = () => { //
         axios.get(server_url + "/today/contentsLimit",
             {params:
                     {limit: this.state.limit,

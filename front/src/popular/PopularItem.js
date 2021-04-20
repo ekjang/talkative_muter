@@ -106,7 +106,7 @@ class PopularItem extends Component {
                             <span className="content-item3" >{this.props.item.reports}</span>
                         </span>
                     }
-                    {this.props.week == 0 &&
+                    {this.props.week === 0 &&
                         <span>
                             <span className={"content-icon-" + this.state.likesFlag}>좋아</span>
                             <span className="content-item3" onClick={this.likeOnClick}>{this.props.item.likes}</span>

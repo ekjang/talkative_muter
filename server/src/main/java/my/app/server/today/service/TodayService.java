@@ -38,6 +38,13 @@ public class TodayService {
     }
 
     @Transactional(readOnly = true)
+    public List<Content> findAllByRegisterDateBetweenOrderByLikesDesc() {
+        LocalDateTime startDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(0,0,0)); //어제 00:00:00
+        LocalDateTime endDatetime = LocalDateTime.of(LocalDate.now(), LocalTime.of(23,59,59)); //오늘 23:59:59
+        return contentRepository.findAllByRegisterDateBetweenOrderByLikesDesc(startDatetime, endDatetime);
+    }
+
+    @Transactional(readOnly = true)
     public List<Content> findOneDayContents(String today) {
         LocalDate todayDate = LocalDate.parse(today, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         LocalDateTime startDatetime = LocalDateTime.of(todayDate, LocalTime.of(0,0,0));

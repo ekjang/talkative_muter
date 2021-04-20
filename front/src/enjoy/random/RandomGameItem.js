@@ -19,7 +19,7 @@ class RandomGameItem extends Component {
     }
 
     enterHandler = (e) => {
-        if(e.key == 'Enter') {
+        if(e.key === 'Enter') {
             this.props.addItem()
             this.inputRef.focus()
         }

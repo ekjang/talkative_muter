@@ -49,7 +49,7 @@ class DoYouKnowPopup extends Component {
      * @param e
      */
     enterHandler = (e) => {
-        if(e.key == 'Enter') {
+        if(e.key === 'Enter') {
             this.btnOkOnClick()
         }
     }

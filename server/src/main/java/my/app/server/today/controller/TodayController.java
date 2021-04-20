@@ -80,10 +80,11 @@ public class TodayController {
     @GetMapping("/contentsLimit")
     public Result contentsListTop(String limit, String today) {
         //registerDate 로 sort 후 limit 조회
-        PageRequest pageRequest = PageRequest.of(0, Integer.parseInt(limit) , Sort.by("registerDate").descending());
-        Page<Content> findContents = todayService.findAll(pageRequest);
+//        PageRequest pageRequest = PageRequest.of(0, Integer.parseInt(limit) , Sort.by("registerDate").descending());
+//        Page<Content> findContents = todayService.findAll(pageRequest);
+        List<Content> findContents = todayService.findAllByRegisterDateBetweenOrderByLikesDesc();
 
-        List<TodayDto> collect = findContents.getContent().stream()
+        List<TodayDto> collect = findContents.stream()
                 .map(c -> new TodayDto(c.getId(),c.getContent(),c.getRegisterDate(),c.getLikes(),c.getDislikes(),c.getReports()))
                 .collect(Collectors.toList());
         return new Result(collect);

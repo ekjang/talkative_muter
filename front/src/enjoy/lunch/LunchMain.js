@@ -54,7 +54,7 @@ class LunchMain extends Component {
      *  - 검색해 결과 목록 중 하나를 랜덤하게 추출하는 서비스
      */
     recommend = () => {
-        const { list, view } = this.state
+        const { view } = this.state
         if(view.length > 0) {
             let winning = Math.floor(Math.random() * view.length)
 
@@ -85,7 +85,7 @@ class LunchMain extends Component {
     }
 
     enterHandler = (e) => {
-        if(e.key == 'Enter') {
+        if(e.key === 'Enter') {
             this.searchHandler()
         }
     }
